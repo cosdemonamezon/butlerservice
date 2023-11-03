@@ -69,14 +69,18 @@ class _ExamhistoryState extends State<Examhistory> {
                     ),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailExamHistory()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailExamHistory()));
                       },
                       child: Container(
-                        height: size.height * 0.32,
                         width: size.width * 0.38,
                         child: Row(
                           children: [
-                            Expanded(flex: 4, child: Image.asset('assets/images/mehome.png')),
+                            Expanded(
+                                flex: 4,
+                                child: Image.asset('assets/images/mehome.png')),
                             Expanded(
                                 flex: 5,
                                 child: Column(
@@ -101,39 +105,56 @@ class _ExamhistoryState extends State<Examhistory> {
                                       style: TextStyle(fontSize: 13.53),
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           'สถานที่',
                                           style: TextStyle(fontSize: 12.53),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: size.width * 0.01),
                                           child: Text(
                                             'ตั้งค่า',
-                                            style: TextStyle(color: kBackgroundColor, fontSize: 10.53),
+                                            style: TextStyle(
+                                                color: kBackgroundColor,
+                                                fontSize: 10.53),
                                           ),
                                         ),
                                       ],
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height: size.height * 0.12,
                                       width: double.infinity,
-                                      child: GoogleMap(
-                                        zoomControlsEnabled: false,
-                                        mapType: MapType.normal,
-                                        initialCameraPosition: CameraPosition(
-                                          target: LatLng(13.7650836, 100.5379664),
-                                          zoom: 16,
+                                      child: Transform.scale(
+                                        scale: 0.9,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: GoogleMap(
+                                            zoomControlsEnabled: false,
+                                            mapType: MapType.normal,
+                                            initialCameraPosition:
+                                                CameraPosition(
+                                              target: LatLng(
+                                                  13.7650836, 100.5379664),
+                                              zoom: 16,
+                                            ),
+                                            onMapCreated: (GoogleMapController
+                                                controller) {
+                                              mapcontroller
+                                                  .complete(controller);
+                                            },
+                                          ),
                                         ),
-                                        onMapCreated: (GoogleMapController controller) {
-                                          mapcontroller.complete(controller);
-                                        },
                                       ),
                                     ),
                                     Text(
                                       'รายละเอียดเพิ่มเติม',
-                                      style: TextStyle(fontSize: 12.53),
+                                      style: TextStyle(
+                                          fontSize: 12.53,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       '313 อาคาร ซี.พี.ทาวเวอร์ ชั้น 24 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500',

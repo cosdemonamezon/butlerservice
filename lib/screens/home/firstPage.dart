@@ -41,8 +41,10 @@ class _FirstPageState extends State<FirstPage> {
         child: currentScreen,
       ),
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: selectedIndex == 2 ?kConkgroundColor :kBackgroundColor,
-          selectedItemColor: selectedIndex == 2 ?kBackgroundColor :kConkgroundColor,
+          backgroundColor:
+              selectedIndex == 2 ? kConkgroundColor : kBackgroundColor,
+          selectedItemColor:
+              selectedIndex == 2 ? kBackgroundColor : kConkgroundColor,
           selectedFontSize: 16,
           unselectedFontSize: 16,
           currentIndex: selectedIndex,
@@ -55,21 +57,21 @@ class _FirstPageState extends State<FirstPage> {
                 Icons.home,
                 size: 30,
               ),
-              label: '',
+              label: 'หน้าแรก',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.center_focus_strong,
                 size: 30,
               ),
-              label: '',
+              label: 'แสกน',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.apps,
                 size: 30,
               ),
-              label: '',
+              label: 'ตั้งค่า',
             ),
           ]),
     );
