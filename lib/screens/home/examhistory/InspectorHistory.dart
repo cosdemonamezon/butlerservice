@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:butlerservice/constants.dart';
+import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -269,6 +270,15 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: GoogleMap(
+                              onTap: (argument) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => GooglemapPage(
+                                              latitude: 13.7650836,
+                                              longitude: 100.5379664,
+                                            )));
+                              },
                               zoomControlsEnabled: false,
                               mapType: MapType.normal,
                               initialCameraPosition: CameraPosition(

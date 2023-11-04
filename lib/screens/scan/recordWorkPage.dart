@@ -6,6 +6,7 @@ import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/screens/scan/recordSuccess.dart';
 import 'package:butlerservice/widget/AppTextForm.dart';
 import 'package:butlerservice/widget/ButtonOnClick.dart';
+import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -111,7 +112,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     children: [
                       Text(
                         'หมายเลขสถานที่',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -136,17 +140,29 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     children: [
                       Text(
                         'สถานที่',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
                   SizedBox(
                     height: size.height * 0.01,
                   ),
-                  Container(
+                  SizedBox(
                     height: size.height * 0.16,
                     width: double.infinity,
                     child: GoogleMap(
+                      onTap: (argument) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GooglemapPage(
+                                      latitude: 13.7650836,
+                                      longitude: 100.5379664,
+                                    )));
+                      },
                       zoomControlsEnabled: false,
                       mapType: MapType.normal,
                       initialCameraPosition: CameraPosition(
@@ -166,7 +182,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     children: [
                       Text(
                         'ชื่อ - สกุล',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -191,7 +210,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     children: [
                       Text(
                         'รหัสสมาชิก',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -216,7 +238,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     children: [
                       Text(
                         'วันที่',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -241,7 +266,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     children: [
                       Text(
                         'เวลา',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -266,7 +294,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     children: [
                       Text(
                         'รายละเอียดในการตรวจ',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -290,15 +321,20 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: List.generate(
                           reportCheck.length,
                           (index) => Padding(
-                                padding: EdgeInsets.symmetric(vertical: size.height * 0.008, horizontal: size.width * 0.01),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: size.height * 0.008,
+                                    horizontal: size.width * 0.01),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       reportCheck[index]['text'],
-                                      style: TextStyle(color: kTextColor, fontSize: 16),
+                                      style: TextStyle(
+                                          color: kTextColor, fontSize: 16),
                                     ),
-                                    Image.asset('assets/icons/icon-park-solid_check-one.png'),
+                                    Image.asset(
+                                        'assets/icons/icon-park-solid_check-one.png'),
                                   ],
                                 ),
                               )),
@@ -312,7 +348,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     children: [
                       Text(
                         'รูปถ่าย',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -332,7 +371,8 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                           height: size.height * 0.15,
                                           width: size.width * 0.20,
                                           child: Image(
-                                            image: FileImage(File(image[index].path)),
+                                            image: FileImage(
+                                                File(image[index].path)),
                                           ),
                                         )),
                               ),
@@ -373,7 +413,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     children: [
                       Text(
                         'สถานการณ์',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -409,7 +452,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     children: [
                       Text(
                         'บันทึกรายละเอียดเพิ่มเติม',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -445,7 +491,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                 child: ButtonBigOnClick(
                   size: size,
                   press: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => RecordSuccess()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RecordSuccess()));
                   },
                   buttonName: 'บันทึก',
                   backgroundColor: kBtnMiniColor,

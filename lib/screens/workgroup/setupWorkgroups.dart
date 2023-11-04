@@ -54,8 +54,9 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                     height: size.height * 0.01,
                   ),
                   GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Workgroup()));
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Workgroup()));
                     },
                     child: Card(
                       margin: EdgeInsets.zero,
@@ -69,7 +70,9 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: size.height * 0.01, horizontal: size.width * 0.03),
+                        padding: EdgeInsets.symmetric(
+                            vertical: size.height * 0.01,
+                            horizontal: size.width * 0.03),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -79,21 +82,23 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                               children: [
                                 Row(
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: size.width * 0.005),
-                                      child: CircleAvatar(
-                                        radius: 35,
-                                        backgroundColor: kConkgroundColor,
-                                        backgroundImage: AssetImage('assets/images/rpp.png'),
-                                      ),
+                                    CircleAvatar(
+                                      radius: 35,
+                                      backgroundColor: kConkgroundColor,
+                                      backgroundImage:
+                                          AssetImage('assets/images/rpp.png'),
                                     ),
                                     Text(
                                       'กลุ่ม มั่นคงปลอดภัย A',
-                                      style: TextStyle(color: kBackgroundColor, fontWeight: FontWeight.bold, fontSize: 15.53),
+                                      style: TextStyle(
+                                          color: kBackgroundColor,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15.53),
                                     )
                                   ],
                                 ),
-                                Image.asset('assets/icons/icon_park_setting.png')
+                                Image.asset(
+                                    'assets/icons/icon_park_setting.png')
                               ],
                             ),
                             Row(
@@ -131,8 +136,9 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                     height: size.height * 0.01,
                   ),
                   GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Workgroup()));
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Workgroup()));
                     },
                     child: Card(
                       margin: EdgeInsets.zero,
@@ -146,7 +152,9 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: size.height * 0.01, horizontal: size.width * 0.03),
+                        padding: EdgeInsets.symmetric(
+                            vertical: size.height * 0.01,
+                            horizontal: size.width * 0.03),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -157,20 +165,26 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                 Row(
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: size.width * 0.005),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: size.width * 0.005),
                                       child: CircleAvatar(
                                         radius: 35,
                                         backgroundColor: kConkgroundColor,
-                                        backgroundImage: AssetImage('assets/images/rrrt.png'),
+                                        backgroundImage: AssetImage(
+                                            'assets/images/rrrt.png'),
                                       ),
                                     ),
                                     Text(
                                       'กลุ่ม มั่นคงปลอดภัย B',
-                                      style: TextStyle(color: kBackgroundColor, fontWeight: FontWeight.bold, fontSize: 15.53),
+                                      style: TextStyle(
+                                          color: kBackgroundColor,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15.53),
                                     )
                                   ],
                                 ),
-                                Image.asset('assets/icons/icon_park_setting.png')
+                                Image.asset(
+                                    'assets/icons/icon_park_setting.png')
                               ],
                             ),
                             Row(

@@ -4,6 +4,7 @@ import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/screens/scan/recordWorkPage.dart';
 import 'package:butlerservice/widget/ButtonOnClick.dart';
+import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -30,7 +31,10 @@ class _RecordWorkState extends State<RecordWork> {
           leading: InkWell(
               onTap: () {
                 //Navigator.pop(context);
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => FirstPage()),
+                    (route) => false);
               },
               child: Image.asset('assets/icons/chevron_w.png'))),
       body: Stack(
@@ -38,7 +42,6 @@ class _RecordWorkState extends State<RecordWork> {
           Container(
             height: size.height,
             width: size.width,
-            
           ),
           Container(
             height: size.height * 0.80,
@@ -52,10 +55,19 @@ class _RecordWorkState extends State<RecordWork> {
             ),
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: size.height * 0.72,
                   width: double.infinity,
                   child: GoogleMap(
+                    onTap: (argument) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GooglemapPage(
+                                    latitude: 13.7650836,
+                                    longitude: 100.5379664,
+                                  )));
+                    },
                     zoomControlsEnabled: false,
                     mapType: MapType.normal,
                     initialCameraPosition: CameraPosition(
@@ -90,7 +102,10 @@ class _RecordWorkState extends State<RecordWork> {
                 child: ButtonBigOnClick(
                   size: size,
                   press: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWorkPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RecordWorkPage()));
                   },
                   buttonName: 'ถัดไป',
                   backgroundColor: kBtnMiniColor,

@@ -159,12 +159,13 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                                         fontSize: 15, color: kSecondTextColor))
                               ],
                             ),
-                            Container(
+                            SizedBox(
                               height: size.height * 0.15,
                               width: double.infinity,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child: GoogleMap(
+                                  onTap: (argument) {},
                                   zoomControlsEnabled: false,
                                   mapType: MapType.normal,
                                   initialCameraPosition: CameraPosition(

@@ -4,6 +4,7 @@ import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/widget/AppTextForm.dart';
 import 'package:butlerservice/widget/ButtonOnClick.dart';
+import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:butlerservice/widget/cupertinoAlertDialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +73,11 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                   Container(
                       width: size.width * 0.20,
                       height: size.height * 0.20,
-                      decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(fit: BoxFit.fitHeight, image: AssetImage("assets/images/man1.png")))),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.fitHeight,
+                              image: AssetImage("assets/images/man1.png")))),
                   SizedBox(
                     height: size.height * 0.01,
                   ),
@@ -81,7 +86,10 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'ชื่อ - สกุล',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -106,7 +114,10 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'วัน/เดือน/ปีเกิด',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -131,7 +142,10 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'อายุ',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -156,7 +170,10 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'เบอร์โทร',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -181,17 +198,29 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'สถานที่',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
                   SizedBox(
                     height: size.height * 0.01,
                   ),
-                  Container(
+                  SizedBox(
                     height: size.height * 0.16,
                     width: double.infinity,
                     child: GoogleMap(
+                      onTap: (argument) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GooglemapPage(
+                                      latitude: 13.7650836,
+                                      longitude: 100.5379664,
+                                    )));
+                      },
                       zoomControlsEnabled: false,
                       mapType: MapType.normal,
                       initialCameraPosition: CameraPosition(
@@ -211,7 +240,10 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'รายละเอียดสถานที่',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -236,7 +268,10 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'เวลาปฏิบัติงาน',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -261,7 +296,10 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'วันหยุด',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -323,7 +361,11 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                               title: 'บันทึกสำเร็จ',
                               content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
                               press: () {
-                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => FirstPage()),
+                                    (route) => false);
                               },
                             ));
                   },

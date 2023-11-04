@@ -6,6 +6,7 @@ import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/widget/AppTextForm.dart';
 import 'package:butlerservice/widget/ButtonOnClick.dart';
+import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:butlerservice/widget/cupertinoAlertDialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -112,7 +113,10 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'ชื่อ - สกุล สายตรวจ',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -137,7 +141,10 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'รหัสสมาชิก',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -162,7 +169,10 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'ชื่อกลุ่มรปภ.',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -187,7 +197,10 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'รหัสประจำกลุ่ม',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -212,17 +225,29 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'สถานที่',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
                   SizedBox(
                     height: size.height * 0.01,
                   ),
-                  Container(
+                  SizedBox(
                     height: size.height * 0.16,
                     width: double.infinity,
                     child: GoogleMap(
+                      onTap: (argument) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GooglemapPage(
+                                      latitude: 13.7650836,
+                                      longitude: 100.5379664,
+                                    )));
+                      },
                       zoomControlsEnabled: false,
                       mapType: MapType.normal,
                       initialCameraPosition: CameraPosition(
@@ -242,7 +267,10 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'วันที่',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -267,7 +295,10 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'เวลา',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -292,7 +323,10 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'รูปถ่าย',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -302,26 +336,54 @@ class _ReportDetailState extends State<ReportDetail> {
                   Row(
                     children: [
                       image.isNotEmpty
-                          ? Expanded(
-                              flex: 8,
-                              child: Wrap(
-                                direction: Axis.horizontal,
-                                children: List.generate(
-                                    image.length,
-                                    (index) => SizedBox(
-                                          height: size.height * 0.15,
-                                          width: size.width * 0.20,
-                                          child: Image(
-                                            image: FileImage(File(image[index].path)),
-                                          ),
-                                        )),
+                          ? Flexible(
+                              child: Column(
+                                children: [
+                                  Wrap(
+                                    direction: Axis.horizontal,
+                                    children: List.generate(
+                                        image.length,
+                                        (index) => Stack(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(5.0),
+                                                  child: SizedBox(
+                                                    height: size.height * 0.15,
+                                                    width: size.width * 0.20,
+                                                    child: Image(
+                                                      image: FileImage(File(
+                                                          image[index].path)),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Positioned(
+                                                    top: 15,
+                                                    left: 60,
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          image.removeAt(index);
+                                                        });
+                                                      },
+                                                      child: Icon(Icons.cancel,
+                                                          color:
+                                                              kBackgroundColor),
+                                                    )),
+                                              ],
+                                            )),
+                                  ),
+                                ],
                               ),
                             )
                           : SizedBox(),
+                      SizedBox(
+                        width: size.width * 0.01,
+                      ),
                       GestureDetector(
                         onTap: () => openDialogImage(1),
                         child: Container(
-                          height: size.height * 0.12,
+                          height: size.height * 0.13,
                           width: size.width * 0.20,
                           decoration: BoxDecoration(
                             //color: kBackgroundColor,
@@ -353,7 +415,10 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'สมาชิกในกลุ่ม',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -369,7 +434,8 @@ class _ReportDetailState extends State<ReportDetail> {
                                 members[index]['name'],
                                 style: TextStyle(color: kConkgroundColor),
                               ),
-                              trailing: Image.asset('assets/icons/icon-park-solid_check-one.png'),
+                              trailing: Image.asset(
+                                  'assets/icons/icon-park-solid_check-one.png'),
                             )),
                   ),
                   SizedBox(
@@ -380,7 +446,10 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'บันทึกรายละเอียดเพิ่มเติม',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -439,7 +508,11 @@ class _ReportDetailState extends State<ReportDetail> {
                               title: 'บันทึกสำเร็จ',
                               content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
                               press: () {
-                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => FirstPage()),
+                                    (route) => false);
                               },
                             ));
                   },

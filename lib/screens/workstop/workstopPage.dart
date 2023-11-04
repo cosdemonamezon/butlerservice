@@ -112,7 +112,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'ชื่อ - สกุล',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -137,7 +140,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'รหัสสมาชิก',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -162,7 +168,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'เบอร์โทร',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -187,7 +196,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'กลุ่ม',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -212,7 +224,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'วันลาหยุดที่ต้องการ',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -231,7 +246,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                             children: [
                               Text(
                                 'ตั้งเเต่วันที่',
-                                style: TextStyle(color: kConkgroundColor, fontSize: 15, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    color: kConkgroundColor,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -259,7 +277,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                             children: [
                               Text(
                                 'ถึงวันที่',
-                                style: TextStyle(color: kConkgroundColor, fontSize: 15, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    color: kConkgroundColor,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -288,7 +309,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'ลักษณะลา',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -313,7 +337,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'เหตุผลในการลา',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -338,7 +365,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'เอกสาร',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -348,26 +378,51 @@ class _WorkstopPageState extends State<WorkstopPage> {
                   Row(
                     children: [
                       image.isNotEmpty
-                          ? Expanded(
-                              flex: 8,
-                              child: Wrap(
-                                direction: Axis.horizontal,
-                                children: List.generate(
-                                    image.length,
-                                    (index) => SizedBox(
-                                          height: size.height * 0.15,
-                                          width: size.width * 0.20,
-                                          child: Image(
-                                            image: FileImage(File(image[index].path)),
-                                          ),
-                                        )),
+                          ? Flexible(
+                              child: Column(
+                                children: [
+                                  Wrap(
+                                    direction: Axis.horizontal,
+                                    children: List.generate(
+                                        image.length,
+                                        (index) => Stack(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(5.0),
+                                                  child: SizedBox(
+                                                    height: size.height * 0.15,
+                                                    width: size.width * 0.20,
+                                                    child: Image(
+                                                      image: FileImage(File(
+                                                          image[index].path)),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Positioned(
+                                                    top: 20,
+                                                    left: 65,
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          image.removeAt(index);
+                                                        });
+                                                      },
+                                                      child: Icon(Icons.cancel,
+                                                          color:
+                                                              kBackgroundColor),
+                                                    )),
+                                              ],
+                                            )),
+                                  ),
+                                ],
                               ),
                             )
                           : SizedBox(),
                       GestureDetector(
                         onTap: () => openDialogImage(1),
                         child: Container(
-                          height: size.height * 0.12,
+                          height: size.height * 0.13,
                           width: size.width * 0.20,
                           decoration: BoxDecoration(
                             //color: kBackgroundColor,
@@ -399,7 +454,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'ผู้อนุมัติ',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -424,7 +482,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'ตำเเหน่ง',
-                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kConkgroundColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -462,7 +523,11 @@ class _WorkstopPageState extends State<WorkstopPage> {
                               title: 'บันทึกสำเร็จ',
                               content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
                               press: () {
-                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => FirstPage()),
+                                    (route) => false);
                               },
                             ));
                   },

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
+import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -39,7 +40,8 @@ class _RecordSuccessState extends State<RecordSuccess> {
               SizedBox(
                 height: size.height * 0.01,
               ),
-              Center(child: Image.asset('assets/icons/circle_success_check.png')),
+              Center(
+                  child: Image.asset('assets/icons/circle_success_check.png')),
               Center(
                 child: Text(
                   'บันทึกเวลางานสำเร็จ',
@@ -50,7 +52,10 @@ class _RecordSuccessState extends State<RecordSuccess> {
                 height: size.height * 0.02,
               ),
               Row(
-                children: [Text('รายละเอียด', style: TextStyle(fontSize: 15, color: kConkgroundColor))],
+                children: [
+                  Text('รายละเอียด',
+                      style: TextStyle(fontSize: 15, color: kConkgroundColor))
+                ],
               ),
               Container(
                 height: size.height * 0.55,
@@ -65,23 +70,43 @@ class _RecordSuccessState extends State<RecordSuccess> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.01, vertical: size.height * 0.01),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.01,
+                      vertical: size.height * 0.01),
                   child: Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text('หมายเลขสถานที่', style: TextStyle(fontSize: 15, color: kTextShowColor)), Text('BP11245644886699', style: TextStyle(fontSize: 15, color: kTextShowColor))],
+                        children: [
+                          Text('หมายเลขสถานที่',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Text('BP11245644886699',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor))
+                        ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('สถานที่', style: TextStyle(fontSize: 15, color: kTextShowColor)),
+                          Text('สถานที่',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
                         ],
                       ),
-                      Container(
+                      SizedBox(
                         height: size.height * 0.16,
                         width: double.infinity,
                         child: GoogleMap(
+                          onTap: (argument) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => GooglemapPage(
+                                          latitude: 13.7650836,
+                                          longitude: 100.5379664,
+                                        )));
+                          },
                           zoomControlsEnabled: false,
                           mapType: MapType.normal,
                           initialCameraPosition: CameraPosition(
@@ -95,34 +120,72 @@ class _RecordSuccessState extends State<RecordSuccess> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text('ชื่อ-สกุล', style: TextStyle(fontSize: 15, color: kTextShowColor)), Text('นาย สมชาย ขยันแจ้ง', style: TextStyle(fontSize: 15, color: kTextShowColor))],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text('รหัสสมาชิก', style: TextStyle(fontSize: 15, color: kTextShowColor)), Text('11544866445', style: TextStyle(fontSize: 15, color: kTextShowColor))],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text('วันที่', style: TextStyle(fontSize: 15, color: kTextShowColor)), Text('15/05/66', style: TextStyle(fontSize: 15, color: kTextShowColor))],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text('เวลา', style: TextStyle(fontSize: 15, color: kTextShowColor)), Text('09.41', style: TextStyle(fontSize: 15, color: kTextShowColor))],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('รูปถ่าย', style: TextStyle(fontSize: 15, color: kTextShowColor)),
+                          Text('ชื่อ-สกุล',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Text('นาย สมชาย ขยันแจ้ง',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor))
                         ],
                       ),
                       Row(
-                        children: [Image.asset('assets/images/r1.png'), Image.asset('assets/images/r2.png'), Image.asset('assets/images/r3.png')],
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('รหัสสมาชิก',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Text('11544866445',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor))
+                        ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('รายละเอียดเพิ่มเติม', style: TextStyle(fontSize: 15, color: kTextShowColor)),
-                          Text('สถานการณ์ปกติ', style: TextStyle(fontSize: 15, color: kTextShowColor)),
+                          Text('วันที่',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Text('15/05/66',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('เวลา',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Text('09.41',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('รูปถ่าย',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Image.asset('assets/images/r1.png'),
+                          Image.asset('assets/images/r2.png'),
+                          Image.asset('assets/images/r3.png')
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('รายละเอียดเพิ่มเติม',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Text('สถานการณ์ปกติ',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
                         ],
                       ),
                     ],
@@ -150,12 +213,16 @@ class _RecordSuccessState extends State<RecordSuccess> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: size.width * 0.01),
                           child: Image.asset('assets/icons/line_white.png'),
                         ),
                         Text(
                           'เเชร์ไปยัง Line Group',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 16.39, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 16.39,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -167,7 +234,10 @@ class _RecordSuccessState extends State<RecordSuccess> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => FirstPage()),
+                      (route) => false);
                 },
                 child: Center(
                   child: Text(
