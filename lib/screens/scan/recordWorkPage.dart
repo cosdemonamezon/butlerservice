@@ -27,6 +27,8 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
   final TextEditingController date = TextEditingController();
   final TextEditingController time = TextEditingController();
   final TextEditingController remark = TextEditingController();
+  late GoogleMapController mapController;
+  Set<Marker> markers = Set();
 
   ImagePicker picker = ImagePicker();
   List<XFile> image = [];
@@ -40,7 +42,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
       cancelLabel: 'ยกเลิก',
       actions: [
         SheetAction<String>(label: 'ถ่ายรูป', key: 'camera'),
-        SheetAction<String>(label: 'เลือกจากอัลบั้ม', key: 'gallery'),
+        // SheetAction<String>(label: 'เลือกจากอัลบั้ม', key: 'gallery'),
       ],
     );
     if (result != null) {
@@ -53,15 +55,30 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
         });
       }
 
-      if (result == 'gallery') {
-        final img = await picker.pickImage(source: ImageSource.gallery);
-        setState(() {
-          if (imageSelect == 1 && img != null) {
-            image.add(img);
-          }
-        });
-      }
+      // if (result == 'gallery') {
+      //   final img = await picker.pickImage(source: ImageSource.gallery);
+      //   setState(() {
+      //     if (imageSelect == 1 && img != null) {
+      //       image.add(img);
+      //     }
+      //   });
+      // }
     }
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    setState(() {
+      mapController = controller;
+      // เพิ่มปักหมุดที่ตำแหน่งที่กำหนด
+      markers.add(
+        Marker(
+          markerId: MarkerId('SomeId'),
+          position: LatLng(13.7650836, 100.5379664),
+          infoWindow:
+              InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
+        ),
+      );
+    });
   }
 
   @override
@@ -73,13 +90,17 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
           centerTitle: true,
           title: Text(
             'บันทึกรายละเอียดงาน',
-            style: TextStyle(fontSize: 25, color: kConkgroundColor),
+            style: TextStyle(fontSize: 20, color: kConkgroundColor),
           ),
           leading: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Image.asset('assets/icons/chevron_w.png'))),
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Image.asset(
+              'assets/icons/chevron_w.png',
+              scale: 1.3,
+            ),
+          )),
       body: Stack(
         children: [
           Container(
@@ -153,29 +174,34 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                   SizedBox(
                     height: size.height * 0.16,
                     width: double.infinity,
-                    child: GoogleMap(
-                      onTap: (argument) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => GooglemapPage(
-                                      latitude: 13.7650836,
-                                      longitude: 100.5379664,
-                                    )));
-                      },
-                      zoomControlsEnabled: false,
-                      mapType: MapType.normal,
-                      initialCameraPosition: CameraPosition(
-                        target: LatLng(13.7650836, 100.5379664),
-                        zoom: 16,
+                    child: Card(
+                      elevation: 10,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: GoogleMap(
+                          onTap: (argument) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => GooglemapPage(
+                                          latitude: 13.7650836,
+                                          longitude: 100.5379664,
+                                        )));
+                          },
+                          zoomControlsEnabled: false,
+                          mapType: MapType.normal,
+                          initialCameraPosition: CameraPosition(
+                            target: LatLng(13.7650836, 100.5379664),
+                            zoom: 16,
+                          ),
+                          markers: markers,
+                          onMapCreated: _onMapCreated,
+                        ),
                       ),
-                      onMapCreated: (GoogleMapController controller) {
-                        mapcontroller.complete(controller);
-                      },
                     ),
                   ),
                   SizedBox(
-                    height: size.height * 0.01,
+                    height: size.height * 0.02,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -194,7 +220,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                   ),
                   AppTextForm(
                     controller: name,
-                    hintText: '',
+                    hintText: 'นาย สมชาย ขยันแจ้ง',
                     validator: (val) {
                       if (val == null || val.isEmpty) {
                         return 'กรุณากรอกชื่อ - สกุล';
@@ -305,7 +331,6 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     height: size.height * 0.01,
                   ),
                   Container(
-                    height: size.height * 0.20,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: kConkgroundColor,
@@ -322,8 +347,8 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                           reportCheck.length,
                           (index) => Padding(
                                 padding: EdgeInsets.symmetric(
-                                    vertical: size.height * 0.008,
-                                    horizontal: size.width * 0.01),
+                                    vertical: size.height * 0.01,
+                                    horizontal: size.width * 0.02),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -361,23 +386,61 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                   Row(
                     children: [
                       image.isNotEmpty
-                          ? Expanded(
-                              flex: 8,
-                              child: Wrap(
-                                direction: Axis.horizontal,
-                                children: List.generate(
-                                    image.length,
-                                    (index) => SizedBox(
-                                          height: size.height * 0.15,
-                                          width: size.width * 0.20,
-                                          child: Image(
-                                            image: FileImage(
-                                                File(image[index].path)),
-                                          ),
-                                        )),
+                          ? Flexible(
+                              child: Column(
+                                children: [
+                                  Wrap(
+                                    direction: Axis.horizontal,
+                                    children: List.generate(
+                                        image.length,
+                                        (index) => Stack(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(5.0),
+                                                  child: SizedBox(
+                                                    width: size.width * 0.20,
+                                                    height: size.height * 0.12,
+                                                    child: AspectRatio(
+                                                      aspectRatio: 1,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        child: Image(
+                                                          image: FileImage(
+                                                            File(image[index]
+                                                                .path),
+                                                          ),
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Positioned(
+                                                    top: 10,
+                                                    left: 60,
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          image.removeAt(index);
+                                                        });
+                                                      },
+                                                      child: Icon(Icons.cancel,
+                                                          color:
+                                                              kBackgroundColor),
+                                                    )),
+                                              ],
+                                            )),
+                                  ),
+                                ],
                               ),
                             )
                           : SizedBox(),
+                      SizedBox(
+                        width: size.width * 0.01,
+                      ),
                       GestureDetector(
                         onTap: () => openDialogImage(1),
                         child: Container(
@@ -385,20 +448,14 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                           width: size.width * 0.20,
                           decoration: BoxDecoration(
                             //color: kBackgroundColor,
-                            border: Border.all(
-                              color: kConkgroundColor,
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(8),
-                              bottomLeft: Radius.circular(8),
-                            ),
+
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                          child: Stack(
                             children: [
-                              Image.asset('assets/icons/add_w.png'),
+                              Image.asset('assets/icons/Rectangle 7 (1).png'),
+                              Center(
+                                  child: Image.asset('assets/icons/add_w.png')),
                             ],
                           ),
                         ),
@@ -464,7 +521,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                   ),
                   AppTextForm(
                     controller: remark,
-                    hintText: '',
+                    hintText: 'กรุณากรอกรายละเอียด',
                     maxline: 5,
                     validator: (val) {
                       if (val == null || val.isEmpty) {
@@ -474,17 +531,14 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     },
                   ),
                   SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  SizedBox(
-                    height: size.height * 0.08,
+                    height: size.height * 0.03,
                   ),
                 ],
               ),
             ),
           ),
           Positioned(
-            bottom: size.height * 0.02,
+            bottom: size.height * 0.01,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
               child: Center(

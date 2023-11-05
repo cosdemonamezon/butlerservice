@@ -43,7 +43,7 @@ class _RecordWorkState extends State<RecordWork> {
           centerTitle: true,
           title: Text(
             'บันทึกรายละเอียดงาน',
-            style: TextStyle(fontSize: 25, color: kConkgroundColor),
+            style: TextStyle(fontSize: 20, color: kConkgroundColor),
           ),
           leading: InkWell(
               onTap: () {
@@ -53,7 +53,10 @@ class _RecordWorkState extends State<RecordWork> {
                     MaterialPageRoute(builder: (context) => FirstPage()),
                     (route) => false);
               },
-              child: Image.asset('assets/icons/chevron_w.png'))),
+              child: Image.asset(
+                'assets/icons/chevron_w.png',
+                scale: 1.3,
+              ))),
       body: Stack(
         children: [
           SizedBox(
@@ -103,7 +106,7 @@ class _RecordWorkState extends State<RecordWork> {
             ),
           ),
           Positioned(
-            bottom: size.height * 0.02,
+            bottom: size.height * 0.01,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
               child: Center(
