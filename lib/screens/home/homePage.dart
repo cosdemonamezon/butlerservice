@@ -64,11 +64,27 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           child: Row(
                             children: [
-                              CircleAvatar(
-                                radius: 32,
-                                backgroundColor: Colors.white,
-                                backgroundImage:
-                                    AssetImage('assets/images/rppEll.png'),
+                              Stack(
+                                children: [
+                                  SizedBox(
+                                    width: 64,
+                                    height: 64,
+                                    child: CircleAvatar(
+                                      radius: 32,
+                                      backgroundColor: kTransparent,
+                                      child: Image.asset(
+                                          'assets/images/rppEll.png'),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    height: 25,
+                                    width: 25,
+                                    bottom: 0,
+                                    right: 0,
+                                    child: Image.asset(
+                                        'assets/icons/solar_camera-minimalistic-bold.png'),
+                                  )
+                                ],
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(
@@ -98,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     SizedBox(
-                      height: size.height * 0.01,
+                      height: size.height * 0.03,
                     ),
                     ///////////
 
@@ -323,7 +339,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     SizedBox(
                       height: size.height * 0.03,
-                    ),
+                    )
                   ],
                 ),
               ),
