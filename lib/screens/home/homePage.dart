@@ -1,7 +1,6 @@
 import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/screens/Inspecreport/inspecReport.dart';
 import 'package:butlerservice/screens/home/examhistory/examHistory.dart';
-import 'package:butlerservice/screens/home/examhistory/mapText.dart';
 import 'package:butlerservice/screens/home/notify/notifyVisitors.dart';
 import 'package:butlerservice/screens/home/widgets/ShowContainerWidget.dart';
 import 'package:butlerservice/screens/manageplaces/managePlaces.dart';
@@ -63,10 +62,25 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         child: Row(
                           children: [
-                            CircleAvatar(
-                              radius: 32,
-                              backgroundColor: Colors.white,
-                              backgroundImage: AssetImage('assets/images/rppEll.png'),
+                            Stack(
+                              children: [
+                                SizedBox(
+                                  width: 64,
+                                  height: 64,
+                                  child: CircleAvatar(
+                                    radius: 32,
+                                    backgroundColor: kTransparent,
+                                    child: Image.asset('assets/images/rppEll.png'),
+                                  ),
+                                ),
+                                Positioned(
+                                  height: 25,
+                                  width: 25,
+                                  bottom: 0,
+                                  right: 0,
+                                  child: Image.asset('assets/icons/solar_camera-minimalistic-bold.png'),
+                                )
+                              ],
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
@@ -89,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   SizedBox(
-                    height: size.height * 0.01,
+                    height: size.height * 0.03,
                   ),
                   ///////////
 
