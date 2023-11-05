@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             color: kBackgroundColor,
           ),
           Container(
-            height: size.height * 0.90,
+            height: size.height * 0.80,
             width: double.infinity,
             decoration: BoxDecoration(
               color: kConkgroundColor,

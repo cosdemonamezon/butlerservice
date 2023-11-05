@@ -35,8 +35,6 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(selectedIndex);
-    print(0 == selectedIndex);
     return Scaffold(
       key: _scaffoldKey,
       extendBody: true,
