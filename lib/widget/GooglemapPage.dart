@@ -14,7 +14,24 @@ class GooglemapPage extends StatefulWidget {
 }
 
 class _GooglemapPageState extends State<GooglemapPage> {
-  Completer<GoogleMapController> mapcontroller = Completer();
+  late GoogleMapController mapController;
+  Set<Marker> markers = Set();
+
+  void _onMapCreated(GoogleMapController controller) {
+    setState(() {
+      mapController = controller;
+      // เพิ่มปักหมุดที่ตำแหน่งที่กำหนด
+      markers.add(
+        Marker(
+          markerId: MarkerId('SomeId'),
+          position: LatLng(13.7650836, 100.5379664),
+          infoWindow:
+              InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -49,9 +66,8 @@ class _GooglemapPageState extends State<GooglemapPage> {
                       target: LatLng(widget.latitude!, widget.longitude!),
                       zoom: 18,
                     ),
-                    onMapCreated: (GoogleMapController controller) {
-                      mapcontroller.complete(controller);
-                    },
+                    markers: markers,
+                    onMapCreated: _onMapCreated,
                   ),
                 ),
               ),

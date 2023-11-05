@@ -23,7 +23,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
           backgroundColor: kBackgroundColor,
           centerTitle: true,
           title: Text(
-            'บันทึกรายระเอียดงาน',
+            'บันทึกรายละเอียดงาน',
             style: TextStyle(fontSize: 25, color: kConkgroundColor),
           ),
           leading: InkWell(

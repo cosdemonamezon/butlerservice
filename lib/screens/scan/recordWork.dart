@@ -16,7 +16,24 @@ class RecordWork extends StatefulWidget {
 }
 
 class _RecordWorkState extends State<RecordWork> {
-  Completer<GoogleMapController> mapcontroller = Completer();
+  late GoogleMapController mapController;
+  Set<Marker> markers = Set();
+
+  void _onMapCreated(GoogleMapController controller) {
+    setState(() {
+      mapController = controller;
+      // เพิ่มปักหมุดที่ตำแหน่งที่กำหนด
+      markers.add(
+        Marker(
+          markerId: MarkerId('SomeId'),
+          position: LatLng(13.7650836, 100.5379664),
+          infoWindow:
+              InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -25,7 +42,7 @@ class _RecordWorkState extends State<RecordWork> {
           backgroundColor: kBackgroundColor,
           centerTitle: true,
           title: Text(
-            'บันทึกรายระเอียดงาน',
+            'บันทึกรายละเอียดงาน',
             style: TextStyle(fontSize: 25, color: kConkgroundColor),
           ),
           leading: InkWell(
@@ -39,7 +56,7 @@ class _RecordWorkState extends State<RecordWork> {
               child: Image.asset('assets/icons/chevron_w.png'))),
       body: Stack(
         children: [
-          Container(
+          SizedBox(
             height: size.height,
             width: size.width,
           ),
@@ -49,8 +66,8 @@ class _RecordWorkState extends State<RecordWork> {
             decoration: BoxDecoration(
               color: kBackgroundColor,
               borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(40),
-                bottomLeft: Radius.circular(40),
+                bottomRight: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
               ),
             ),
             child: Column(
@@ -59,24 +76,15 @@ class _RecordWorkState extends State<RecordWork> {
                   height: size.height * 0.72,
                   width: double.infinity,
                   child: GoogleMap(
-                    onTap: (argument) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GooglemapPage(
-                                    latitude: 13.7650836,
-                                    longitude: 100.5379664,
-                                  )));
-                    },
+                    onTap: (argument) {},
                     zoomControlsEnabled: false,
                     mapType: MapType.normal,
                     initialCameraPosition: CameraPosition(
                       target: LatLng(13.7650836, 100.5379664),
                       zoom: 16,
                     ),
-                    onMapCreated: (GoogleMapController controller) {
-                      mapcontroller.complete(controller);
-                    },
+                    markers: markers,
+                    onMapCreated: _onMapCreated,
                   ),
                 ),
                 Center(

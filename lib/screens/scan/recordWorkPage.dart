@@ -72,7 +72,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
           backgroundColor: kBackgroundColor,
           centerTitle: true,
           title: Text(
-            'บันทึกรายระเอียดงาน',
+            'บันทึกรายละเอียดงาน',
             style: TextStyle(fontSize: 25, color: kConkgroundColor),
           ),
           leading: InkWell(
