@@ -2,11 +2,26 @@ import 'package:butlerservice/constants.dart';
 import 'package:flutter/material.dart';
 
 class AppTextForm extends StatefulWidget {
-  AppTextForm({Key? key, this.decoration, this.keyboardType, this.controller, this.hintText, this.validator, this.isPassword = false, this.enabled = true, this.maxline, this.obscureText})
-      : super(key: key);
+  AppTextForm({
+    Key? key,
+    this.decoration,
+    this.keyboardType,
+    this.controller,
+    this.labelStyle,
+    this.labelText,
+    this.hintText,
+    this.validator,
+    this.isPassword = false,
+    this.enabled = true,
+    this.maxline,
+    this.obscureText,
+  }) : super(key: key);
+
   InputDecoration? decoration;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
+  final TextStyle? labelStyle;
+  final String? labelText;
   final String? hintText;
   final FormFieldValidator<String>? validator;
   final bool isPassword;
@@ -49,6 +64,9 @@ class _AppTextFormState extends State<AppTextForm> {
               Radius.circular(10),
             ),
           ),
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          labelText: widget.labelText,
+          labelStyle: widget.labelStyle,
           hintText: widget.hintText,
           hintStyle: TextStyle(color: kSecondTextColor, fontSize: 15),
           suffixIcon: widget.isPassword

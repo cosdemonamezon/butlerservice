@@ -2,6 +2,7 @@ import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/screens/home/homePage.dart';
 import 'package:butlerservice/screens/scan/scanPage.dart';
 import 'package:butlerservice/screens/setting/settingPage.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class FirstPage extends StatefulWidget {
@@ -14,6 +15,7 @@ class FirstPage extends StatefulWidget {
 class _FirstPageState extends State<FirstPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   final PageStorageBucket bucket = PageStorageBucket();
+  Color? color;
   Widget currentScreen = HomePage();
 
   int selectedIndex = 0;
@@ -33,6 +35,8 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(selectedIndex);
+    print(0 == selectedIndex);
     return Scaffold(
       key: _scaffoldKey,
       extendBody: true,
@@ -41,37 +45,25 @@ class _FirstPageState extends State<FirstPage> {
         child: currentScreen,
       ),
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor:
-              selectedIndex == 2 ? kConkgroundColor : kBackgroundColor,
-          selectedItemColor:
-              selectedIndex == 2 ? kBackgroundColor : kConkgroundColor,
-          selectedFontSize: 16,
-          unselectedFontSize: 16,
+          backgroundColor: selectedIndex == 2 ? kConkgroundColor : kBackgroundColor,
+          // selectedItemColor: selectedIndex == 2 ? kBackgroundColor : kConkgroundColor,
           currentIndex: selectedIndex,
-          showUnselectedLabels: true,
+          showUnselectedLabels: false,
+          showSelectedLabels: false,
           onTap: onItemTapped,
           type: BottomNavigationBarType.fixed,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 30,
-              ),
-              label: 'หน้าแรก',
+              icon: Image(image: AssetImage('assets/icons/solar_home-2-bold.png'), color: 0 == selectedIndex ? kWhite : kGrey),
+              label: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.center_focus_strong,
-                size: 30,
-              ),
-              label: 'แสกน',
+              icon: Image(image: AssetImage('assets/icons/mdi_line-scan.png'), color: 1 == selectedIndex ? kWhite : kGrey),
+              label: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.apps,
-                size: 30,
-              ),
-              label: 'ตั้งค่า',
+              icon: Image(image: AssetImage('assets/icons/icon-park-solid_more-app.png'), color: 2 == selectedIndex ? kBackgroundColor : kGrey),
+              label: '',
             ),
           ]),
     );

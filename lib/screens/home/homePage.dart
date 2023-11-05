@@ -38,8 +38,8 @@ class _HomePageState extends State<HomePage> {
             decoration: BoxDecoration(
               color: kConkgroundColor,
               borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(50),
-                bottomLeft: Radius.circular(50),
+                bottomRight: Radius.circular(30),
+                bottomLeft: Radius.circular(30),
               ),
               // boxShadow: [
               //   BoxShadow(
@@ -126,7 +126,9 @@ class _HomePageState extends State<HomePage> {
                           height: 12.0,
                           margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                           decoration: BoxDecoration(
-                              shape: BoxShape.circle, color: (Theme.of(context).brightness == Brightness.dark ? kPointColor : kBackgroundColor).withOpacity(activeIndex == entry.key ? 0.9 : 0.4)),
+                              shape: BoxShape.circle,
+                              color: (Theme.of(context).brightness == Brightness.dark ? kPointColor : kBackgroundColor)
+                                  .withOpacity(activeIndex == entry.key ? 0.9 : 0.4)),
                         ),
                       );
                     }).toList(),
@@ -139,6 +141,9 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       )
                     ],
+                  ),
+                  SizedBox(
+                    height: size.height * 0.009,
                   ),
                   Container(
                     height: size.height * 0.12,
@@ -169,7 +174,9 @@ class _HomePageState extends State<HomePage> {
                           );
                         }),
                   ),
-
+                  SizedBox(
+                    height: size.height * 0.009,
+                  ),
                   //////
                   Row(
                     children: [
@@ -178,6 +185,9 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       )
                     ],
+                  ),
+                  SizedBox(
+                    height: size.height * 0.009,
                   ),
                   Container(
                     height: size.height * 0.12,
@@ -198,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => InspecReport()));
                                 } else if (patrol[index]['id'] == 2) {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => SetupWorkgroups()));
-                                }else if (patrol[index]['id'] == 3) {
+                                } else if (patrol[index]['id'] == 3) {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
                                 } else {}
                               },
@@ -206,7 +216,9 @@ class _HomePageState extends State<HomePage> {
                           );
                         }),
                   ),
-
+                  SizedBox(
+                    height: size.height * 0.009,
+                  ),
                   //////
                   Row(
                     children: [
@@ -215,6 +227,9 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       )
                     ],
+                  ),
+                  SizedBox(
+                    height: size.height * 0.009,
                   ),
                   Container(
                     height: size.height * 0.12,
@@ -235,7 +250,7 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => NotifyVisitors()));
                                 } else if (officer[index]['id'] == 2) {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
-                                }else if (officer[index]['id'] == 3) {
+                                } else if (officer[index]['id'] == 3) {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => WorkstopPage()));
                                 } else {}
                               },
