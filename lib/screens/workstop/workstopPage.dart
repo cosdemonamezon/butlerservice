@@ -419,27 +419,24 @@ class _WorkstopPageState extends State<WorkstopPage> {
                               ),
                             )
                           : SizedBox(),
+                      SizedBox(
+                        width: size.width * 0.01,
+                      ),
                       GestureDetector(
                         onTap: () => openDialogImage(1),
                         child: Container(
-                          height: size.height * 0.13,
+                          height: size.height * 0.12,
                           width: size.width * 0.20,
                           decoration: BoxDecoration(
                             //color: kBackgroundColor,
-                            border: Border.all(
-                              color: kConkgroundColor,
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(8),
-                              bottomLeft: Radius.circular(8),
-                            ),
+
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                          child: Stack(
                             children: [
-                              Image.asset('assets/icons/add_w.png'),
+                              Image.asset('assets/icons/Rectangle 7 (1).png'),
+                              Center(
+                                  child: Image.asset('assets/icons/add_w.png')),
                             ],
                           ),
                         ),

@@ -1,14 +1,18 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RecordSuccess extends StatefulWidget {
-  const RecordSuccess({super.key});
+  RecordSuccess({super.key, this.regisuserdata, this.image});
+  Map<String, dynamic>? regisuserdata = {};
+  List<XFile>? image;
 
   @override
   State<RecordSuccess> createState() => _RecordSuccessState();
@@ -112,7 +116,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                             Text('หมายเลขสถานที่',
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor)),
-                            Text('BP11245644886699',
+                            Text(widget.regisuserdata!['locationNumber'],
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor))
                           ],
@@ -171,7 +175,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                             Text('ชื่อ-สกุล',
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor)),
-                            Text('นาย สมชาย ขยันแจ้ง',
+                            Text(widget.regisuserdata!['name'],
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor))
                           ],
@@ -185,7 +189,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                             Text('รหัสสมาชิก',
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor)),
-                            Text('11544866445',
+                            Text(widget.regisuserdata!['memberId'],
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor))
                           ],
@@ -199,7 +203,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                             Text('วันที่',
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor)),
-                            Text('15/05/66',
+                            Text(widget.regisuserdata!['date'],
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor))
                           ],
@@ -213,7 +217,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                             Text('เวลา',
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor)),
-                            Text('09.41',
+                            Text(widget.regisuserdata!['time'],
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor))
                           ],
@@ -234,15 +238,45 @@ class _RecordSuccessState extends State<RecordSuccess> {
                         ),
                         Row(
                           children: [
-                            Image.asset('assets/images/r1.png'),
-                            SizedBox(
-                              width: size.width * 0.02,
-                            ),
-                            Image.asset('assets/images/r2.png'),
-                            SizedBox(
-                              width: size.width * 0.02,
-                            ),
-                            Image.asset('assets/images/r3.png')
+                            widget.image!.isNotEmpty
+                                ? Flexible(
+                                    child: Column(
+                                      children: [
+                                        Wrap(
+                                          direction: Axis.horizontal,
+                                          children: List.generate(
+                                              widget.image!.length,
+                                              (index) => Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            5.0),
+                                                    child: SizedBox(
+                                                      width: size.width * 0.20,
+                                                      height:
+                                                          size.height * 0.12,
+                                                      child: AspectRatio(
+                                                        aspectRatio: 1,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          child: Image(
+                                                            image: FileImage(
+                                                              File(widget
+                                                                  .image![index]
+                                                                  .path),
+                                                            ),
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : SizedBox(),
                           ],
                         ),
                         SizedBox(

@@ -1,13 +1,17 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 
 class RegisPlaceSuccess extends StatefulWidget {
-  const RegisPlaceSuccess({super.key});
+  RegisPlaceSuccess({super.key, this.image, this.regisuserdata});
+  List<XFile>? image;
+  Map<String, dynamic>? regisuserdata = {};
 
   @override
   State<RegisPlaceSuccess> createState() => _RegisPlaceSuccessState();
@@ -15,6 +19,23 @@ class RegisPlaceSuccess extends StatefulWidget {
 
 class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
   Completer<GoogleMapController> mapcontroller = Completer();
+  late GoogleMapController mapController;
+  Set<Marker> markers = Set();
+  void _onMapCreated(GoogleMapController controller) {
+    setState(() {
+      mapController = controller;
+      // เพิ่มปักหมุดที่ตำแหน่งที่กำหนด
+      markers.add(
+        Marker(
+          markerId: MarkerId('SomeId'),
+          position: LatLng(13.7650836, 100.5379664),
+          infoWindow:
+              InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -41,7 +62,7 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
           child: Column(
             children: [
               SizedBox(
-                height: size.height * 0.01,
+                height: size.height * 0.02,
               ),
               Center(
                   child: Image.asset('assets/icons/circle_success_check.png')),
@@ -94,7 +115,7 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                 ),
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: size.width * 0.01,
+                      horizontal: size.width * 0.02,
                       vertical: size.height * 0.01),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -106,10 +127,13 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                           Text('ชื่อ-สกุล',
                               style: TextStyle(
                                   fontSize: 15, color: kTextShowColor)),
-                          Text('นายสม พร ร่ำรวย',
+                          Text(widget.regisuserdata!['name'],
                               style: TextStyle(
                                   fontSize: 15, color: kTextShowColor))
                         ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,10 +141,13 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                           Text('รหัสสมาชิก',
                               style: TextStyle(
                                   fontSize: 15, color: kTextShowColor)),
-                          Text('11544866445',
+                          Text(widget.regisuserdata!['memberId'],
                               style: TextStyle(
                                   fontSize: 15, color: kTextShowColor))
                         ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -128,10 +155,13 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                           Text('เลขประจำตัวผู้เสียภาษี',
                               style: TextStyle(
                                   fontSize: 15, color: kTextShowColor)),
-                          Text('1105466544846',
+                          Text(widget.regisuserdata!['userId'],
                               style: TextStyle(
                                   fontSize: 15, color: kTextShowColor))
                         ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -139,10 +169,13 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                           Text('เบอร์โทร',
                               style: TextStyle(
                                   fontSize: 15, color: kTextShowColor)),
-                          Text('02-4456644',
+                          Text(widget.regisuserdata!['phone'],
                               style: TextStyle(
                                   fontSize: 15, color: kTextShowColor))
                         ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,13 +186,15 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                         ],
                       ),
                       SizedBox(
-                        height: size.height * 0.18,
+                        height: size.height * 0.01,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.16,
                         width: double.infinity,
-                        //color: kTextShowColor,
-                        child: Transform.scale(
-                          scale: 0.9,
+                        child: Card(
+                          elevation: 10,
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(10),
                             child: GoogleMap(
                               onTap: (argument) {
                                 Navigator.push(
@@ -176,12 +211,14 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                                 target: LatLng(13.7650836, 100.5379664),
                                 zoom: 16,
                               ),
-                              onMapCreated: (GoogleMapController controller) {
-                                mapcontroller.complete(controller);
-                              },
+                              markers: markers,
+                              onMapCreated: _onMapCreated,
                             ),
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -193,7 +230,38 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                       ),
                       Row(
                         children: [
-                          Image.asset('assets/images/home1111.png'),
+                          Flexible(
+                            child: Column(
+                              children: [
+                                Wrap(
+                                    direction: Axis.horizontal,
+                                    children: List.generate(
+                                      widget.image!.length,
+                                      (index) => Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: SizedBox(
+                                          width: size.width * 0.18,
+                                          height: size.height * 0.12,
+                                          child: AspectRatio(
+                                            aspectRatio: 1,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              child: Image(
+                                                image: FileImage(
+                                                  File(widget
+                                                      .image![index].path),
+                                                ),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ))
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -221,6 +289,9 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -240,6 +311,9 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                                 '313 อาคาร ซี.พี.ทาวเวอร์ ชั้น 24 ถนนสีลมแขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500'),
                           ],
                         ),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
