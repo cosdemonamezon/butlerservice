@@ -1,6 +1,10 @@
 import 'package:butlerservice/constants.dart';
+import 'package:butlerservice/controllers/appController.dart';
+import 'package:butlerservice/screens/auth/loginPage.dart';
 import 'package:butlerservice/screens/setting/widgets/ContainerSetting.dart';
+import 'package:butlerservice/widget/dialogs.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -96,12 +100,17 @@ class _SettingPageState extends State<SettingPage> {
                   height: size.height * 0.02,
                 ),
                 ContainerSetting(
-                  size: size,
-                  leadingIcon: 'assets/icons/ic_outline-logout.ico',
-                  title: 'ออกจากระบบ',
-                  trailingIcon: 'assets/icons/ion_chevron_back_blue.png',
-                  press: () {},
-                ),
+                    size: size,
+                    leadingIcon: 'assets/icons/ic_outline-logout.ico',
+                    title: 'ออกจากระบบ',
+                    trailingIcon: 'assets/icons/ion_chevron_back_blue.png',
+                    press: () async {
+                      final isLogout = await Dialogs.logout(context);
+                      if (mounted && isLogout) {
+                        context.read<AppController>().logout();
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
+                      }
+                    }),
               ],
             ),
           ),

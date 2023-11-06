@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const baseUrl = 'https://asha-tech.co.th/butler/api/public';
+
 const kBackgroundColor = Color(0xff1B58B1);
 const kSecondTextColor = Color(0xff7B7B7B);
 const kConkgroundColor = Color(0xffFFFFFF);

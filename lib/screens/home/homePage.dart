@@ -6,7 +6,7 @@ import 'package:butlerservice/screens/home/widgets/ShowContainerWidget.dart';
 import 'package:butlerservice/screens/manageplaces/managePlaces.dart';
 import 'package:butlerservice/screens/place/placeRegister.dart';
 import 'package:butlerservice/screens/workgroup/setupWorkgroups.dart';
-import 'package:butlerservice/screens/workstop/workstopPage.dart';
+import 'package:butlerservice/screens/workstop/workstopCalendarPage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -261,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                                   } else if (officer[index]['id'] == 2) {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
                                   } else if (officer[index]['id'] == 3) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => WorkstopPage()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => WorkstopCalendarPage()));
                                   } else {}
                                 },
                               ),

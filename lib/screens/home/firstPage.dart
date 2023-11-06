@@ -1,8 +1,10 @@
 import 'package:butlerservice/constants.dart';
+import 'package:butlerservice/controllers/appController.dart';
 import 'package:butlerservice/screens/home/homePage.dart';
 import 'package:butlerservice/screens/scan/scanPage.dart';
 import 'package:butlerservice/screens/setting/settingPage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});

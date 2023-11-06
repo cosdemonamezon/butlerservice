@@ -11,19 +11,21 @@ class AppTextForm extends StatefulWidget {
     this.labelText,
     this.hintText,
     this.validator,
+    this.onChanged,
     this.isPassword = false,
     this.enabled = true,
     this.maxline,
     this.obscureText,
   }) : super(key: key);
 
-  InputDecoration? decoration;
+  final InputDecoration? decoration;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
   final TextStyle? labelStyle;
   final String? labelText;
   final String? hintText;
   final FormFieldValidator<String>? validator;
+  final void Function(String)? onChanged;
   final bool isPassword;
   final bool enabled;
 
@@ -48,13 +50,14 @@ class _AppTextFormState extends State<AppTextForm> {
         borderRadius: BorderRadius.circular(10.0), //<-- SEE HERE
       ),
       child: TextFormField(
-        style: TextStyle(color: kBackgroundColor),
         obscureText: widget.isPassword ? _show : false,
         controller: widget.controller,
         enabled: widget.enabled,
         keyboardType: widget.keyboardType,
         maxLines: widget.maxline ?? 1,
+        cursorColor: kBackgroundColor,
         decoration: InputDecoration(
+          errorStyle: TextStyle(color: kRed, fontWeight: FontWeight.bold, fontSize: 14),
           contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
           fillColor: kConkgroundColor,
           filled: true,
@@ -81,6 +84,7 @@ class _AppTextFormState extends State<AppTextForm> {
               : null,
         ),
         validator: widget.validator,
+        onChanged: widget.onChanged,
       ),
     );
   }
