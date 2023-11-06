@@ -29,10 +29,10 @@ const List<String> homebanners = [
 ];
 
 const List<Map<String, dynamic>> customer = [
-  {'id': 1, 'image': 'assets/icons/mdi_add-location.png', 'text': 'ลงทะเบียน \n สถานที่'},
-  {'id': 2, 'image': 'assets/icons/location.png', 'text': 'จัดการ \n สถานที่ของฉัน'},
-  {'id': 3, 'image': 'assets/icons/mdi_file-report.png', 'text': 'ประวัติ \n การตรวจ'},
-  {'id': 4, 'image': 'assets/icons/akar-icons_stop-fill.png', 'text': 'ร้องเรียน'}
+  {'id': 1, 'image': 'assets/icons/mdi_add-location.ico', 'text': 'ลงทะเบียน \n สถานที่'},
+  {'id': 2, 'image': 'assets/icons/Vector.ico', 'text': 'จัดการ \n สถานที่ของฉัน'},
+  {'id': 3, 'image': 'assets/icons/mdi_file-report.ico', 'text': 'ประวัติ \n การตรวจ'},
+  {'id': 4, 'image': 'assets/icons/akar-icons_stop-fill.ico', 'text': 'ร้องเรียน'}
 ];
 
 const List<Map<String, dynamic>> members = [
@@ -50,15 +50,15 @@ const List<Map<String, dynamic>> reportCheck = [
 ];
 
 const List<Map<String, dynamic>> patrol = [
-  {'id': 1, 'image': 'assets/icons/fluent_folder-people-20-filled.png', 'text': 'รายงาน \n ผลตรวจ'},
-  {'id': 2, 'image': 'assets/icons/fluent_people-settings-24-filled.png', 'text': 'ตั้งค่า \n กลุ่มงาน'},
-  {'id': 3, 'image': 'assets/icons/mdi_file-report.png', 'text': 'ประวัติ \n การตรวจ'},
+  {'id': 1, 'image': 'assets/icons/fluent_folder-people-20-filled.ico', 'text': 'รายงาน \n ผลตรวจ'},
+  {'id': 2, 'image': 'assets/icons/fluent_people-settings-24-filled.ico', 'text': 'ตั้งค่า \n กลุ่มงาน'},
+  {'id': 3, 'image': 'assets/icons/mdi_file-report.ico', 'text': 'ประวัติ \n การตรวจ'},
 ];
 
 const List<Map<String, dynamic>> officer = [
   {'id': 1, 'image': 'assets/icons/hometu.png', 'text': 'เเจ้งผู้มาเยี่ยม \n เจ้าบ้าน'},
-  {'id': 2, 'image': 'assets/icons/mdi_file-report.png', 'text': 'ประวัติ \n การตรวจ'},
-  {'id': 3, 'image': 'assets/icons/akar-icons_stop-fill.png', 'text': 'เเจ้งหยุดงาน'},
+  {'id': 2, 'image': 'assets/icons/mdi_file-report.ico', 'text': 'ประวัติ \n การตรวจ'},
+  {'id': 3, 'image': 'assets/icons/akar-icons_stop-fill.ico', 'text': 'เเจ้งหยุดงาน'},
 ];
 
 const List<Map<String, dynamic>> iconImage = [
