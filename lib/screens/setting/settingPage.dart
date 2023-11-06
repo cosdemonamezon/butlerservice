@@ -47,7 +47,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 ContainerSetting(
                   size: size,
-                  leadingIcon: 'assets/icons/icon_person.png',
+                  leadingIcon: 'assets/icons/iconamoon_profile-bold.ico',
                   title: 'เเก้ไขโปรไฟล์',
                   trailingIcon: 'assets/icons/ion_chevron_back_blue.png',
                   press: () {},
@@ -57,7 +57,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 ContainerSetting(
                   size: size,
-                  leadingIcon: 'assets/icons/icon_key.png',
+                  leadingIcon: 'assets/icons/carbon_password.ico',
                   title: 'เปลี่ยนรหัสผ่าน',
                   trailingIcon: 'assets/icons/ion_chevron_back_blue.png',
                   press: () {},
@@ -67,7 +67,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 ContainerSetting(
                   size: size,
-                  leadingIcon: 'assets/icons/icon_q.png',
+                  leadingIcon: 'assets/icons/Vector11.ico',
                   title: 'เกี่ยวกับเรา',
                   trailingIcon: 'assets/icons/ion_chevron_back_blue.png',
                   press: () {},
@@ -77,7 +77,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 ContainerSetting(
                   size: size,
-                  leadingIcon: 'assets/icons/icon_call.png',
+                  leadingIcon: 'assets/icons/ion_call-outline.ico',
                   title: 'ติดต่อ',
                   trailingIcon: 'assets/icons/ion_chevron_back_blue.png',
                   press: () {},
@@ -87,7 +87,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 ContainerSetting(
                   size: size,
-                  leadingIcon: 'assets/icons/icon_help.png',
+                  leadingIcon: 'assets/icons/grommet-icons_language.ico',
                   title: 'ภาษา',
                   trailingIcon: 'assets/icons/ion_chevron_back_blue.png',
                   press: () {},
@@ -97,7 +97,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 ContainerSetting(
                   size: size,
-                  leadingIcon: 'assets/icons/icon_logout.png',
+                  leadingIcon: 'assets/icons/ic_outline-logout.ico',
                   title: 'ออกจากระบบ',
                   trailingIcon: 'assets/icons/ion_chevron_back_blue.png',
                   press: () {},

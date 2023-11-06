@@ -56,7 +56,7 @@ const List<Map<String, dynamic>> patrol = [
 ];
 
 const List<Map<String, dynamic>> officer = [
-  {'id': 1, 'image': 'assets/icons/hometu.png', 'text': 'เเจ้งผู้มาเยี่ยม \n เจ้าบ้าน'},
+  {'id': 1, 'image': 'assets/icons/Vector_1.ico', 'text': 'เเจ้งผู้มาเยี่ยม \n เจ้าบ้าน'},
   {'id': 2, 'image': 'assets/icons/mdi_file-report.ico', 'text': 'ประวัติ \n การตรวจ'},
   {'id': 3, 'image': 'assets/icons/akar-icons_stop-fill.ico', 'text': 'เเจ้งหยุดงาน'},
 ];

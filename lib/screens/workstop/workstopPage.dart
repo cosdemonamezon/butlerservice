@@ -112,10 +112,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'ชื่อ - สกุล',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -140,10 +137,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'รหัสสมาชิก',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -168,10 +162,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'เบอร์โทร',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -196,10 +187,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'กลุ่ม',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -224,10 +212,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'วันลาหยุดที่ต้องการ',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -246,10 +231,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                             children: [
                               Text(
                                 'ตั้งเเต่วันที่',
-                                style: TextStyle(
-                                    color: kConkgroundColor,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(color: kConkgroundColor, fontSize: 15, fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -277,10 +259,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                             children: [
                               Text(
                                 'ถึงวันที่',
-                                style: TextStyle(
-                                    color: kConkgroundColor,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(color: kConkgroundColor, fontSize: 15, fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -309,10 +288,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'ลักษณะลา',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -337,10 +313,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'เหตุผลในการลา',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -365,10 +338,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'เอกสาร',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -388,14 +358,12 @@ class _WorkstopPageState extends State<WorkstopPage> {
                                         (index) => Stack(
                                               children: [
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(5.0),
+                                                  padding: const EdgeInsets.all(5.0),
                                                   child: SizedBox(
                                                     height: size.height * 0.15,
                                                     width: size.width * 0.20,
                                                     child: Image(
-                                                      image: FileImage(File(
-                                                          image[index].path)),
+                                                      image: FileImage(File(image[index].path)),
                                                     ),
                                                   ),
                                                 ),
@@ -408,9 +376,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                                                           image.removeAt(index);
                                                         });
                                                       },
-                                                      child: Icon(Icons.cancel,
-                                                          color:
-                                                              kBackgroundColor),
+                                                      child: Icon(Icons.cancel, color: kBackgroundColor),
                                                     )),
                                               ],
                                             )),
@@ -425,7 +391,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                       GestureDetector(
                         onTap: () => openDialogImage(1),
                         child: Container(
-                          height: size.height * 0.12,
+                          height: size.height * 0.1,
                           width: size.width * 0.20,
                           decoration: BoxDecoration(
                             //color: kBackgroundColor,
@@ -433,10 +399,10 @@ class _WorkstopPageState extends State<WorkstopPage> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Stack(
+                            alignment: Alignment.center,
                             children: [
                               Image.asset('assets/icons/Rectangle 7 (1).png'),
-                              Center(
-                                  child: Image.asset('assets/icons/add_w.png')),
+                              Center(child: Icon(Icons.add, color: kWhite, size: 40)),
                             ],
                           ),
                         ),
@@ -451,10 +417,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'ผู้อนุมัติ',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -479,10 +442,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     children: [
                       Text(
                         'ตำเเหน่ง',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -520,11 +480,7 @@ class _WorkstopPageState extends State<WorkstopPage> {
                               title: 'บันทึกสำเร็จ',
                               content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
                               press: () {
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => FirstPage()),
-                                    (route) => false);
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
                               },
                             ));
                   },

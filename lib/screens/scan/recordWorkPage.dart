@@ -9,6 +9,7 @@ import 'package:butlerservice/widget/AppTextForm.dart';
 import 'package:butlerservice/widget/ButtonOnClick.dart';
 import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:butlerservice/widget/cupertinoAlertDialog.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -78,8 +79,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
         Marker(
           markerId: MarkerId('SomeId'),
           position: LatLng(13.7650836, 100.5379664),
-          infoWindow:
-              InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
+          infoWindow: InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
         ),
       );
     });
@@ -139,10 +139,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: [
                         Text(
                           'หมายเลขสถานที่',
-                          style: TextStyle(
-                              color: kConkgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -167,10 +164,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: [
                         Text(
                           'สถานที่',
-                          style: TextStyle(
-                              color: kConkgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -214,10 +208,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: [
                         Text(
                           'ชื่อ - สกุล',
-                          style: TextStyle(
-                              color: kConkgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -242,10 +233,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: [
                         Text(
                           'รหัสสมาชิก',
-                          style: TextStyle(
-                              color: kConkgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -270,10 +258,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: [
                         Text(
                           'วันที่',
-                          style: TextStyle(
-                              color: kConkgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -281,9 +266,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       height: size.height * 0.01,
                     ),
                     Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                       width: size.width * 0.9,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20),
@@ -295,8 +278,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                 suffixIcon: IconButton(
                                     color: Color(0xff9E9E9E),
                                     onPressed: () async {
-                                      date.text =
-                                          datetime!.formatTo('dd-MM-yyyy ');
+                                      date.text = datetime!.formatTo('dd-MM-yyyy ');
                                       DateTime? newDate = await showDatePicker(
                                         context: context,
                                         initialDate: DateTime.now(),
@@ -317,8 +299,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                       color: Colors.black,
                                     )),
                                 border: InputBorder.none,
-                                hintStyle: TextStyle(
-                                    fontSize: 14, color: Color(0xff9E9E9E)))),
+                                hintStyle: TextStyle(fontSize: 14, color: Color(0xff9E9E9E)))),
                       ),
                     ),
                     SizedBox(
@@ -329,10 +310,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: [
                         Text(
                           'เวลา',
-                          style: TextStyle(
-                              color: kConkgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -340,9 +318,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       height: size.height * 0.01,
                     ),
                     Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                       width: size.width * 0.9,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20),
@@ -356,11 +332,9 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                 suffixIcon: IconButton(
                                     color: Color(0xff9E9E9E),
                                     onPressed: () async {
-                                      TimeOfDay? pickedTime =
-                                          await showTimePicker(
+                                      TimeOfDay? pickedTime = await showTimePicker(
                                         context: context,
-                                        initialTime: TimeOfDay.fromDateTime(
-                                            _selectedTime),
+                                        initialTime: TimeOfDay.fromDateTime(_selectedTime),
                                       );
                                       if (pickedTime != null) {
                                         setState(() {
@@ -371,8 +345,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                             pickedTime.hour,
                                             pickedTime.minute,
                                           );
-                                          time.text =
-                                              '${_selectedTime.hour}:${_selectedTime.minute}';
+                                          time.text = '${_selectedTime.hour}:${_selectedTime.minute}';
                                         });
                                       }
                                     },
@@ -381,8 +354,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                       color: Colors.black,
                                     )),
                                 border: InputBorder.none,
-                                hintStyle: TextStyle(
-                                    fontSize: 14, color: Color(0xff9E9E9E)))),
+                                hintStyle: TextStyle(fontSize: 14, color: Color(0xff9E9E9E)))),
                       ),
                     ),
                     SizedBox(
@@ -393,10 +365,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: [
                         Text(
                           'รายละเอียดในการตรวจ',
-                          style: TextStyle(
-                              color: kConkgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -419,20 +388,15 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                         children: List.generate(
                             reportCheck.length,
                             (index) => Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: size.height * 0.01,
-                                      horizontal: size.width * 0.02),
+                                  padding: EdgeInsets.symmetric(vertical: size.height * 0.01, horizontal: size.width * 0.02),
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         reportCheck[index]['text'],
-                                        style: TextStyle(
-                                            color: kTextColor, fontSize: 16),
+                                        style: TextStyle(color: kTextColor, fontSize: 16),
                                       ),
-                                      Image.asset(
-                                          'assets/icons/icon-park-solid_check-one.png'),
+                                      Image.asset('assets/icons/icon-park-solid_check-one.png'),
                                     ],
                                   ),
                                 )),
@@ -446,10 +410,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: [
                         Text(
                           'รูปถ่าย',
-                          style: TextStyle(
-                              color: kConkgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -469,23 +430,17 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                           (index) => Stack(
                                                 children: [
                                                   Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            5.0),
+                                                    padding: const EdgeInsets.all(5.0),
                                                     child: SizedBox(
                                                       width: size.width * 0.20,
-                                                      height:
-                                                          size.height * 0.12,
+                                                      height: size.height * 0.12,
                                                       child: AspectRatio(
                                                         aspectRatio: 1,
                                                         child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
+                                                          borderRadius: BorderRadius.circular(10),
                                                           child: Image(
                                                             image: FileImage(
-                                                              File(image[index]
-                                                                  .path),
+                                                              File(image[index].path),
                                                             ),
                                                             fit: BoxFit.cover,
                                                           ),
@@ -499,14 +454,10 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                                       child: InkWell(
                                                         onTap: () {
                                                           setState(() {
-                                                            image.removeAt(
-                                                                index);
+                                                            image.removeAt(index);
                                                           });
                                                         },
-                                                        child: Icon(
-                                                            Icons.cancel,
-                                                            color:
-                                                                kBackgroundColor),
+                                                        child: Icon(Icons.cancel, color: kBackgroundColor),
                                                       )),
                                                 ],
                                               )),
@@ -528,14 +479,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
 
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Stack(
-                              children: [
-                                Image.asset('assets/icons/Rectangle 7 (1).png'),
-                                Center(
-                                    child:
-                                        Image.asset('assets/icons/add_w.png')),
-                              ],
-                            ),
+                            child: DottedBorder(child: Icon(Icons.add)),
                           ),
                         ),
                       ],
@@ -548,10 +492,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: [
                         Text(
                           'สถานการณ์',
-                          style: TextStyle(
-                              color: kConkgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -587,10 +528,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                       children: [
                         Text(
                           'บันทึกรายละเอียดเพิ่มเติม',
-                          style: TextStyle(
-                              color: kConkgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),

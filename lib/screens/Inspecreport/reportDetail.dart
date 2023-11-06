@@ -8,6 +8,7 @@ import 'package:butlerservice/widget/AppTextForm.dart';
 import 'package:butlerservice/widget/ButtonOnClick.dart';
 import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:butlerservice/widget/cupertinoAlertDialog.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -113,10 +114,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'ชื่อ - สกุล สายตรวจ',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -141,10 +139,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'รหัสสมาชิก',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -169,10 +164,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'ชื่อกลุ่มรปภ.',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -197,10 +189,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'รหัสประจำกลุ่ม',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -225,10 +214,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'สถานที่',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -267,10 +253,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'วันที่',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -295,10 +278,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'เวลา',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -323,10 +303,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'รูปถ่าย',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -346,14 +323,12 @@ class _ReportDetailState extends State<ReportDetail> {
                                         (index) => Stack(
                                               children: [
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(5.0),
+                                                  padding: const EdgeInsets.all(5.0),
                                                   child: SizedBox(
                                                     height: size.height * 0.15,
                                                     width: size.width * 0.20,
                                                     child: Image(
-                                                      image: FileImage(File(
-                                                          image[index].path)),
+                                                      image: FileImage(File(image[index].path)),
                                                     ),
                                                   ),
                                                 ),
@@ -366,9 +341,7 @@ class _ReportDetailState extends State<ReportDetail> {
                                                           image.removeAt(index);
                                                         });
                                                       },
-                                                      child: Icon(Icons.cancel,
-                                                          color:
-                                                              kBackgroundColor),
+                                                      child: Icon(Icons.cancel, color: kBackgroundColor),
                                                     )),
                                               ],
                                             )),
@@ -396,13 +369,7 @@ class _ReportDetailState extends State<ReportDetail> {
                               bottomLeft: Radius.circular(8),
                             ),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.asset('assets/icons/add_w.png'),
-                            ],
-                          ),
+                          child: DottedBorder(child: Icon(Icons.add)),
                         ),
                       ),
                     ],
@@ -415,10 +382,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'สมาชิกในกลุ่ม',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -434,8 +398,7 @@ class _ReportDetailState extends State<ReportDetail> {
                                 members[index]['name'],
                                 style: TextStyle(color: kConkgroundColor),
                               ),
-                              trailing: Image.asset(
-                                  'assets/icons/icon-park-solid_check-one.png'),
+                              trailing: Image.asset('assets/icons/icon-park-solid_check-one.png'),
                             )),
                   ),
                   SizedBox(
@@ -446,10 +409,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     children: [
                       Text(
                         'บันทึกรายละเอียดเพิ่มเติม',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -508,11 +468,7 @@ class _ReportDetailState extends State<ReportDetail> {
                               title: 'บันทึกสำเร็จ',
                               content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
                               press: () {
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => FirstPage()),
-                                    (route) => false);
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
                               },
                             ));
                   },

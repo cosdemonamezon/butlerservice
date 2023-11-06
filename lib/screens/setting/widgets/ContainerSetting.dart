@@ -2,7 +2,8 @@ import 'package:butlerservice/constants.dart';
 import 'package:flutter/material.dart';
 
 class ContainerSetting extends StatelessWidget {
-  const ContainerSetting({super.key, required this.size, required this.leadingIcon, required this.press, required this.trailingIcon, required this.title});
+  const ContainerSetting(
+      {super.key, required this.size, required this.leadingIcon, required this.press, required this.trailingIcon, required this.title});
 
   final Size size;
   final VoidCallback press;
@@ -33,7 +34,7 @@ class ContainerSetting extends StatelessWidget {
         onTap: press,
         child: ListTile(
           dense: false,
-          leading: Image.asset(leadingIcon),
+          leading: Image.asset(leadingIcon, scale: 3),
           title: Text(
             title,
             style: TextStyle(
