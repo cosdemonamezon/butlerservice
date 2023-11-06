@@ -68,7 +68,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
       backgroundColor: kBackgroundColor,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+          padding: EdgeInsets.all(16),
           child: Column(
             children: [
               SizedBox(
@@ -103,198 +103,203 @@ class _RecordSuccessState extends State<RecordSuccess> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: size.width * 0.01,
-                      vertical: size.height * 0.01),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('หมายเลขสถานที่',
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('หมายเลขสถานที่',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Text(widget.regisuserdata!['locationNumber'],
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor)),
-                            Text(widget.regisuserdata!['locationNumber'],
-                                style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor))
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('สถานที่',
-                                style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor)),
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        SizedBox(
-                          height: size.height * 0.16,
-                          width: double.infinity,
-                          child: Card(
-                            elevation: 10,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: GoogleMap(
-                                onTap: (argument) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => GooglemapPage(
-                                                latitude: 13.7650836,
-                                                longitude: 100.5379664,
-                                              )));
-                                },
-                                zoomControlsEnabled: false,
-                                mapType: MapType.normal,
-                                initialCameraPosition: CameraPosition(
-                                  target: LatLng(13.7650836, 100.5379664),
-                                  zoom: 16,
-                                ),
-                                markers: markers,
-                                onMapCreated: _onMapCreated,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('สถานที่',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.17,
+                        width: double.infinity,
+                        child: Card(
+                          elevation: 10,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: GoogleMap(
+                              onTap: (argument) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => GooglemapPage(
+                                              latitude: 13.7650836,
+                                              longitude: 100.5379664,
+                                            )));
+                              },
+                              zoomControlsEnabled: false,
+                              mapType: MapType.normal,
+                              initialCameraPosition: CameraPosition(
+                                target: LatLng(13.7650836, 100.5379664),
+                                zoom: 16,
                               ),
+                              markers: markers,
+                              onMapCreated: _onMapCreated,
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('ชื่อ-สกุล',
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('ชื่อ-สกุล',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Text(widget.regisuserdata!['name'],
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor)),
-                            Text(widget.regisuserdata!['name'],
-                                style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor))
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('รหัสสมาชิก',
-                                style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor)),
-                            Text(widget.regisuserdata!['memberId'],
-                                style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor))
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('วันที่',
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('รหัสสมาชิก',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Text(widget.regisuserdata!['memberId'],
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor)),
-                            Text(widget.regisuserdata!['date'],
-                                style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor))
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('เวลา',
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('รหัสสมาชิก',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Text(widget.regisuserdata!['date'],
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor))
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('เวลา',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Text(widget.regisuserdata!['time'],
                                 style: TextStyle(
                                     fontSize: 15, color: kTextShowColor)),
-                            Text(widget.regisuserdata!['time'],
-                                style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor))
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('รูปถ่าย',
-                                style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor)),
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Row(
-                          children: [
-                            widget.image!.isNotEmpty
-                                ? Flexible(
-                                    child: Column(
-                                      children: [
-                                        Wrap(
-                                          direction: Axis.horizontal,
-                                          children: List.generate(
-                                              widget.image!.length,
-                                              (index) => Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            5.0),
-                                                    child: SizedBox(
-                                                      width: size.width * 0.20,
-                                                      height:
-                                                          size.height * 0.12,
-                                                      child: AspectRatio(
-                                                        aspectRatio: 1,
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          child: Image(
-                                                            image: FileImage(
-                                                              File(widget
-                                                                  .image![index]
-                                                                  .path),
-                                                            ),
-                                                            fit: BoxFit.cover,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('รูปถ่าย',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Row(
+                        children: [
+                          widget.image!.isNotEmpty
+                              ? Flexible(
+                                  child: Column(
+                                    children: [
+                                      Wrap(
+                                        direction: Axis.horizontal,
+                                        children: List.generate(
+                                            widget.image!.length,
+                                            (index) => Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(5.0),
+                                                  child: SizedBox(
+                                                    width: size.width * 0.20,
+                                                    height: size.height * 0.12,
+                                                    child: AspectRatio(
+                                                      aspectRatio: 1,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        child: Image(
+                                                          image: FileImage(
+                                                            File(widget
+                                                                .image![index]
+                                                                .path),
                                                           ),
+                                                          fit: BoxFit.cover,
                                                         ),
                                                       ),
                                                     ),
-                                                  )),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                : SizedBox(),
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('รายละเอียดเพิ่มเติม',
-                                style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor)),
-                            Text('สถานการณ์ปกติ',
-                                style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor)),
-                          ],
-                        ),
-                      ],
-                    ),
+                                                  ),
+                                                )),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : SizedBox(),
+                        ],
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('รายละเอียดเพิ่มเติม',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                          Text('สถานการณ์ปกติ',
+                              style: TextStyle(
+                                  fontSize: 15, color: kTextShowColor)),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
