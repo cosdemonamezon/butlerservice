@@ -20,9 +20,13 @@ class _WorkstopCalendarPageState extends State<WorkstopCalendarPage> {
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         backgroundColor: kWhite,
-        automaticallyImplyLeading: true,
         centerTitle: true,
-        title: Text('เเจ้งหยุดงาน', style: TextStyle(fontSize: 25, color: kSecondTextColor)),
+        title: Text('เเจ้งหยุดงาน', style: TextStyle(color: kSecondTextColor)),
+        leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Image.asset('assets/icons/chevron_left.png', scale: 1.3)),
       ),
       body: Container(
         height: height(context) * 0.8,

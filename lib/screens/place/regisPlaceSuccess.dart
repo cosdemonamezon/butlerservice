@@ -29,8 +29,7 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
         Marker(
           markerId: MarkerId('SomeId'),
           position: LatLng(13.7650836, 100.5379664),
-          infoWindow:
-              InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
+          infoWindow: InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
         ),
       );
     });
@@ -43,16 +42,14 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
       appBar: AppBar(
           backgroundColor: kBackgroundColor,
           centerTitle: true,
-          title: Text(
-            'ลงทะเบียนสถานที่',
-            style: TextStyle(fontSize: 20, color: kConkgroundColor),
-          ),
+          title: Text('ลงทะเบียนสถานที่'),
           leading: InkWell(
               onTap: () {
                 Navigator.pop(context);
               },
               child: Image.asset(
                 'assets/icons/chevron_w.png',
+                color: kWhite,
                 scale: 1.3,
               ))),
       backgroundColor: kBackgroundColor,
@@ -64,8 +61,7 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
               SizedBox(
                 height: size.height * 0.02,
               ),
-              Center(
-                  child: Image.asset('assets/icons/circle_success_check.png')),
+              Center(child: Image.asset('assets/icons/circle_success_check.png')),
               SizedBox(
                 height: size.height * 0.01,
               ),
@@ -97,10 +93,7 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                 height: size.height * 0.02,
               ),
               Row(
-                children: [
-                  Text('รายละเอียด',
-                      style: TextStyle(fontSize: 15, color: kConkgroundColor))
-                ],
+                children: [Text('รายละเอียด', style: TextStyle(fontSize: 15, color: kConkgroundColor))],
               ),
               Container(
                 width: double.infinity,
@@ -114,9 +107,7 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: size.width * 0.02,
-                      vertical: size.height * 0.01),
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02, vertical: size.height * 0.01),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,12 +115,8 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('ชื่อ-สกุล',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
-                          Text(widget.regisuserdata!['name'],
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor))
+                          Text('ชื่อ-สกุล', style: TextStyle(fontSize: 15, color: kTextShowColor)),
+                          Text(widget.regisuserdata!['name'], style: TextStyle(fontSize: 15, color: kTextShowColor))
                         ],
                       ),
                       SizedBox(
@@ -138,12 +125,8 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('รหัสสมาชิก',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
-                          Text(widget.regisuserdata!['memberId'],
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor))
+                          Text('รหัสสมาชิก', style: TextStyle(fontSize: 15, color: kTextShowColor)),
+                          Text(widget.regisuserdata!['memberId'], style: TextStyle(fontSize: 15, color: kTextShowColor))
                         ],
                       ),
                       SizedBox(
@@ -152,12 +135,8 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('เลขประจำตัวผู้เสียภาษี',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
-                          Text(widget.regisuserdata!['userId'],
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor))
+                          Text('เลขประจำตัวผู้เสียภาษี', style: TextStyle(fontSize: 15, color: kTextShowColor)),
+                          Text(widget.regisuserdata!['userId'], style: TextStyle(fontSize: 15, color: kTextShowColor))
                         ],
                       ),
                       SizedBox(
@@ -166,12 +145,8 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('เบอร์โทร',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
-                          Text(widget.regisuserdata!['phone'],
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor))
+                          Text('เบอร์โทร', style: TextStyle(fontSize: 15, color: kTextShowColor)),
+                          Text(widget.regisuserdata!['phone'], style: TextStyle(fontSize: 15, color: kTextShowColor))
                         ],
                       ),
                       SizedBox(
@@ -180,9 +155,7 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('สถานที่',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                          Text('สถานที่', style: TextStyle(fontSize: 15, color: kTextShowColor)),
                         ],
                       ),
                       SizedBox(
@@ -223,9 +196,7 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('รูปถ่าย',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                          Text('รูปถ่าย', style: TextStyle(fontSize: 15, color: kTextShowColor)),
                         ],
                       ),
                       Row(
@@ -245,12 +216,10 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                                           child: AspectRatio(
                                             aspectRatio: 1,
                                             child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
+                                              borderRadius: BorderRadius.circular(10),
                                               child: Image(
                                                 image: FileImage(
-                                                  File(widget
-                                                      .image![index].path),
+                                                  File(widget.image![index].path),
                                                 ),
                                                 fit: BoxFit.cover,
                                               ),
@@ -270,22 +239,33 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('รายการที่ต้องการตรวจ',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                          Text('รายการที่ต้องการตรวจ', style: TextStyle(fontSize: 15, color: kTextShowColor)),
                         ],
                       ),
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [Text('ถังขยะหน้าบ้าน'), Text('ตู้ไปรษณีย์ '), Text('ไฟหน้าบ้าน'), Text('ประตูบ้าน')],
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('รายละเอียดเพิ่มเติม', style: TextStyle(fontSize: 15, color: kTextShowColor)),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('ถังขยะหน้าบ้าน'),
-                            Text('ตู้ไปรษณีย์ '),
-                            Text('ไฟหน้าบ้าน'),
-                            Text('ประตูบ้าน')
+                            Text('313 อาคาร ซี.พี.ทาวเวอร์ ชั้น 24 ถนนสีลมแขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500'),
                           ],
                         ),
                       ),
@@ -295,37 +275,11 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('รายละเอียดเพิ่มเติม',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                          Text('ความถี่ในการตรวจ', style: TextStyle(fontSize: 15, color: kTextShowColor)),
                         ],
                       ),
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                                '313 อาคาร ซี.พี.ทาวเวอร์ ชั้น 24 ถนนสีลมแขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500'),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: size.height * 0.01,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('ความถี่ในการตรวจ',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
-                        ],
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -344,10 +298,7 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => FirstPage()),
-                      (route) => false);
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
                 },
                 child: Center(
                   child: Text(

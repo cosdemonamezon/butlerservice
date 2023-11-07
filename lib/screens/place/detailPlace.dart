@@ -85,16 +85,14 @@ class _DetailPlaceState extends State<DetailPlace> {
       appBar: AppBar(
           backgroundColor: kBackgroundColor,
           centerTitle: true,
-          title: Text(
-            'ลงทะเบียนสถานที่',
-            style: TextStyle(fontSize: 20, color: kConkgroundColor),
-          ),
+          title: Text('ลงทะเบียนสถานที่'),
           leading: InkWell(
               onTap: () {
                 Navigator.pop(context);
               },
               child: Image.asset(
                 'assets/icons/chevron_w.png',
+                color: kWhite,
                 scale: 1.3,
               ))),
       body: Form(

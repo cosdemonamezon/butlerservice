@@ -42,15 +42,18 @@ class MyApp extends StatelessWidget {
             locale: const Locale('th'),
             theme: ThemeData(
               appBarTheme: AppBarTheme(
+                backgroundColor: kBackgroundColor,
                 elevation: 0,
                 centerTitle: true,
                 titleTextStyle: TextStyle(
                   fontFamily: 'Prompt',
-                  fontSize: 16,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: kWhite,
                 ),
-                iconTheme: IconThemeData(color: Colors.black),
+                iconTheme: IconThemeData(color: kBlack),
               ),
-              scaffoldBackgroundColor: Colors.white,
+              scaffoldBackgroundColor: kWhite,
               fontFamily: 'Prompt',
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),

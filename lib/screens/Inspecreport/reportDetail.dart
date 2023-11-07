@@ -75,13 +75,13 @@ class _ReportDetailState extends State<ReportDetail> {
           centerTitle: true,
           title: Text(
             'รายงานผลตรวจ',
-            style: TextStyle(fontSize: 25, color: kConkgroundColor),
+            style: TextStyle(color: kConkgroundColor),
           ),
           leading: InkWell(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image.asset('assets/icons/chevron_w.png'))),
+              child: Image.asset('assets/icons/chevron_w.png', scale: 1.3))),
       body: Stack(
         children: [
           Container(

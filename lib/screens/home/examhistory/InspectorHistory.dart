@@ -21,20 +21,14 @@ class _InspectorHistoryState extends State<InspectorHistory> {
       appBar: AppBar(
           toolbarHeight: 70,
           backgroundColor: kBackgroundColor,
-          shape: ContinuousRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50))),
+          shape: ContinuousRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50))),
           centerTitle: true,
-          title: Text(
-            'ประวัติการตรวจ',
-            style: TextStyle(fontSize: 25, color: kConkgroundColor),
-          ),
+          title: Text('ประวัติการตรวจ'),
           leading: InkWell(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image.asset('assets/icons/chevron_w.png'))),
+              child: Image.asset('assets/icons/chevron_w.png', color: kWhite, scale: 1.3))),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
@@ -71,12 +65,10 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                   child: Row(
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
                         child: CircleAvatar(
                           radius: 35,
-                          backgroundImage:
-                              AssetImage('assets/images/rppEll.png'),
+                          backgroundImage: AssetImage('assets/images/rppEll.png'),
                         ),
                       ),
                       Text(
@@ -118,12 +110,10 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                   child: Row(
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
                         child: Text(
                           '07/09/66',
-                          style:
-                              TextStyle(fontSize: 20, color: kSecondTextColor),
+                          style: TextStyle(fontSize: 20, color: kSecondTextColor),
                         ),
                       ),
                     ],
@@ -161,12 +151,10 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                   child: Row(
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
                         child: Text(
                           '09.00 น',
-                          style:
-                              TextStyle(fontSize: 20, color: kSecondTextColor),
+                          style: TextStyle(fontSize: 20, color: kSecondTextColor),
                         ),
                       ),
                     ],
@@ -202,8 +190,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                   height: size.height * 0.28,
                   width: double.infinity,
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
                     child: Column(
                       children: [
                         SizedBox(
@@ -214,13 +201,11 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                           children: [
                             Text(
                               'ชื่อ',
-                              style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15, color: kSecondTextColor),
                             ),
                             Text(
                               'บ้านของฉัน A',
-                              style: TextStyle(
-                                  fontSize: 15.53, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15.53, color: kSecondTextColor),
                             ),
                           ],
                         ),
@@ -229,13 +214,11 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                           children: [
                             Text(
                               'ชื่อเจ้าของบ้าน',
-                              style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15, color: kSecondTextColor),
                             ),
                             Text(
                               'นาย สมพร ร่ำรวย',
-                              style: TextStyle(
-                                  fontSize: 15.53, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15.53, color: kSecondTextColor),
                             ),
                           ],
                         ),
@@ -244,13 +227,11 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                           children: [
                             Text(
                               'หมายเลขสถานที่',
-                              style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15, color: kSecondTextColor),
                             ),
                             Text(
                               'BP11245644886699',
-                              style: TextStyle(
-                                  fontSize: 15.53, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15.53, color: kSecondTextColor),
                             ),
                           ],
                         ),
@@ -259,8 +240,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                           children: [
                             Text(
                               'สถานที่',
-                              style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15, color: kSecondTextColor),
                             ),
                           ],
                         ),
@@ -332,19 +312,15 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.04),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
                             child: Text(
                               'ถังขยะหน้าบ้าน',
-                              style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15, color: kSecondTextColor),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.04),
-                            child: Image.asset(
-                                'assets/icons/icon-park-solid_check-one.png'),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                            child: Image.asset('assets/icons/icon-park-solid_check-one.png'),
                           ),
                         ],
                       ),
@@ -352,19 +328,15 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.04),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
                             child: Text(
                               'ตู้ไปรษณีย์',
-                              style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15, color: kSecondTextColor),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.04),
-                            child: Image.asset(
-                                'assets/icons/icon-park-solid_check-one.png'),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                            child: Image.asset('assets/icons/icon-park-solid_check-one.png'),
                           ),
                         ],
                       ),
@@ -372,19 +344,15 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.04),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
                             child: Text(
                               'ไฟหน้าบ้าน',
-                              style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15, color: kSecondTextColor),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.04),
-                            child: Image.asset(
-                                'assets/icons/icon-park-solid_check-one.png'),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                            child: Image.asset('assets/icons/icon-park-solid_check-one.png'),
                           ),
                         ],
                       ),
@@ -392,19 +360,15 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.04),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
                             child: Text(
                               'ประตูบ้าน',
-                              style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                              style: TextStyle(fontSize: 15, color: kSecondTextColor),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * 0.04),
-                            child: Image.asset(
-                                'assets/icons/icon-park-solid_check-one.png'),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                            child: Image.asset('assets/icons/icon-park-solid_check-one.png'),
                           ),
                         ],
                       ),

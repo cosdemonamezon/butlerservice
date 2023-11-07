@@ -29,15 +29,12 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'เเจ้งผู้มาเยี่ยมเจ้าบ้าน',
-          style: TextStyle(fontSize: 25, color: kSecondTextColor),
-        ),
+        title: Text('เเจ้งผู้มาเยี่ยมเจ้าบ้าน'),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Image.asset('assets/icons/chevron_left.png')),
+            child: Image.asset('assets/icons/chevron_left.png', scale: 1.3, color: kWhite)),
       ),
       body: Stack(
         children: [
@@ -183,27 +180,27 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                       image = img;
                     });
                     if (image != null) {
-                      if(!mounted)return;
+                      if (!mounted) return;
                       showCupertinoDialog(
-                        context: context,
-                        builder: (context) => CupertinoQuestion(
-                              title: 'บันทึกรูปสำเร็จ',
-                              content: 'กดตกลง เพื่อบันทึกข้อมูล',
-                              press: () {
-                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
-                              },
-                            ));
+                          context: context,
+                          builder: (context) => CupertinoQuestion(
+                                title: 'บันทึกรูปสำเร็จ',
+                                content: 'กดตกลง เพื่อบันทึกข้อมูล',
+                                press: () {
+                                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                                },
+                              ));
                     } else {
-                      if(!mounted)return;
+                      if (!mounted) return;
                       showCupertinoDialog(
-                        context: context,
-                        builder: (context) => CupertinoQuestion(
-                              title: 'แจ้งเตือน',
-                              content: 'ไม่พบรูปภาพ',
-                              press: () {
-                                Navigator.pop(context);
-                              },
-                            ));
+                          context: context,
+                          builder: (context) => CupertinoQuestion(
+                                title: 'แจ้งเตือน',
+                                content: 'ไม่พบรูปภาพ',
+                                press: () {
+                                  Navigator.pop(context);
+                                },
+                              ));
                     }
                   },
                   buttonName: 'ถ่ายภาพ',

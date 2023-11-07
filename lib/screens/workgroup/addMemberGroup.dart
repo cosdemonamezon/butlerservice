@@ -36,13 +36,13 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
           centerTitle: true,
           title: Text(
             'ตั้งค่ากลุ่มงาน',
-            style: TextStyle(fontSize: 25, color: kConkgroundColor),
+            style: TextStyle(color: kConkgroundColor),
           ),
           leading: InkWell(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image.asset('assets/icons/chevron_w.png'))),
+              child: Image.asset('assets/icons/chevron_w.png', scale: 1.3))),
       body: Stack(
         children: [
           Container(
@@ -74,10 +74,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                       width: size.width * 0.20,
                       height: size.height * 0.20,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              fit: BoxFit.fitHeight,
-                              image: AssetImage("assets/images/man1.png")))),
+                          shape: BoxShape.circle, image: DecorationImage(fit: BoxFit.fitHeight, image: AssetImage("assets/images/man1.png")))),
                   SizedBox(
                     height: size.height * 0.01,
                   ),
@@ -86,10 +83,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'ชื่อ - สกุล',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -114,10 +108,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'วัน/เดือน/ปีเกิด',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -142,10 +133,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'อายุ',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -170,10 +158,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'เบอร์โทร',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -198,10 +183,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'สถานที่',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -240,10 +222,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'รายละเอียดสถานที่',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -268,10 +247,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'เวลาปฏิบัติงาน',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -296,10 +272,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     children: [
                       Text(
                         'วันหยุด',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -361,11 +334,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                               title: 'บันทึกสำเร็จ',
                               content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
                               press: () {
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => FirstPage()),
-                                    (route) => false);
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
                               },
                             ));
                   },

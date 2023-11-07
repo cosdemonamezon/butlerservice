@@ -20,13 +20,13 @@ class _InspecReportState extends State<InspecReport> {
           centerTitle: true,
           title: Text(
             'รายงานผลตรวจ',
-            style: TextStyle(fontSize: 25, color: kSecondTextColor),
+            style: TextStyle(color: kSecondTextColor),
           ),
           leading: InkWell(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image.asset('assets/icons/chevron_left.png'))),
+              child: Image.asset('assets/icons/chevron_left.png', scale: 1.3))),
       body: Stack(
         children: [
           Container(
@@ -51,7 +51,9 @@ class _InspecReportState extends State<InspecReport> {
                 scrollDirection: Axis.vertical,
                 physics: ClampingScrollPhysics(),
                 children: [
-                  SizedBox(height: size.height * 0.01,),
+                  SizedBox(
+                    height: size.height * 0.01,
+                  ),
                   Card(
                     margin: EdgeInsets.zero,
                     elevation: 0,
@@ -123,7 +125,9 @@ class _InspecReportState extends State<InspecReport> {
                       ),
                     ),
                   ),
-                  SizedBox(height: size.height * 0.01,),
+                  SizedBox(
+                    height: size.height * 0.01,
+                  ),
                   Card(
                     margin: EdgeInsets.zero,
                     elevation: 0,

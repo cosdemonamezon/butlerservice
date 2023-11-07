@@ -19,13 +19,13 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
           centerTitle: true,
           title: Text(
             'ตั้งค่ากลุ่มงาน',
-            style: TextStyle(fontSize: 25, color: kSecondTextColor),
+            style: TextStyle(color: kSecondTextColor),
           ),
           leading: InkWell(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image.asset('assets/icons/chevron_left.png'))),
+              child: Image.asset('assets/icons/chevron_left.png', scale: 1.3))),
       body: Stack(
         children: [
           Container(

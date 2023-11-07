@@ -21,15 +21,12 @@ class _ManagePlacesState extends State<ManagePlaces> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'จัดการสถานที่ของฉัน',
-          style: TextStyle(fontSize: 25, color: kSecondTextColor),
-        ),
+        title: Text('จัดการสถานที่ของฉัน'),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Image.asset('assets/icons/chevron_left.png')),
+            child: Image.asset('assets/icons/chevron_left.png', color: kWhite, scale: 1.3)),
       ),
       body: Stack(
         children: [
@@ -77,9 +74,7 @@ class _ManagePlacesState extends State<ManagePlaces> {
                         width: size.width * 0.38,
                         child: Row(
                           children: [
-                            Expanded(
-                                flex: 4,
-                                child: Image.asset('assets/images/mehome.png')),
+                            Expanded(flex: 4, child: Image.asset('assets/images/mehome.png')),
                             Expanded(
                                 flex: 5,
                                 child: Column(
@@ -104,21 +99,17 @@ class _ManagePlacesState extends State<ManagePlaces> {
                                       style: TextStyle(fontSize: 13.53),
                                     ),
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           'สถานที่',
                                           style: TextStyle(fontSize: 12.53),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: size.width * 0.01),
+                                          padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
                                           child: Text(
                                             'ตั้งค่า',
-                                            style: TextStyle(
-                                                color: kBackgroundColor,
-                                                fontSize: 10.53),
+                                            style: TextStyle(color: kBackgroundColor, fontSize: 10.53),
                                           ),
                                         ),
                                       ],
@@ -130,33 +121,25 @@ class _ManagePlacesState extends State<ManagePlaces> {
                                       child: Transform.scale(
                                         scale: 0.9,
                                         child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
+                                          borderRadius: BorderRadius.circular(20),
                                           child: GoogleMap(
                                             onTap: (argument) {
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          GooglemapPage(
-                                                            latitude:
-                                                                13.7650836,
-                                                            longitude:
-                                                                100.5379664,
+                                                      builder: (context) => GooglemapPage(
+                                                            latitude: 13.7650836,
+                                                            longitude: 100.5379664,
                                                           )));
                                             },
                                             zoomControlsEnabled: false,
                                             mapType: MapType.normal,
-                                            initialCameraPosition:
-                                                CameraPosition(
-                                              target: LatLng(
-                                                  13.7650836, 100.5379664),
+                                            initialCameraPosition: CameraPosition(
+                                              target: LatLng(13.7650836, 100.5379664),
                                               zoom: 16,
                                             ),
-                                            onMapCreated: (GoogleMapController
-                                                controller) {
-                                              mapcontroller
-                                                  .complete(controller);
+                                            onMapCreated: (GoogleMapController controller) {
+                                              mapcontroller.complete(controller);
                                             },
                                           ),
                                         ),
@@ -167,9 +150,7 @@ class _ManagePlacesState extends State<ManagePlaces> {
                                     ),
                                     Text(
                                       'รายละเอียดเพิ่มเติม',
-                                      style: TextStyle(
-                                          fontSize: 12.53,
-                                          fontWeight: FontWeight.bold),
+                                      style: TextStyle(fontSize: 12.53, fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       '313 อาคาร ซี.พี.ทาวเวอร์ ชั้น 24 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500',

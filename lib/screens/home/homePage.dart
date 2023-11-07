@@ -1,4 +1,6 @@
 import 'package:butlerservice/constants.dart';
+import 'package:butlerservice/controllers/appController.dart';
+import 'package:butlerservice/model/user.dart';
 import 'package:butlerservice/screens/Inspecreport/inspecReport.dart';
 import 'package:butlerservice/screens/home/examhistory/examHistory.dart';
 import 'package:butlerservice/screens/home/notify/notifyVisitors.dart';
@@ -9,6 +11,7 @@ import 'package:butlerservice/screens/workgroup/setupWorkgroups.dart';
 import 'package:butlerservice/screens/workstop/workstopCalendarPage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,8 +21,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int activeIndex = 0;
   final CarouselController _controller = CarouselController();
+  int activeIndex = 0;
+  User? user;
+
+  @override
+  void initState() {
+    super.initState();
+    initialize();
+  }
+
+  initialize() async {
+    user = context.read<AppController>().user;
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -88,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                                       'สวัสดี!',
                                       style: TextStyle(fontSize: 19.91),
                                     ),
-                                    Text('สมชาย ขยันเเจ้ง', style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold)),
+                                    Text(user!.name, style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold)),
                                   ],
                                 ),
                               )

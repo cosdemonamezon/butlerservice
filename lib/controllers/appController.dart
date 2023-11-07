@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:butlerservice/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,10 +16,10 @@ class AppController extends ChangeNotifier {
 
   Future<void> initialize() async {
     prefs = await SharedPreferences.getInstance();
-    token = prefs.getString('token');
-    print(prefs.get('token'));
-    print(prefs.get('userData'));
-    // pref?.getString('userData');
+    if (prefs.containsKey('token') && prefs.containsKey('userData')) {
+      token = prefs.getString('token');
+      user = User.fromJson(jsonDecode(prefs.getString('userData')!));
+    }
   }
 
   void logout() => prefs.clear();
