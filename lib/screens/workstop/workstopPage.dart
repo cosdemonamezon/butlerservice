@@ -70,15 +70,12 @@ class _WorkstopPageState extends State<WorkstopPage> {
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
         centerTitle: true,
-        title: Text(
-          'เเจ้งหยุดงาน',
-          style: TextStyle(fontSize: 25, color: kConkgroundColor),
-        ),
+        title: Text('เเจ้งหยุดงาน'),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Image.asset('assets/icons/chevron_w.png')),
+            child: Image.asset('assets/icons/chevron_w.png', scale: 1.3)),
       ),
       body: Stack(
         children: [

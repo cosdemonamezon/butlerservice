@@ -23,6 +23,7 @@ class AppController extends ChangeNotifier {
     if (prefs.containsKey('token') && prefs.containsKey('userData')) {
       token = prefs.getString('token');
       user = User.fromJson(jsonDecode(prefs.getString('userData')!));
+			notifyListeners();
     }
   }
 

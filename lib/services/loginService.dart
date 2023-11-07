@@ -27,7 +27,7 @@ abstract class LoginService {
         prefs.setString('userData', jsonEncode(jsonBody['data']));
         return User.fromJson(jsonBody['data']);
       } else if (response.statusCode == 400 || response.statusCode == 401) {
-        if ((jsonBody is List)) {
+        if ((jsonBody['data'] is List)) {
           throw ApiException(jsonMessage);
         } else {
           throw ApiException('Failed to fetch data');
