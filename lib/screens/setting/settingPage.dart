@@ -2,6 +2,7 @@ import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/controllers/appController.dart';
 import 'package:butlerservice/screens/auth/loginPage.dart';
 import 'package:butlerservice/screens/setting/widgets/ContainerSetting.dart';
+import 'package:butlerservice/utils/screen_utils.dart';
 import 'package:butlerservice/widget/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,12 +30,7 @@ class _SettingPageState extends State<SettingPage> {
       body: Stack(
         children: [
           Container(
-            height: size.height,
-            width: size.width,
-            color: kConkgroundColor,
-          ),
-          Container(
-            height: size.height * 0.82,
+            height: size.height * 0.8,
             width: double.infinity,
             alignment: Alignment.center,
             decoration: BoxDecoration(

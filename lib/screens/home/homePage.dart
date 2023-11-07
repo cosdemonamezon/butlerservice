@@ -39,16 +39,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: kBackgroundColor,
       body: Stack(
         children: [
           Container(
-            height: size.height,
+            height: size.height * 0.91,
             width: size.width,
-            color: kBackgroundColor,
-          ),
-          Container(
-            height: size.height * 0.90,
-            width: double.infinity,
             decoration: BoxDecoration(
               color: kConkgroundColor,
               borderRadius: BorderRadius.only(
@@ -56,7 +52,6 @@ class _HomePageState extends State<HomePage> {
                 bottomLeft: Radius.circular(30),
               ),
             ),
-            alignment: Alignment.center,
             child: SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
@@ -284,7 +279,7 @@ class _HomePageState extends State<HomePage> {
                           }),
                     ),
                     SizedBox(
-                      height: size.height * 0.01,
+                      height: size.height * 0.02,
                     ),
                   ],
                 ),
