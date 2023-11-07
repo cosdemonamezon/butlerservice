@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:butlerservice/constants.dart';
+import 'package:butlerservice/model/location.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/screens/scan/recordWorkPage.dart';
 import 'package:butlerservice/widget/ButtonOnClick.dart';
@@ -9,7 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class RecordWork extends StatefulWidget {
-  const RecordWork({super.key});
+  RecordWork({super.key, this.listlocation});
+  Location? listlocation;
 
   @override
   State<RecordWork> createState() => _RecordWorkState();
@@ -26,7 +28,8 @@ class _RecordWorkState extends State<RecordWork> {
       markers.add(
         Marker(
           markerId: MarkerId('SomeId'),
-          position: LatLng(13.7650836, 100.5379664),
+          position:
+              LatLng(widget.listlocation!.lat!, widget.listlocation!.lon!),
           infoWindow:
               InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
         ),
@@ -83,7 +86,8 @@ class _RecordWorkState extends State<RecordWork> {
                     zoomControlsEnabled: false,
                     mapType: MapType.normal,
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(13.7650836, 100.5379664),
+                      target: LatLng(
+                          widget.listlocation!.lat!, widget.listlocation!.lon!),
                       zoom: 16,
                     ),
                     markers: markers,
@@ -116,7 +120,9 @@ class _RecordWorkState extends State<RecordWork> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => RecordWorkPage()));
+                            builder: (context) => RecordWorkPage(
+                                  listlocation: widget.listlocation,
+                                )));
                   },
                   buttonName: 'ถัดไป',
                   backgroundColor: kBtnMiniColor,

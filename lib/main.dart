@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/controllers/appController.dart';
@@ -11,6 +12,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
 }
 
@@ -93,16 +95,31 @@ class _StatusLoginState extends State<StatusLogin> {
       future: checkStatusLogin(),
       builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Scaffold(body: Center(child: CircularProgressIndicator(color: kBackgroundColor, strokeWidth: 5)));
+          return const Scaffold(
+              body: Center(
+                  child: CircularProgressIndicator(
+                      color: kBackgroundColor, strokeWidth: 5)));
         } else if (snapshot.connectionState == ConnectionState.done) {
           return snapshot.data ?? const LoginPage();
         } else if (snapshot.hasError) {
           log('Error: ${snapshot.error}');
-          return const Scaffold(body: Center(child: CircularProgressIndicator(color: kBackgroundColor, strokeWidth: 5)));
+          return const Scaffold(
+              body: Center(
+                  child: CircularProgressIndicator(
+                      color: kBackgroundColor, strokeWidth: 5)));
         } else {
           return const LoginPage();
         }
       },
     );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }

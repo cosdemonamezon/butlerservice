@@ -1,6 +1,9 @@
+import 'dart:developer';
 import 'package:barcode_scan2/barcode_scan2.dart';
+import 'package:butlerservice/model/location.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/screens/scan/recordWork.dart';
+import 'package:butlerservice/services/loginService.dart';
 import 'package:butlerservice/widget/cupertinoAlertDialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +18,8 @@ class ScanPage extends StatefulWidget {
 
 class _ScanPageState extends State<ScanPage> {
   String barcode = "";
+  Location? location;
+
   @override
   void initState() {
     super.initState();
@@ -27,15 +32,30 @@ class _ScanPageState extends State<ScanPage> {
       setState(() {
         barcode = _barcode.rawContent;
       });
+
       if (barcode != '') {
-        if(!mounted)return;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWork()));
+        final _getlocation = await LoginService.scanLocation(barcode);
+        setState(() {
+          location = _getlocation;
+        });
+
+        if (!mounted) return;
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => RecordWork(
+                      listlocation: location,
+                    )));
+        inspect(location);
       } else {
-        if(!mounted)return;
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+        if (!mounted) return;
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => FirstPage()),
+            (route) => false);
       }
-      
     } on PlatformException catch (e) {
+      inspect(e);
       if (e.code == BarcodeScanner.cameraAccessDenied) {
         // The user did not grant the camera permission.
       } else {
@@ -50,7 +70,7 @@ class _ScanPageState extends State<ScanPage> {
                 ));
         // Unknown error.
       }
-    }on FormatException {
+    } on FormatException {
       // User returned using the "back"-button before scanning anything.
     } on Exception catch (e) {
       showCupertinoDialog(
@@ -63,9 +83,10 @@ class _ScanPageState extends State<ScanPage> {
                 },
               ));
       // Unknown error.
+    } catch (e) {
+      inspect(e);
     }
   }
-
 
   @override
   Widget build(BuildContext context) {

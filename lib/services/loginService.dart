@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:convert' as convert;
 
 import 'package:butlerservice/constants.dart';
+import 'package:butlerservice/model/location.dart';
 import 'package:butlerservice/model/user.dart';
 import 'package:butlerservice/utils/api_exception.dart';
 import 'package:http/http.dart' as http;
@@ -35,6 +37,27 @@ abstract class LoginService {
       }
     } on ApiException catch (e) {
       throw ApiException(e.message);
+    }
+  }
+
+  static Future<Location> scanLocation(String code) async {
+    final url = Uri.parse('$baseUrl/api/scan_location/$code');
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    // final token = prefs.getString('token');
+    // var headers = {
+    //   'Authorization': 'Bearer $token',
+    //   'Content-Type': 'application/json'
+    // };
+    final response = await http.get(
+      url,
+    );
+    if (response.statusCode == 200) {
+      final data = convert.jsonDecode(response.body);
+      return Location.fromJson(data['data']);
+    } else {
+      final data = convert.jsonDecode(response.body);
+      throw Exception(data['message']);
     }
   }
 }

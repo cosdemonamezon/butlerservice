@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:butlerservice/constants.dart';
+import 'package:butlerservice/model/location.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +11,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RecordSuccess extends StatefulWidget {
-  RecordSuccess({super.key, this.regisuserdata, this.image});
+  RecordSuccess({super.key, this.regisuserdata, this.image, this.listlocation});
   Map<String, dynamic>? regisuserdata = {};
   List<XFile>? image;
+  Location? listlocation;
 
   @override
   State<RecordSuccess> createState() => _RecordSuccessState();
@@ -29,7 +31,8 @@ class _RecordSuccessState extends State<RecordSuccess> {
       markers.add(
         Marker(
           markerId: MarkerId('SomeId'),
-          position: LatLng(13.7650836, 100.5379664),
+          position:
+              LatLng(widget.listlocation!.lat!, widget.listlocation!.lon!),
           infoWindow:
               InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
         ),
@@ -95,11 +98,8 @@ class _RecordSuccessState extends State<RecordSuccess> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: kConkgroundColor,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
                   ),
                 ),
                 child: Padding(
@@ -149,14 +149,17 @@ class _RecordSuccessState extends State<RecordSuccess> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => GooglemapPage(
-                                              latitude: 13.7650836,
-                                              longitude: 100.5379664,
+                                              latitude:
+                                                  widget.listlocation!.lat,
+                                              longitude:
+                                                  widget.listlocation!.lon,
                                             )));
                               },
                               zoomControlsEnabled: false,
                               mapType: MapType.normal,
                               initialCameraPosition: CameraPosition(
-                                target: LatLng(13.7650836, 100.5379664),
+                                target: LatLng(widget.listlocation!.lat!,
+                                    widget.listlocation!.lon!),
                                 zoom: 16,
                               ),
                               markers: markers,
@@ -288,15 +291,23 @@ class _RecordSuccessState extends State<RecordSuccess> {
                       SizedBox(
                         height: size.height * 0.01,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('รายละเอียดเพิ่มเติม',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
-                          Text('สถานการณ์ปกติ',
-                              style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                          Row(
+                            children: [
+                              Text('รายละเอียดเพิ่มเติม',
+                                  style: TextStyle(
+                                      fontSize: 15, color: kTextShowColor)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(widget.regisuserdata!['remark'],
+                                  style: TextStyle(
+                                      fontSize: 15, color: kTextShowColor)),
+                            ],
+                          ),
                         ],
                       ),
                     ],
