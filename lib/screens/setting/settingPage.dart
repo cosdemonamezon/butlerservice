@@ -20,13 +20,18 @@ class _SettingPageState extends State<SettingPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kBackgroundColor,
-        centerTitle: true,
-        title: Text(
-          'ตั้งค่า',
-          style: TextStyle(fontSize: 25, color: kConkgroundColor),
-        ),
-      ),
+          backgroundColor: kBackgroundColor,
+          centerTitle: true,
+          title: Text(
+            'ตั้งค่า',
+            style: TextStyle(fontSize: 24, color: kConkgroundColor),
+          ),
+          leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset('assets/icons/chevron_w.png',
+                  color: kWhite, scale: 1.3))),
       body: Stack(
         children: [
           Container(
@@ -104,7 +109,11 @@ class _SettingPageState extends State<SettingPage> {
                       final isLogout = await Dialogs.logout(context);
                       if (mounted && isLogout) {
                         context.read<AppController>().logout();
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()),
+                            (route) => false);
                       }
                     }),
               ],

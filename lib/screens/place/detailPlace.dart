@@ -42,7 +42,8 @@ class _DetailPlaceState extends State<DetailPlace> {
         Marker(
           markerId: MarkerId('SomeId'),
           position: LatLng(13.7650836, 100.5379664),
-          infoWindow: InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
+          infoWindow:
+              InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
         ),
       );
     });
@@ -129,7 +130,10 @@ class _DetailPlaceState extends State<DetailPlace> {
                       children: [
                         Text(
                           'ประเภท',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -154,7 +158,10 @@ class _DetailPlaceState extends State<DetailPlace> {
                       children: [
                         Text(
                           'ชื่อ - สกุล ',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -179,7 +186,10 @@ class _DetailPlaceState extends State<DetailPlace> {
                       children: [
                         Text(
                           'รหัสสมาชิก',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -204,7 +214,10 @@ class _DetailPlaceState extends State<DetailPlace> {
                       children: [
                         Text(
                           'รหัสประจำตัว',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -229,7 +242,10 @@ class _DetailPlaceState extends State<DetailPlace> {
                       children: [
                         Text(
                           'เบอร์โทร',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -254,7 +270,10 @@ class _DetailPlaceState extends State<DetailPlace> {
                       children: [
                         Text(
                           'สถานที่',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -298,7 +317,10 @@ class _DetailPlaceState extends State<DetailPlace> {
                       children: [
                         Text(
                           'รูปถ่าย',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -318,17 +340,23 @@ class _DetailPlaceState extends State<DetailPlace> {
                                           (index) => Stack(
                                                 children: [
                                                   Padding(
-                                                    padding: const EdgeInsets.all(5.0),
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            5.0),
                                                     child: SizedBox(
                                                       width: size.width * 0.20,
-                                                      height: size.height * 0.12,
+                                                      height:
+                                                          size.height * 0.12,
                                                       child: AspectRatio(
                                                         aspectRatio: 1,
                                                         child: ClipRRect(
-                                                          borderRadius: BorderRadius.circular(10),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
                                                           child: Image(
                                                             image: FileImage(
-                                                              File(image[index].path),
+                                                              File(image[index]
+                                                                  .path),
                                                             ),
                                                             fit: BoxFit.cover,
                                                           ),
@@ -342,10 +370,14 @@ class _DetailPlaceState extends State<DetailPlace> {
                                                       child: InkWell(
                                                         onTap: () {
                                                           setState(() {
-                                                            image.removeAt(index);
+                                                            image.removeAt(
+                                                                index);
                                                           });
                                                         },
-                                                        child: Icon(Icons.cancel, color: kBackgroundColor),
+                                                        child: Icon(
+                                                            Icons.cancel,
+                                                            color:
+                                                                kBackgroundColor),
                                                       )),
                                                 ],
                                               )),
@@ -369,7 +401,9 @@ class _DetailPlaceState extends State<DetailPlace> {
                               alignment: Alignment.center,
                               children: [
                                 Image.asset('assets/icons/Rectangle 7 (1).png'),
-                                Center(child: Icon(Icons.add, color: kWhite, size: 40)),
+                                Center(
+                                    child: Icon(Icons.add,
+                                        color: kWhite, size: 40)),
                               ],
                             ),
                           ),
@@ -384,7 +418,10 @@ class _DetailPlaceState extends State<DetailPlace> {
                       children: [
                         Text(
                           'รายการที่ต้องการตรวจ',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -409,15 +446,26 @@ class _DetailPlaceState extends State<DetailPlace> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsets.symmetric(vertical: size.height * 0.02, horizontal: size.width * 0.03),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: size.height * 0.02,
+                                    horizontal: size.width * 0.03),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('ถังขยะหน้าบ้าน'),
-                                    Text('ตู้ไปรษณีย์ '),
-                                    Text('ไฟหน้าบ้าน'),
-                                    Text('ประตูบ้าน'),
+                                    Text(
+                                      '• ถังขยะหน้าบ้าน',
+                                      style: TextStyle(color: kSecondTextColor),
+                                    ),
+                                    Text('• ตู้ไปรษณีย์ ',
+                                        style:
+                                            TextStyle(color: kSecondTextColor)),
+                                    Text('• ไฟหน้าบ้าน',
+                                        style:
+                                            TextStyle(color: kSecondTextColor)),
+                                    Text('• ประตูบ้าน',
+                                        style:
+                                            TextStyle(color: kSecondTextColor)),
                                   ],
                                 ),
                               ),
@@ -434,7 +482,10 @@ class _DetailPlaceState extends State<DetailPlace> {
                       children: [
                         Text(
                           'รายละเอียดเพิ่มเติม',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -455,12 +506,16 @@ class _DetailPlaceState extends State<DetailPlace> {
                       child: Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(vertical: size.height * 0.02, horizontal: size.width * 0.03),
+                            padding: EdgeInsets.symmetric(
+                                vertical: size.height * 0.02,
+                                horizontal: size.width * 0.03),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('11/29 ถนน ทางหลวงชนบท นนทบุรี 3087 ตำบล บางแม่นาง อำเภอบางใหญ่ นนทบุรี 11140'),
+                                Text(
+                                    '11/29 ถนน ทางหลวงชนบท นนทบุรี 3087 ตำบล บางแม่นาง อำเภอบางใหญ่ นนทบุรี 11140',
+                                    style: TextStyle(color: kSecondTextColor)),
                               ],
                             ),
                           ),
@@ -475,7 +530,10 @@ class _DetailPlaceState extends State<DetailPlace> {
                       children: [
                         Text(
                           'ความถี่ในการตรวจ',
-                          style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kConkgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -498,13 +556,17 @@ class _DetailPlaceState extends State<DetailPlace> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(vertical: size.height * 0.02, horizontal: size.width * 0.03),
+                            padding: EdgeInsets.symmetric(
+                                vertical: size.height * 0.02,
+                                horizontal: size.width * 0.03),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('เวลา 09.00 น. ทุกวัน'),
-                                Text('เวลา 18.00 น. ทุกวัน'),
+                                Text('• เวลา 09.00 น. ทุกวัน',
+                                    style: TextStyle(color: kSecondTextColor)),
+                                Text('• เวลา 18.00 น. ทุกวัน',
+                                    style: TextStyle(color: kSecondTextColor)),
                               ],
                             ),
                           ),

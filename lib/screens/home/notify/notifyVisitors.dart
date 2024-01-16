@@ -28,13 +28,18 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text('เเจ้งผู้มาเยี่ยมเจ้าบ้าน'),
+        title: Text(
+          'เเจ้งผู้มาเยี่ยมเจ้าบ้าน',
+          style: TextStyle(color: kSecondTextColor),
+        ),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Image.asset('assets/icons/chevron_left.png', scale: 1.3, color: kWhite)),
+            child: Image.asset('assets/icons/chevron_left.png',
+                scale: 1.3, color: kGrey)),
       ),
       body: Stack(
         children: [
@@ -68,7 +73,10 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                     children: [
                       Text(
                         'บ้านเลขที่',
-                        style: TextStyle(color: kSecondTextColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kSecondTextColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -93,7 +101,10 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                     children: [
                       Text(
                         'ชื่อ - สกุล เจ้าบ้าน ',
-                        style: TextStyle(color: kSecondTextColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kSecondTextColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -118,7 +129,10 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                     children: [
                       Text(
                         'ชื่อ - สกุล ผู้มาเยี่ยมเจ้าบ้าน',
-                        style: TextStyle(color: kSecondTextColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kSecondTextColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -143,7 +157,10 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                     children: [
                       Text(
                         'ความสัมพันธ์',
-                        style: TextStyle(color: kSecondTextColor, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: kSecondTextColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -175,7 +192,8 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                 child: ButtonBigOnClick(
                   size: size,
                   press: () async {
-                    final img = await picker.pickImage(source: ImageSource.camera);
+                    final img =
+                        await picker.pickImage(source: ImageSource.camera);
                     setState(() {
                       image = img;
                     });
@@ -187,7 +205,11 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                                 title: 'บันทึกรูปสำเร็จ',
                                 content: 'กดตกลง เพื่อบันทึกข้อมูล',
                                 press: () {
-                                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => FirstPage()),
+                                      (route) => false);
                                 },
                               ));
                     } else {

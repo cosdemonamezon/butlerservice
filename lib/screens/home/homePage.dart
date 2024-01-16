@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    initialize();
+    // initialize();
   }
 
   initialize() async {
@@ -74,7 +74,8 @@ class _HomePageState extends State<HomePage> {
                                     child: CircleAvatar(
                                       radius: 32,
                                       backgroundColor: kTransparent,
-                                      child: Image.asset('assets/images/rppEll.png'),
+                                      child: Image.asset(
+                                          'assets/images/rppEll.png'),
                                     ),
                                   ),
                                   Positioned(
@@ -89,7 +90,8 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                               Padding(
-                                padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: size.width * 0.02),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,14 +100,21 @@ class _HomePageState extends State<HomePage> {
                                       'สวัสดี!',
                                       style: TextStyle(fontSize: 19.91),
                                     ),
-                                    Text(user!.name, style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold)),
+                                    // Text(user!.name,
+                                    //     style: TextStyle(
+                                    //         color: kBackgroundColor,
+                                    //         fontSize: 20,
+                                    //         fontWeight: FontWeight.bold)),
                                   ],
                                 ),
                               )
                             ],
                           ),
                         ),
-                        IconButton(onPressed: () {}, icon: Image.asset('assets/icons/Notification.ico', scale: 3))
+                        IconButton(
+                            onPressed: () {},
+                            icon: Image.asset('assets/icons/Notification.ico',
+                                scale: 3))
                       ],
                     ),
                     SizedBox(
@@ -123,7 +132,8 @@ class _HomePageState extends State<HomePage> {
                         scrollDirection: Axis.horizontal,
                         autoPlay: true,
                         viewportFraction: 1,
-                        onPageChanged: (index, reason) => setState(() => activeIndex = index),
+                        onPageChanged: (index, reason) =>
+                            setState(() => activeIndex = index),
                       ),
                       itemCount: banners.length,
                       itemBuilder: (context, index, realIndex) {
@@ -144,11 +154,16 @@ class _HomePageState extends State<HomePage> {
                           child: Container(
                             width: 12.0,
                             height: 12.0,
-                            margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                            margin: EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 4.0),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: (Theme.of(context).brightness == Brightness.dark ? kPointColor : kBackgroundColor)
-                                    .withOpacity(activeIndex == entry.key ? 0.9 : 0.4)),
+                                color: (Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? kPointColor
+                                        : kBackgroundColor)
+                                    .withOpacity(
+                                        activeIndex == entry.key ? 0.9 : 0.4)),
                           ),
                         );
                       }).toList(),
@@ -158,7 +173,10 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           'สำหรับลูกค้า',
-                          style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kBackgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -174,18 +192,31 @@ class _HomePageState extends State<HomePage> {
                           itemCount: customer.length,
                           itemBuilder: (_, index) {
                             return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.01),
                               child: ShowContainerWidget(
                                 size: size,
                                 image: customer[index]['image'],
                                 text: customer[index]['text'],
                                 press: () {
                                   if (customer[index]['id'] == 1) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceRegister()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                PlaceRegister()));
                                   } else if (customer[index]['id'] == 2) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => ManagePlaces()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ManagePlaces()));
                                   } else if (customer[index]['id'] == 3) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Examhistory()));
                                   } else {
                                     //Navigator.push(context, MaterialPageRoute(builder: (context) => MapTest()));
                                   }
@@ -202,7 +233,10 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           'สำหรับสายตรวจ',
-                          style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kBackgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -218,18 +252,31 @@ class _HomePageState extends State<HomePage> {
                           itemCount: patrol.length,
                           itemBuilder: (_, index) {
                             return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.01),
                               child: ShowContainerWidget(
                                 size: size,
                                 image: patrol[index]['image'],
                                 text: patrol[index]['text'],
                                 press: () {
                                   if (patrol[index]['id'] == 1) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => InspecReport()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                InspecReport()));
                                   } else if (patrol[index]['id'] == 2) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => SetupWorkgroups()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                SetupWorkgroups()));
                                   } else if (patrol[index]['id'] == 3) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Examhistory()));
                                   } else {}
                                 },
                               ),
@@ -244,7 +291,10 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           'สำหรับเจ้าหน้าที่',
-                          style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: kBackgroundColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -260,18 +310,31 @@ class _HomePageState extends State<HomePage> {
                           itemCount: officer.length,
                           itemBuilder: (_, index) {
                             return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: size.width * 0.01),
                               child: ShowContainerWidget(
                                 size: size,
                                 image: officer[index]['image'],
                                 text: officer[index]['text'],
                                 press: () {
                                   if (officer[index]['id'] == 1) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => NotifyVisitors()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                NotifyVisitors()));
                                   } else if (officer[index]['id'] == 2) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Examhistory()));
                                   } else if (officer[index]['id'] == 3) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => WorkstopCalendarPage()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                WorkstopCalendarPage()));
                                   } else {}
                                 },
                               ),

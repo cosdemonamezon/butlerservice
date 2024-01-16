@@ -33,10 +33,14 @@ class _LoginPageState extends State<LoginPage> {
     LoadingIndicator.open(context);
     if (formKey.currentState!.validate()) {
       try {
-        await LoginService.loginUsername(usernameController.text, passwordController.text);
+        await LoginService.loginUsername(
+            usernameController.text, passwordController.text);
         if (mounted) {
           await context.read<AppController>().initialize();
-          mounted ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FirstPage())) : null;
+          mounted
+              ? Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => FirstPage()))
+              : null;
         }
       } on ApiException catch (e) {
         mounted ? Dialogs.messageException(context, e) : null;
@@ -61,27 +65,37 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Image.asset('assets/icons/icon_app.jpg', height: 150),
               SizedBox(height: size.height * 0.01),
-              const Text('เข้าสู่ระบบ', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+              const Text('เข้าสู่ระบบ',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
               SizedBox(height: size.height * 0.03),
               AppTextForm(
                 controller: usernameController,
                 labelText: 'ผู้ใช้งาน',
-                labelStyle: TextStyle(color: kBlack, fontSize: 20, fontWeight: FontWeight.bold),
-                validator: (val) => val == '' || val == null || val.isEmpty ? 'กรุณากรอกชื่อผู้ใช้งาน' : null,
+                labelStyle: TextStyle(
+                    color: kBlack, fontSize: 20, fontWeight: FontWeight.bold),
+                validator: (val) => val == '' || val == null || val.isEmpty
+                    ? 'กรุณากรอกชื่อผู้ใช้งาน'
+                    : null,
               ),
               SizedBox(height: size.height * 0.05),
               AppTextForm(
                 controller: passwordController,
                 isPassword: true,
                 labelText: 'รหัสผ่าน',
-                labelStyle: TextStyle(color: kBlack, fontSize: 20, fontWeight: FontWeight.bold),
-                validator: (val) => val == '' || val == null || val.isEmpty ? 'กรุณากรอกรหัสผ่าน' : null,
+                labelStyle: TextStyle(
+                    color: kBlack, fontSize: 20, fontWeight: FontWeight.bold),
+                validator: (val) => val == '' || val == null || val.isEmpty
+                    ? 'กรุณากรอกรหัสผ่าน'
+                    : null,
               ),
               SizedBox(height: size.height * 0.03),
               ButtonOnClick(
                 size: size,
                 buttonName: 'ล็อคอิน',
-                press: login,
+                press: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => FirstPage()));
+                },
               ),
             ],
           ),

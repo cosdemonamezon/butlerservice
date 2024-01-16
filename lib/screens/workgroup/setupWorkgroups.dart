@@ -71,8 +71,8 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                            vertical: size.height * 0.01,
-                            horizontal: size.width * 0.03),
+                            vertical: size.height * 0.02,
+                            horizontal: size.width * 0.04),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -87,6 +87,9 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                       backgroundColor: kConkgroundColor,
                                       backgroundImage:
                                           AssetImage('assets/images/rpp.png'),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
                                     ),
                                     Text(
                                       'กลุ่ม มั่นคงปลอดภัย A',
@@ -103,28 +106,50 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                             ),
                             Row(
                               children: [
-                                Text('รหัสประจำกลุ่ม : AB44556677'),
+                                Text(
+                                  'รหัสประจำกลุ่ม : AB44556677',
+                                  style: TextStyle(
+                                      color: kSecondTextColor,
+                                      height: 2,
+                                      fontSize: 15),
+                                ),
                               ],
                             ),
                             Row(
                               children: [
-                                Text('สถานที่ : หมู่บ้าน ชลบุรี-บางนา'),
+                                Text('สถานที่ : หมู่บ้าน ชลบุรี-บางนา',
+                                    style: TextStyle(
+                                        color: kSecondTextColor,
+                                        height: 2,
+                                        fontSize: 15)),
                               ],
                             ),
                             Row(
                               children: [
-                                Text('หัวหน้ากลุ่ม : นาย อุบล เเต้พาณิช'),
+                                Text('หัวหน้ากลุ่ม : นาย อุบล เเต้พาณิช',
+                                    style: TextStyle(
+                                        color: kSecondTextColor,
+                                        height: 2,
+                                        fontSize: 15)),
                               ],
                             ),
                             Row(
                               children: [
-                                Text('วันที่ตรวจ : จันทร์ พุธ ศุกร์'),
+                                Text('วันที่ตรวจ : จันทร์ พุธ ศุกร์',
+                                    style: TextStyle(
+                                        color: kSecondTextColor,
+                                        height: 2,
+                                        fontSize: 15)),
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('เวลาตรวจ : 13.00 น.'),
+                                Text('เวลาตรวจ : 13.00 น.',
+                                    style: TextStyle(
+                                        color: kSecondTextColor,
+                                        height: 2,
+                                        fontSize: 15)),
                               ],
                             )
                           ],
@@ -153,8 +178,8 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                            vertical: size.height * 0.01,
-                            horizontal: size.width * 0.03),
+                            vertical: size.height * 0.02,
+                            horizontal: size.width * 0.04),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -174,6 +199,9 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                             'assets/images/rrrt.png'),
                                       ),
                                     ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
                                     Text(
                                       'กลุ่ม มั่นคงปลอดภัย B',
                                       style: TextStyle(
@@ -189,28 +217,48 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                             ),
                             Row(
                               children: [
-                                Text('รหัสประจำกลุ่ม : AB44556699'),
+                                Text('รหัสประจำกลุ่ม : AB44556699',
+                                    style: TextStyle(
+                                        color: kSecondTextColor,
+                                        height: 2,
+                                        fontSize: 15)),
                               ],
                             ),
                             Row(
                               children: [
-                                Text('สถานที่ : หมู่บ้าน ชลบุรี-บางพลี'),
+                                Text('สถานที่ : หมู่บ้าน ชลบุรี-บางพลี',
+                                    style: TextStyle(
+                                        color: kSecondTextColor,
+                                        height: 2,
+                                        fontSize: 15)),
                               ],
                             ),
                             Row(
                               children: [
-                                Text('หัวหน้ากลุ่ม : นาย รัศมี อิมพลี'),
+                                Text('หัวหน้ากลุ่ม : นาย รัศมี อิมพลี',
+                                    style: TextStyle(
+                                        color: kSecondTextColor,
+                                        height: 2,
+                                        fontSize: 15)),
                               ],
                             ),
                             Row(
                               children: [
-                                Text('วันที่ตรวจ : พฤหัสบดี เสาร์'),
+                                Text('วันที่ตรวจ : พฤหัสบดี เสาร์',
+                                    style: TextStyle(
+                                        color: kSecondTextColor,
+                                        height: 2,
+                                        fontSize: 15)),
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('เวลาตรวจ : 13.00 น.'),
+                                Text('เวลาตรวจ : 13.00 น.',
+                                    style: TextStyle(
+                                        color: kSecondTextColor,
+                                        height: 2,
+                                        fontSize: 15)),
                               ],
                             )
                           ],

@@ -20,13 +20,18 @@ class _ExamhistoryState extends State<Examhistory> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text('ประวัติการตรวจ'),
+        title: Text(
+          'ประวัติการตรวจ',
+          style: TextStyle(color: kSecondTextColor, fontSize: 24),
+        ),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Image.asset('assets/icons/chevron_left.png', color: kWhite, scale: 1.3)),
+            child: Image.asset('assets/icons/chevron_left.png',
+                color: kGrey, scale: 1.3)),
       ),
       body: Stack(
         children: [
@@ -67,13 +72,18 @@ class _ExamhistoryState extends State<Examhistory> {
                     ),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailExamHistory()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailExamHistory()));
                       },
                       child: Container(
                         width: size.width * 0.38,
                         child: Row(
                           children: [
-                            Expanded(flex: 4, child: Image.asset('assets/images/mehome.png')),
+                            Expanded(
+                                flex: 4,
+                                child: Image.asset('assets/images/mehome.png')),
                             Expanded(
                                 flex: 5,
                                 child: Column(
@@ -84,31 +94,47 @@ class _ExamhistoryState extends State<Examhistory> {
                                       children: [
                                         Text(
                                           'บ้านของฉัน',
-                                          style: TextStyle(fontSize: 13.53),
+                                          style: TextStyle(
+                                              fontSize: 13.53,
+                                              color: kSecondTextColor,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                         Icon(Icons.edit)
                                       ],
                                     ),
                                     Text(
                                       'หมายเลขสถานที่',
-                                      style: TextStyle(fontSize: 13.53),
+                                      style: TextStyle(
+                                          fontSize: 13.53,
+                                          color: kSecondTextColor,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       'BP11245644886699',
-                                      style: TextStyle(fontSize: 13.53),
+                                      style: TextStyle(
+                                        fontSize: 13.53,
+                                        color: kSecondTextColor,
+                                      ),
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           'สถานที่',
-                                          style: TextStyle(fontSize: 12.53),
+                                          style: TextStyle(
+                                              fontSize: 12.53,
+                                              color: kSecondTextColor,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: size.width * 0.01),
                                           child: Text(
                                             'ตั้งค่า',
-                                            style: TextStyle(color: kBackgroundColor, fontSize: 10.53),
+                                            style: TextStyle(
+                                                color: kBackgroundColor,
+                                                fontSize: 10.53),
                                           ),
                                         ),
                                       ],
@@ -119,25 +145,33 @@ class _ExamhistoryState extends State<Examhistory> {
                                       child: Transform.scale(
                                         scale: 0.9,
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(20),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                           child: GoogleMap(
                                             onTap: (argument) {
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
-                                                      builder: (context) => GooglemapPage(
-                                                            latitude: 13.7650836,
-                                                            longitude: 100.5379664,
+                                                      builder: (context) =>
+                                                          GooglemapPage(
+                                                            latitude:
+                                                                13.7650836,
+                                                            longitude:
+                                                                100.5379664,
                                                           )));
                                             },
                                             zoomControlsEnabled: false,
                                             mapType: MapType.normal,
-                                            initialCameraPosition: CameraPosition(
-                                              target: LatLng(13.7650836, 100.5379664),
+                                            initialCameraPosition:
+                                                CameraPosition(
+                                              target: LatLng(
+                                                  13.7650836, 100.5379664),
                                               zoom: 16,
                                             ),
-                                            onMapCreated: (GoogleMapController controller) {
-                                              mapcontroller.complete(controller);
+                                            onMapCreated: (GoogleMapController
+                                                controller) {
+                                              mapcontroller
+                                                  .complete(controller);
                                             },
                                           ),
                                         ),
@@ -145,11 +179,16 @@ class _ExamhistoryState extends State<Examhistory> {
                                     ),
                                     Text(
                                       'รายละเอียดเพิ่มเติม',
-                                      style: TextStyle(fontSize: 12.53, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 12.53,
+                                          fontWeight: FontWeight.bold,
+                                          color: kSecondTextColor),
                                     ),
                                     Text(
                                       '313 อาคาร ซี.พี.ทาวเวอร์ ชั้น 24 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500',
-                                      style: TextStyle(fontSize: 10.53),
+                                      style: TextStyle(
+                                          fontSize: 10.53,
+                                          color: kSecondTextColor),
                                     ),
                                   ],
                                 ))

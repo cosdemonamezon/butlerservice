@@ -36,6 +36,29 @@ class _WorkstopCalendarPageState extends State<WorkstopCalendarPage> {
         ),
         child: Column(
           children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "ตารางงาน นาย อุบล แต้พาณิช",
+                    style: TextStyle(color: kSecondTextColor, fontSize: 18),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                    child: Image.asset(
+                      "assets/images/man1.png",
+                      scale: 3,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Expanded(
               child: MonthView(
                 cellAspectRatio: 0.8,
@@ -45,7 +68,8 @@ class _WorkstopCalendarPageState extends State<WorkstopCalendarPage> {
               padding: EdgeInsets.symmetric(vertical: height(context) * 0.03),
               child: ButtonBigOnClick(
                 size: size,
-                press: () => Navigator.push(context, MaterialPageRoute(builder: (context) => WorkstopPage())),
+                press: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => WorkstopPage())),
                 buttonName: 'แจ้งหยุดงาน',
                 backgroundColor: kBtnMiniColor,
               ),
