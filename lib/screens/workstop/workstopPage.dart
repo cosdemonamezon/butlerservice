@@ -84,6 +84,30 @@ class _WorkstopPageState extends State<WorkstopPage> {
             width: size.width,
             color: kConkgroundColor,
           ),
+          Positioned(
+            bottom: size.height * 0.02,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+              child: Center(
+                child: ButtonBigOnClick(
+                  size: size,
+                  press: () {
+                    showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoQuestion(
+                              title: 'บันทึกสำเร็จ',
+                              content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
+                              press: () {
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                              },
+                            ));
+                  },
+                  buttonName: 'บันทึก',
+                  backgroundColor: kBtnMiniColor,
+                ),
+              ),
+            ),
+          ),
           Container(
             height: size.height * 0.80,
             width: double.infinity,
@@ -460,30 +484,6 @@ class _WorkstopPageState extends State<WorkstopPage> {
                     height: size.height * 0.10,
                   ),
                 ],
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: size.height * 0.02,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
-              child: Center(
-                child: ButtonBigOnClick(
-                  size: size,
-                  press: () {
-                    showCupertinoDialog(
-                        context: context,
-                        builder: (context) => CupertinoQuestion(
-                              title: 'บันทึกสำเร็จ',
-                              content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
-                              press: () {
-                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
-                              },
-                            ));
-                  },
-                  buttonName: 'บันทึก',
-                  backgroundColor: kBtnMiniColor,
-                ),
               ),
             ),
           ),

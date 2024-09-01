@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
+import 'package:butlerservice/screens/scan/recordWorkPage.dart';
 import 'package:butlerservice/widget/AppTextForm.dart';
 import 'package:butlerservice/widget/ButtonOnClick.dart';
 import 'package:butlerservice/widget/GooglemapPage.dart';
@@ -50,6 +51,30 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
             width: size.width,
             color: kConkgroundColor,
           ),
+          Positioned(
+            bottom: size.height * 0.02,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+              child: Center(
+                child: ButtonBigOnClick(
+                  size: size,
+                  press: () {
+                    showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoQuestion(
+                              title: 'บันทึกสำเร็จ',
+                              content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
+                              press: () {
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                              },
+                            ));
+                  },
+                  buttonName: 'บันทึก',
+                  backgroundColor: kBtnMiniColor,
+                ),
+              ),
+            ),
+          ),
           Container(
             height: size.height * 0.80,
             width: double.infinity,
@@ -73,8 +98,7 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                   Container(
                       width: size.width * 0.20,
                       height: size.height * 0.20,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, image: DecorationImage(fit: BoxFit.fitHeight, image: AssetImage("assets/images/man1.png")))),
+                      decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(fit: BoxFit.fitHeight, image: AssetImage("assets/images/man1.png")))),
                   SizedBox(
                     height: size.height * 0.01,
                   ),
@@ -300,16 +324,17 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                         press: () {
                           //Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWorkPage()));
                         },
-                        buttonName: 'ทำงานปกติ',
-                        backgroundColor: kBtnMiniColor,
+                        buttonName: 'ลบออกจากทีม',
+                        backgroundColor: kBackgroundColor,
                       ),
+                      SizedBox(width: size.width * 0.04,),
                       ButtonMiniOnClick(
                         size: size,
                         press: () {
-                          //Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWorkPage()));
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWorkPage()));
                         },
-                        buttonName: 'ลบออกจากทีม',
-                        backgroundColor: kBackgroundColor,
+                        buttonName: 'ทำงานปกติ',
+                        backgroundColor: kBtnMiniColor,
                       ),
                     ],
                   ),
@@ -317,30 +342,6 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
                     height: size.height * 0.10,
                   ),
                 ],
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: size.height * 0.02,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
-              child: Center(
-                child: ButtonBigOnClick(
-                  size: size,
-                  press: () {
-                    showCupertinoDialog(
-                        context: context,
-                        builder: (context) => CupertinoQuestion(
-                              title: 'บันทึกสำเร็จ',
-                              content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
-                              press: () {
-                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
-                              },
-                            ));
-                  },
-                  buttonName: 'บันทึก',
-                  backgroundColor: kBtnMiniColor,
-                ),
               ),
             ),
           ),

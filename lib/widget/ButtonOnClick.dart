@@ -22,12 +22,12 @@ class ButtonOnClick extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Container(
-          width: size.width * 0.45,
-          height: size.height * 0.05,
+          width: size.width * 0.85,
+          height: size.height * 0.07,
           child: Center(
               child: Text(
             buttonName,
-            style: TextStyle(color: kConkgroundColor, fontSize: 16.39, fontWeight: FontWeight.bold),
+            style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
           )),
         ),
       ),

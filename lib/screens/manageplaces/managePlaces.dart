@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ManagePlaces extends StatefulWidget {
@@ -30,8 +31,7 @@ class _ManagePlacesState extends State<ManagePlaces> {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Image.asset('assets/icons/chevron_left.png',
-                color: kGrey, scale: 1.3)),
+            child: Image.asset('assets/icons/chevron_left.png', color: kGrey, scale: 1.3)),
       ),
       body: Stack(
         children: [
@@ -52,7 +52,7 @@ class _ManagePlacesState extends State<ManagePlaces> {
             ),
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: size.width * 0.04,
+                horizontal: size.width * 0.02,
               ),
               child: ListView(
                 shrinkWrap: true,
@@ -71,130 +71,120 @@ class _ManagePlacesState extends State<ManagePlaces> {
                         color: kPointColor,
                         width: 2.0,
                       ),
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         width: size.width * 0.38,
+                        height: size.height * 0.39,
                         child: Row(
                           children: [
                             Expanded(
                                 flex: 4,
-                                child: Image.asset('assets/images/mehome.png')),
+                                child: Image.asset(
+                                  'assets/images/mehome.png',
+                                  fit: BoxFit.fill,
+                                  scale: 1,
+                                  height: size.height * 0.38,
+                                )),
                             Expanded(
-                                flex: 5,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'บ้านของฉัน',
-                                          style: TextStyle(
-                                              fontSize: 13.53,
-                                              color: kSecondTextColor,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Icon(Icons.edit)
-                                      ],
-                                    ),
-                                    Text(
-                                      'หมายเลขสถานที่',
-                                      style: TextStyle(
-                                          fontSize: 13.53,
+                                flex: 6,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'บ้านของฉัน',
+                                            style: TextStyle(fontSize: 18.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                          ),
+                                          SizedBox(width: size.width * 0.02,),
+                                          GestureDetector(onTap: (){}, child: Icon(Icons.edit))
+                                        ],
+                                      ),
+                                      Text(
+                                        'หมายเลขสถานที่',
+                                        style: TextStyle(fontSize: 18.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        'BP11245644886699',
+                                        style: TextStyle(
+                                          fontSize: 18.53,
                                           color: kSecondTextColor,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      'BP11245644886699',
-                                      style: TextStyle(
-                                        fontSize: 13.53,
-                                        color: kSecondTextColor,
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'สถานที่',
-                                          style: TextStyle(
-                                              fontSize: 12.53,
-                                              color: kSecondTextColor,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: size.width * 0.01),
-                                          child: Text(
-                                            'ตั้งค่า',
-                                            style: TextStyle(
-                                                color: kBackgroundColor,
-                                                fontSize: 10.53),
+                                      SizedBox(height: size.height * 0.01,),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'สถานที่',
+                                            style: TextStyle(fontSize: 16.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: size.height * 0.10,
-                                      width: double.infinity,
-                                      //color: Colors.blue,
-                                      child: Transform.scale(
-                                        scale: 0.9,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: GoogleMap(
-                                            onTap: (argument) {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          GooglemapPage(
-                                                            latitude:
-                                                                13.7650836,
-                                                            longitude:
-                                                                100.5379664,
-                                                          )));
-                                            },
-                                            zoomControlsEnabled: false,
-                                            mapType: MapType.normal,
-                                            initialCameraPosition:
-                                                CameraPosition(
-                                              target: LatLng(
-                                                  13.7650836, 100.5379664),
-                                              zoom: 16,
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                                            child: Text(
+                                              'ตั้งค่า',
+                                              style: TextStyle(color: kBackgroundColor, fontSize: 16.53),
                                             ),
-                                            onMapCreated: (GoogleMapController
-                                                controller) {
-                                              mapcontroller
-                                                  .complete(controller);
-                                            },
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.10,
+                                        width: double.infinity,
+                                        //color: Colors.blue,
+                                        child: Transform.scale(
+                                          scale: 0.9,
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(20),
+                                            child: GoogleMap(
+                                              onTap: (argument) {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) => GooglemapPage(
+                                                              latitude: 13.7650836,
+                                                              longitude: 100.5379664,
+                                                            )));
+                                              },
+                                              zoomControlsEnabled: false,
+                                              mapType: MapType.normal,
+                                              initialCameraPosition: CameraPosition(
+                                                target: LatLng(13.7650836, 100.5379664),
+                                                zoom: 16,
+                                              ),
+                                              onMapCreated: (GoogleMapController controller) {
+                                                mapcontroller.complete(controller);
+                                              },
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'รายละเอียดเพิ่มเติม',
-                                      style: TextStyle(
-                                        fontSize: 12.53,
-                                        fontWeight: FontWeight.bold,
-                                        color: kSecondTextColor,
+                                      SizedBox(
+                                        height: 6,
                                       ),
-                                    ),
-                                    Text(
-                                      '313 อาคาร ซี.พี.ทาวเวอร์ ชั้น 24 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500',
-                                      style: TextStyle(
-                                        fontSize: 10.53,
-                                        color: kSecondTextColor,
+                                      Text(
+                                        'รายละเอียดเพิ่มเติม',
+                                        style: TextStyle(
+                                          fontSize: 16.53,
+                                          fontWeight: FontWeight.bold,
+                                          color: kSecondTextColor,
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                      Text(
+                                        '313 อาคาร ซี.พี.ทาวเวอร์ ชั้น 24 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500',
+                                        style: TextStyle(
+                                          fontSize: 16.53,
+                                          color: kSecondTextColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ))
                           ],
                         ),

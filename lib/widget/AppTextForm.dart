@@ -56,9 +56,10 @@ class _AppTextFormState extends State<AppTextForm> {
         keyboardType: widget.keyboardType,
         maxLines: widget.maxline ?? 1,
         cursorColor: kBackgroundColor,
+        style: TextStyle(fontSize: 22),
         decoration: InputDecoration(
-          errorStyle: TextStyle(color: kRed, fontWeight: FontWeight.bold, fontSize: 14),
-          contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+          errorStyle: TextStyle(color: kRed, fontWeight: FontWeight.bold, fontSize: 16),
+          contentPadding: EdgeInsets.fromLTRB(20, 20, 20, 20),
           fillColor: kConkgroundColor,
           filled: true,
           border: OutlineInputBorder(
@@ -71,7 +72,7 @@ class _AppTextFormState extends State<AppTextForm> {
           labelText: widget.labelText,
           labelStyle: widget.labelStyle,
           hintText: widget.hintText,
-          hintStyle: TextStyle(color: kSecondTextColor, fontSize: 15),
+          hintStyle: TextStyle(color: kSecondTextColor, fontSize: 20),
           suffixIcon: widget.isPassword
               ? GestureDetector(
                   onTap: () {

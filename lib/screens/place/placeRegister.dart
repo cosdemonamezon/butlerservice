@@ -57,8 +57,7 @@ class _PlaceRegisterState extends State<PlaceRegister> {
             ),
             alignment: Alignment.center,
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: size.width * 0.08, vertical: size.height * 0.02),
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.08, vertical: size.height * 0.02),
               child: Column(
                 children: [
                   Wrap(
@@ -66,18 +65,12 @@ class _PlaceRegisterState extends State<PlaceRegister> {
                     children: List.generate(
                         iconImage.length,
                         (index) => Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: size.width * 0.01,
-                                  vertical: size.height * 0.01),
+                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01, vertical: size.height * 0.01),
                               child: Column(
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  DetailPlace()));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPlace()));
                                     },
                                     child: Card(
                                       margin: EdgeInsets.zero,
@@ -93,13 +86,15 @@ class _PlaceRegisterState extends State<PlaceRegister> {
                                       child: Container(
                                         height: size.height * 0.18,
                                         width: size.width * 0.38,
-                                        child: Center(
-                                            child: Image.asset(
-                                                iconImage[index]['icon'])),
+                                        child: Center(child: Image.asset(iconImage[index]['icon'])),
                                       ),
                                     ),
                                   ),
-                                  Text('${iconImage[index]['text']}'),
+                                  SizedBox(height: size.height * 0.01,),
+                                  Text(
+                                    '${iconImage[index]['text']}',
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                                  ),
                                 ],
                               ),
                             )),

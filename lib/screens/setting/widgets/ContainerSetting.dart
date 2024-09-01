@@ -38,7 +38,7 @@ class ContainerSetting extends StatelessWidget {
           title: Text(
             title,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20.53,
               color: kSecondTextColor,
             ),
           ),

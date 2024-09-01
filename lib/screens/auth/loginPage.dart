@@ -66,13 +66,13 @@ class _LoginPageState extends State<LoginPage> {
               Image.asset('assets/icons/icon_app.jpg', height: 150),
               SizedBox(height: size.height * 0.01),
               const Text('เข้าสู่ระบบ',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
               SizedBox(height: size.height * 0.03),
               AppTextForm(
                 controller: usernameController,
                 labelText: 'ผู้ใช้งาน',
                 labelStyle: TextStyle(
-                    color: kBlack, fontSize: 20, fontWeight: FontWeight.bold),
+                    color: kBlack, fontSize: 25, fontWeight: FontWeight.bold),
                 validator: (val) => val == '' || val == null || val.isEmpty
                     ? 'กรุณากรอกชื่อผู้ใช้งาน'
                     : null,
@@ -83,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                 isPassword: true,
                 labelText: 'รหัสผ่าน',
                 labelStyle: TextStyle(
-                    color: kBlack, fontSize: 20, fontWeight: FontWeight.bold),
+                    color: kBlack, fontSize: 25, fontWeight: FontWeight.bold),
                 validator: (val) => val == '' || val == null || val.isEmpty
                     ? 'กรุณากรอกรหัสผ่าน'
                     : null,

@@ -43,7 +43,7 @@ class _WorkstopCalendarPageState extends State<WorkstopCalendarPage> {
                 children: [
                   Text(
                     "ตารางงาน นาย อุบล แต้พาณิช",
-                    style: TextStyle(color: kSecondTextColor, fontSize: 18),
+                    style: TextStyle(color: kSecondTextColor, fontSize: 18.53),
                   ),
                   Padding(
                     padding:

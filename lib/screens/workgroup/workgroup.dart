@@ -46,6 +46,20 @@ class _WorkgroupState extends State<Workgroup> {
             width: size.width,
             color: kConkgroundColor,
           ),
+          Positioned(
+            bottom: size.height * 0.01,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+              child: Center(
+                child: ButtonBigOnClick(
+                  size: size,
+                  press: () {},
+                  buttonName: 'บันทึก',
+                  backgroundColor: kBtnMiniColor,
+                ),
+              ),
+            ),
+          ),
           Container(
             height: size.height * 0.80,
             width: double.infinity,
@@ -231,14 +245,14 @@ class _WorkgroupState extends State<Workgroup> {
                                 children: [
                                   Text(
                                     '• จันทร์',
-                                    style: TextStyle(color: kSecondTextColor),
+                                    style: TextStyle(color: kSecondTextColor, fontSize: 18.53,),
                                   ),
                                   Text('• พุธ',
                                       style:
-                                          TextStyle(color: kSecondTextColor)),
+                                          TextStyle(color: kSecondTextColor, fontSize: 18.53,)),
                                   Text('• ศุกร์',
                                       style:
-                                          TextStyle(color: kSecondTextColor)),
+                                          TextStyle(color: kSecondTextColor, fontSize: 18.53,)),
                                 ],
                               ),
                             ),
@@ -307,7 +321,7 @@ class _WorkgroupState extends State<Workgroup> {
                               leading: Image.asset(members[index]['image']),
                               title: Text(
                                 members[index]['name'],
-                                style: TextStyle(color: kConkgroundColor),
+                                style: TextStyle(color: kConkgroundColor, fontSize: 18.53,),
                               ),
                               trailing:
                                   Image.asset('assets/icons/icon_set.png'),
@@ -337,7 +351,7 @@ class _WorkgroupState extends State<Workgroup> {
                     child: Center(
                       child: Text(
                         'เพิ่มสมาชิก',
-                        style: TextStyle(color: kTextAddColor),
+                        style: TextStyle(color: kTextAddColor, fontSize: 20.53,),
                       ),
                     ),
                   ),
@@ -377,20 +391,7 @@ class _WorkgroupState extends State<Workgroup> {
               ),
             ),
           ),
-          Positioned(
-            bottom: size.height * 0.01,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
-              child: Center(
-                child: ButtonBigOnClick(
-                  size: size,
-                  press: () {},
-                  buttonName: 'บันทึก',
-                  backgroundColor: kBtnMiniColor,
-                ),
-              ),
-            ),
-          ),
+          
         ],
       ),
     );

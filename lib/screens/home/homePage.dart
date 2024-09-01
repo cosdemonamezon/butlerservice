@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/controllers/appController.dart';
 import 'package:butlerservice/model/user.dart';
@@ -11,6 +14,8 @@ import 'package:butlerservice/screens/workgroup/setupWorkgroups.dart';
 import 'package:butlerservice/screens/workstop/workstopCalendarPage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,6 +29,8 @@ class _HomePageState extends State<HomePage> {
   final CarouselController _controller = CarouselController();
   int activeIndex = 0;
   User? user;
+  ImagePicker picker = ImagePicker();
+  List<XFile> image = [];
 
   @override
   void initState() {
@@ -33,6 +40,47 @@ class _HomePageState extends State<HomePage> {
 
   initialize() async {
     user = context.read<AppController>().user;
+  }
+
+  Future<void> openDialogImage(int imageSelect) async {
+    final result = await showModalActionSheet<String>(
+      context: context,
+      title: 'เลือกรูปภาพ',
+      cancelLabel: 'ยกเลิก',
+      actions: [
+        SheetAction<String>(label: 'ถ่ายรูป', key: 'camera'),
+        SheetAction<String>(label: 'เลือกจากอัลบั้ม', key: 'gallery'),
+      ],
+    );
+    if (result != null) {
+      if (result == 'camera') {
+        final img = await picker.pickImage(source: ImageSource.camera);
+        setState(() {
+          if (imageSelect == 1 && img != null) {
+            if (image.isNotEmpty) {
+              image.clear();
+              image.add(img);
+            } else {
+              image.add(img);
+            }
+          }
+        });
+      }
+
+      if (result == 'gallery') {
+        final img = await picker.pickImage(source: ImageSource.gallery);
+        setState(() {
+          if (imageSelect == 1 && img != null) {
+            if (image.isNotEmpty) {
+              image.clear();
+              image.add(img);
+            } else {
+              image.add(img);
+            }
+          }
+        });
+      }
+    }
   }
 
   @override
@@ -63,58 +111,62 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(
-                          child: Row(
-                            children: [
-                              Stack(
-                                children: [
-                                  SizedBox(
-                                    width: 64,
-                                    height: 64,
-                                    child: CircleAvatar(
-                                      radius: 32,
-                                      backgroundColor: kTransparent,
-                                      child: Image.asset(
-                                          'assets/images/rppEll.png'),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    height: 25,
-                                    width: 25,
-                                    bottom: 0,
-                                    right: 0,
-                                    child: Image.asset(
-                                      'assets/icons/solar_camera-minimalistic-bold.ico',
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: size.width * 0.02),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                        GestureDetector(
+                          onTap: () => openDialogImage(1),
+                          child: SizedBox(
+                            child: Row(
+                              children: [
+                                Stack(
                                   children: [
-                                    Text(
-                                      'สวัสดี!',
-                                      style: TextStyle(fontSize: 19.91),
+                                    SizedBox(
+                                      width: 64,
+                                      height: 64,
+                                      child: image.isNotEmpty
+                                      ?CircleAvatar(
+                                        radius: 32,
+                                        backgroundColor: kTransparent,
+                                        backgroundImage: FileImage(File(image[0].path)),                                        
+                                      )
+                                      :CircleAvatar(
+                                        radius: 32,
+                                        backgroundColor: kTransparent,
+                                        backgroundImage: AssetImage('assets/images/rppEll.png'),                                        
+                                      ),
                                     ),
-                                    // Text(user!.name,
-                                    //     style: TextStyle(
-                                    //         color: kBackgroundColor,
-                                    //         fontSize: 20,
-                                    //         fontWeight: FontWeight.bold)),
+                                    Positioned(
+                                      height: 25,
+                                      width: 25,
+                                      bottom: 0,
+                                      right: 0,
+                                      child: Image.asset(
+                                        'assets/icons/solar_camera-minimalistic-bold.ico',
+                                      ),
+                                    )
                                   ],
                                 ),
-                              )
-                            ],
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'สวัสดี!',
+                                        style: TextStyle(fontSize: 22),
+                                      ),
+                                      // Text(user!.name,
+                                      //     style: TextStyle(
+                                      //         color: kBackgroundColor,
+                                      //         fontSize: 20,
+                                      //         fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Image.asset('assets/icons/Notification.ico',
-                                scale: 3))
+                        IconButton(onPressed: () {}, icon: Image.asset('assets/icons/Notification.ico', scale: 2.5))
                       ],
                     ),
                     SizedBox(
@@ -132,8 +184,7 @@ class _HomePageState extends State<HomePage> {
                         scrollDirection: Axis.horizontal,
                         autoPlay: true,
                         viewportFraction: 1,
-                        onPageChanged: (index, reason) =>
-                            setState(() => activeIndex = index),
+                        onPageChanged: (index, reason) => setState(() => activeIndex = index),
                       ),
                       itemCount: banners.length,
                       itemBuilder: (context, index, realIndex) {
@@ -154,16 +205,9 @@ class _HomePageState extends State<HomePage> {
                           child: Container(
                             width: 12.0,
                             height: 12.0,
-                            margin: EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 4.0),
+                            margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                             decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: (Theme.of(context).brightness ==
-                                            Brightness.dark
-                                        ? kPointColor
-                                        : kBackgroundColor)
-                                    .withOpacity(
-                                        activeIndex == entry.key ? 0.9 : 0.4)),
+                                shape: BoxShape.circle, color: (Theme.of(context).brightness == Brightness.dark ? kPointColor : kBackgroundColor).withOpacity(activeIndex == entry.key ? 0.9 : 0.4)),
                           ),
                         );
                       }).toList(),
@@ -173,10 +217,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           'สำหรับลูกค้า',
-                          style: TextStyle(
-                              color: kBackgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -192,31 +233,18 @@ class _HomePageState extends State<HomePage> {
                           itemCount: customer.length,
                           itemBuilder: (_, index) {
                             return Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: size.width * 0.01),
+                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
                               child: ShowContainerWidget(
                                 size: size,
                                 image: customer[index]['image'],
                                 text: customer[index]['text'],
                                 press: () {
                                   if (customer[index]['id'] == 1) {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                PlaceRegister()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceRegister()));
                                   } else if (customer[index]['id'] == 2) {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                ManagePlaces()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => ManagePlaces()));
                                   } else if (customer[index]['id'] == 3) {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                Examhistory()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
                                   } else {
                                     //Navigator.push(context, MaterialPageRoute(builder: (context) => MapTest()));
                                   }
@@ -233,10 +261,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           'สำหรับสายตรวจ',
-                          style: TextStyle(
-                              color: kBackgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -252,31 +277,18 @@ class _HomePageState extends State<HomePage> {
                           itemCount: patrol.length,
                           itemBuilder: (_, index) {
                             return Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: size.width * 0.01),
+                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
                               child: ShowContainerWidget(
                                 size: size,
                                 image: patrol[index]['image'],
                                 text: patrol[index]['text'],
                                 press: () {
                                   if (patrol[index]['id'] == 1) {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                InspecReport()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => InspecReport()));
                                   } else if (patrol[index]['id'] == 2) {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                SetupWorkgroups()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => SetupWorkgroups()));
                                   } else if (patrol[index]['id'] == 3) {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                Examhistory()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
                                   } else {}
                                 },
                               ),
@@ -291,10 +303,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           'สำหรับเจ้าหน้าที่',
-                          style: TextStyle(
-                              color: kBackgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -310,31 +319,18 @@ class _HomePageState extends State<HomePage> {
                           itemCount: officer.length,
                           itemBuilder: (_, index) {
                             return Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: size.width * 0.01),
+                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
                               child: ShowContainerWidget(
                                 size: size,
                                 image: officer[index]['image'],
                                 text: officer[index]['text'],
                                 press: () {
                                   if (officer[index]['id'] == 1) {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                NotifyVisitors()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => NotifyVisitors()));
                                   } else if (officer[index]['id'] == 2) {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                Examhistory()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
                                   } else if (officer[index]['id'] == 3) {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                WorkstopCalendarPage()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => WorkstopCalendarPage()));
                                   } else {}
                                 },
                               ),
@@ -342,7 +338,7 @@ class _HomePageState extends State<HomePage> {
                           }),
                     ),
                     SizedBox(
-                      height: size.height * 0.02,
+                      height: size.height * 0.08,
                     ),
                   ],
                 ),

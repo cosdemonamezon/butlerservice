@@ -34,25 +34,27 @@ class _ScanPageState extends State<ScanPage> {
       });
 
       if (barcode != '') {
-        final _getlocation = await LoginService.scanLocation(barcode);
-        setState(() {
-          location = _getlocation;
-        });
+        // final _getlocation = await LoginService.scanLocation(barcode);
+        // setState(() {
+        //   location = _getlocation;
+        // });
 
         if (!mounted) return;
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => RecordWork(
-                      listlocation: location,
-                    )));
-        inspect(location);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWork()));
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //         builder: (context) => RecordWork(
+        //               listlocation: location,
+        //             )));
+        //inspect(location);
       } else {
         if (!mounted) return;
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => FirstPage()),
-            (route) => false);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWork()));
+        // Navigator.pushAndRemoveUntil(
+        //     context,
+        //     MaterialPageRoute(builder: (context) => FirstPage()),
+        //     (route) => false);
       }
     } on PlatformException catch (e) {
       inspect(e);

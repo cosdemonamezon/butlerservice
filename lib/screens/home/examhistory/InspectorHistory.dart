@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:butlerservice/constants.dart';
+import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class InspectorHistory extends StatefulWidget {
@@ -64,7 +66,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                     color: kPointColor,
                     width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Container(
                   height: size.height * 0.12,
@@ -114,7 +116,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                     color: kPointColor,
                     width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Container(
                   height: size.height * 0.07,
@@ -160,7 +162,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                     color: kPointColor,
                     width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Container(
                   height: size.height * 0.07,
@@ -206,7 +208,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                     color: kPointColor,
                     width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: SizedBox(
                   height: size.height * 0.28,
@@ -217,7 +219,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: size.height * 0.03,
+                          height: size.height * 0.02,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -225,14 +227,14 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                             Text(
                               'ชื่อ',
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 18.53,
                                   color: kSecondTextColor,
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
                               'บ้านของฉัน A',
                               style: TextStyle(
-                                  fontSize: 15.53, color: kSecondTextColor),
+                                  fontSize: 18.53, color: kSecondTextColor),
                             ),
                           ],
                         ),
@@ -242,14 +244,14 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                             Text(
                               'ชื่อเจ้าของบ้าน',
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 18.53,
                                   color: kSecondTextColor,
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
                               'นาย สมพร ร่ำรวย',
                               style: TextStyle(
-                                  fontSize: 15.53, color: kSecondTextColor),
+                                  fontSize: 18.53, color: kSecondTextColor),
                             ),
                           ],
                         ),
@@ -259,14 +261,14 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                             Text(
                               'หมายเลขสถานที่',
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 18.53,
                                   color: kSecondTextColor,
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
                               'BP11245644886699',
                               style: TextStyle(
-                                  fontSize: 15.53, color: kSecondTextColor),
+                                  fontSize: 18.53, color: kSecondTextColor),
                             ),
                           ],
                         ),
@@ -276,7 +278,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                             Text(
                               'สถานที่',
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 18.53,
                                   color: kSecondTextColor,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -340,7 +342,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                     color: kPointColor,
                     width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: SizedBox(
                   width: double.infinity,
@@ -358,7 +360,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                             child: Text(
                               'ถังขยะหน้าบ้าน',
                               style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                                  fontSize: 18.53, color: kSecondTextColor),
                             ),
                           ),
                           Padding(
@@ -378,7 +380,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                             child: Text(
                               'ตู้ไปรษณีย์',
                               style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                                  fontSize: 18.53, color: kSecondTextColor),
                             ),
                           ),
                           Padding(
@@ -398,7 +400,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                             child: Text(
                               'ไฟหน้าบ้าน',
                               style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                                  fontSize: 18.53, color: kSecondTextColor),
                             ),
                           ),
                           Padding(
@@ -418,7 +420,7 @@ class _InspectorHistoryState extends State<InspectorHistory> {
                             child: Text(
                               'ประตูบ้าน',
                               style: TextStyle(
-                                  fontSize: 15, color: kSecondTextColor),
+                                  fontSize: 18.53, color: kSecondTextColor),
                             ),
                           ),
                           Padding(
@@ -456,19 +458,26 @@ class _InspectorHistoryState extends State<InspectorHistory> {
               Row(
                 children: [
                   Image.asset('assets/images/r1.png'),
+                  SizedBox(width: size.width * 0.01,),
                   Image.asset('assets/images/r2.png'),
+                  SizedBox(width: size.width * 0.01,),
                   Image.asset('assets/images/r3.png'),
                 ],
               ),
               SizedBox(
-                height: size.height * 0.01,
+                height: size.height * 0.02,
               ),
-              Text(
-                'รายงานปัญหา',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: kSecondTextColor,
-                  decoration: TextDecoration.underline,
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                },
+                child: Text(
+                  'รายงานปัญหา',
+                  style: TextStyle(
+                    fontSize: 20.53,
+                    color: kSecondTextColor,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
               ),
               SizedBox(

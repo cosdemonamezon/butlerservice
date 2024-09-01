@@ -105,6 +105,52 @@ class _DetailPlaceState extends State<DetailPlace> {
               width: size.width,
               color: kConkgroundColor,
             ),
+            Positioned(
+              bottom: size.height * 0.02,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+                child: Center(
+                  child: ButtonBigOnClick(
+                    size: size,
+                    press: () {
+                      if (placeFormKey.currentState!.validate()) {
+                        setState(() {
+                          regisuser = {
+                            'type': type.text,
+                            'name': name.text,
+                            'memberId': memberId.text,
+                            'userId': userId.text,
+                            'phone': phone.text,
+                          };
+                        });
+                        if (image.isNotEmpty) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RegisPlaceSuccess(
+                                        image: image,
+                                        regisuserdata: regisuser,
+                                      )));
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (context) => CupertinoQuestion(
+                              title: 'ผิดพลาด',
+                              content: 'กรุณาถ่ายรูปภาพ',
+                              press: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          );
+                        }
+                      }
+                    },
+                    buttonName: 'บันทึก',
+                    backgroundColor: kBtnMiniColor,
+                  ),
+                ),
+              ),
+            ),
             Container(
               height: size.height * 0.80,
               width: double.infinity,
@@ -123,7 +169,7 @@ class _DetailPlaceState extends State<DetailPlace> {
                   physics: ClampingScrollPhysics(),
                   children: [
                     SizedBox(
-                      height: size.height * 0.01,
+                      height: size.height * 0.02,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -255,6 +301,7 @@ class _DetailPlaceState extends State<DetailPlace> {
                     AppTextForm(
                       controller: phone,
                       hintText: 'ระบบเบอร์โทร',
+                      keyboardType: TextInputType.number,
                       validator: (val) {
                         if (val == null || val.isEmpty) {
                           return 'กรุณากรอกเบอร์โทร';
@@ -411,7 +458,7 @@ class _DetailPlaceState extends State<DetailPlace> {
                       ],
                     ),
                     SizedBox(
-                      height: size.height * 0.01,
+                      height: size.height * 0.02,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -455,17 +502,17 @@ class _DetailPlaceState extends State<DetailPlace> {
                                   children: [
                                     Text(
                                       '• ถังขยะหน้าบ้าน',
-                                      style: TextStyle(color: kSecondTextColor),
+                                      style: TextStyle(color: kSecondTextColor, fontSize: 20),
                                     ),
                                     Text('• ตู้ไปรษณีย์ ',
                                         style:
-                                            TextStyle(color: kSecondTextColor)),
+                                            TextStyle(color: kSecondTextColor, fontSize: 20)),
                                     Text('• ไฟหน้าบ้าน',
                                         style:
-                                            TextStyle(color: kSecondTextColor)),
+                                            TextStyle(color: kSecondTextColor, fontSize: 20)),
                                     Text('• ประตูบ้าน',
                                         style:
-                                            TextStyle(color: kSecondTextColor)),
+                                            TextStyle(color: kSecondTextColor, fontSize: 20)),
                                   ],
                                 ),
                               ),
@@ -515,7 +562,7 @@ class _DetailPlaceState extends State<DetailPlace> {
                               children: [
                                 Text(
                                     '11/29 ถนน ทางหลวงชนบท นนทบุรี 3087 ตำบล บางแม่นาง อำเภอบางใหญ่ นนทบุรี 11140',
-                                    style: TextStyle(color: kSecondTextColor)),
+                                    style: TextStyle(color: kSecondTextColor, fontSize: 20)),
                               ],
                             ),
                           ),
@@ -564,9 +611,9 @@ class _DetailPlaceState extends State<DetailPlace> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('• เวลา 09.00 น. ทุกวัน',
-                                    style: TextStyle(color: kSecondTextColor)),
+                                    style: TextStyle(color: kSecondTextColor, fontSize: 20)),
                                 Text('• เวลา 18.00 น. ทุกวัน',
-                                    style: TextStyle(color: kSecondTextColor)),
+                                    style: TextStyle(color: kSecondTextColor, fontSize: 20)),
                               ],
                             ),
                           ),
@@ -583,52 +630,7 @@ class _DetailPlaceState extends State<DetailPlace> {
                 ),
               ),
             ),
-            Positioned(
-              bottom: size.height * 0.02,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
-                child: Center(
-                  child: ButtonBigOnClick(
-                    size: size,
-                    press: () {
-                      if (placeFormKey.currentState!.validate()) {
-                        setState(() {
-                          regisuser = {
-                            'type': type.text,
-                            'name': name.text,
-                            'memberId': memberId.text,
-                            'userId': userId.text,
-                            'phone': phone.text,
-                          };
-                        });
-                        if (image.isNotEmpty) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => RegisPlaceSuccess(
-                                        image: image,
-                                        regisuserdata: regisuser,
-                                      )));
-                        } else {
-                          showDialog(
-                            context: context,
-                            builder: (context) => CupertinoQuestion(
-                              title: 'ผิดพลาด',
-                              content: 'กรุณาถ่ายรูปภาพ',
-                              press: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                          );
-                        }
-                      }
-                    },
-                    buttonName: 'บันทึก',
-                    backgroundColor: kBtnMiniColor,
-                  ),
-                ),
-              ),
-            ),
+            
           ],
         ),
       ),

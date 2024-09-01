@@ -28,10 +28,10 @@ class _RecordWorkState extends State<RecordWork> {
       markers.add(
         Marker(
           markerId: MarkerId('SomeId'),
-          position:
-              LatLng(widget.listlocation!.lat!, widget.listlocation!.lon!),
-          infoWindow:
-              InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
+          position: LatLng(13.7442, 100.4608),
+          // position:
+          //     LatLng(widget.listlocation!.lat!, widget.listlocation!.lon!),
+          infoWindow: InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
         ),
       );
     });
@@ -51,10 +51,7 @@ class _RecordWorkState extends State<RecordWork> {
           leading: InkWell(
               onTap: () {
                 //Navigator.pop(context);
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => FirstPage()),
-                    (route) => false);
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
               },
               child: Image.asset(
                 'assets/icons/chevron_w.png',
@@ -86,8 +83,7 @@ class _RecordWorkState extends State<RecordWork> {
                     zoomControlsEnabled: false,
                     mapType: MapType.normal,
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(
-                          widget.listlocation!.lat!, widget.listlocation!.lon!),
+                      target: LatLng(13.7442, 100.4608),
                       zoom: 16,
                     ),
                     markers: markers,
@@ -101,7 +97,7 @@ class _RecordWorkState extends State<RecordWork> {
                       'กรุณายืนภายในระยะ 500 เมตร',
                       style: TextStyle(
                         color: kConkgroundColor,
-                        fontSize: 15,
+                        fontSize: 18.53,
                       ),
                     ),
                   ),
@@ -120,9 +116,13 @@ class _RecordWorkState extends State<RecordWork> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => RecordWorkPage(
-                                  listlocation: widget.listlocation,
-                                )));
+                            builder: (context) => RecordWorkPage()));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => RecordWorkPage(
+                    //               listlocation: widget.listlocation,
+                    //             )));
                   },
                   buttonName: 'ถัดไป',
                   backgroundColor: kBtnMiniColor,

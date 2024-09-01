@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class CupertinoAlert extends StatelessWidget {
   CupertinoAlert({
@@ -64,21 +65,22 @@ class CupertinoQuestion extends StatelessWidget {
     return CupertinoAlertDialog(
       title: Text(
         title!,
-        //style: TextStyle(fontFamily: fontFamily),
+        style: TextStyle(fontSize: 18.53),
       ),
       content: Text(
         content!,
-        //style: TextStyle(fontFamily: fontFamily),
+        style: TextStyle(fontSize: 18.53),
       ),
       actions: <CupertinoDialogAction>[
         CupertinoDialogAction(
           onPressed: press,
           child: Text(
             'ตกลง',
-            // style: TextStyle(
-            //   color: kThemeTextColor,
-            //   fontFamily: fontFamily,
-            // ),
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18.53,
+              fontWeight: FontWeight.bold
+            ),
           ),
         )
       ],

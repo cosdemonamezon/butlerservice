@@ -32,7 +32,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
         Marker(
           markerId: MarkerId('SomeId'),
           position:
-              LatLng(widget.listlocation!.lat!, widget.listlocation!.lon!),
+              LatLng(13.7442 , 100.4608),
           infoWindow:
               InfoWindow(title: 'ชื่อสถานที่', snippet: 'รายละเอียดเพิ่มเติม'),
         ),
@@ -91,7 +91,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
               Row(
                 children: [
                   Text('รายละเอียด',
-                      style: TextStyle(fontSize: 15, color: kConkgroundColor))
+                      style: TextStyle(fontSize: 20.53, color: kConkgroundColor))
                 ],
               ),
               Container(
@@ -111,12 +111,12 @@ class _RecordSuccessState extends State<RecordSuccess> {
                         children: [
                           Text('หมายเลขสถานที่',
                               style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                                  fontSize: 18.53, color: kTextShowColor)),
                           Padding(
                             padding: const EdgeInsets.only(right: 8),
                             child: Text(widget.regisuserdata!['locationNumber'],
                                 style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor)),
+                                    fontSize: 18.53, color: kTextShowColor)),
                           )
                         ],
                       ),
@@ -128,7 +128,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                         children: [
                           Text('สถานที่',
                               style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                                  fontSize: 18.53, color: kTextShowColor)),
                         ],
                       ),
                       SizedBox(
@@ -158,8 +158,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                               zoomControlsEnabled: false,
                               mapType: MapType.normal,
                               initialCameraPosition: CameraPosition(
-                                target: LatLng(widget.listlocation!.lat!,
-                                    widget.listlocation!.lon!),
+                                target: LatLng(13.7442 , 100.4608),
                                 zoom: 16,
                               ),
                               markers: markers,
@@ -176,12 +175,12 @@ class _RecordSuccessState extends State<RecordSuccess> {
                         children: [
                           Text('ชื่อ-สกุล',
                               style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                                  fontSize: 18.53, color: kTextShowColor)),
                           Padding(
                             padding: const EdgeInsets.only(right: 8),
                             child: Text(widget.regisuserdata!['name'],
                                 style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor)),
+                                    fontSize: 18.53, color: kTextShowColor)),
                           )
                         ],
                       ),
@@ -193,12 +192,12 @@ class _RecordSuccessState extends State<RecordSuccess> {
                         children: [
                           Text('รหัสสมาชิก',
                               style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                                  fontSize: 18.53, color: kTextShowColor)),
                           Padding(
                             padding: const EdgeInsets.only(right: 8),
                             child: Text(widget.regisuserdata!['memberId'],
                                 style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor)),
+                                    fontSize: 18.53, color: kTextShowColor)),
                           )
                         ],
                       ),
@@ -210,10 +209,10 @@ class _RecordSuccessState extends State<RecordSuccess> {
                         children: [
                           Text('รหัสสมาชิก',
                               style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                                  fontSize: 18.53, color: kTextShowColor)),
                           Text(widget.regisuserdata!['date'],
                               style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor))
+                                  fontSize: 18.53, color: kTextShowColor))
                         ],
                       ),
                       SizedBox(
@@ -224,12 +223,12 @@ class _RecordSuccessState extends State<RecordSuccess> {
                         children: [
                           Text('เวลา',
                               style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                                  fontSize: 18.53, color: kTextShowColor)),
                           Padding(
                             padding: const EdgeInsets.only(right: 8),
                             child: Text(widget.regisuserdata!['time'],
                                 style: TextStyle(
-                                    fontSize: 15, color: kTextShowColor)),
+                                    fontSize: 18.53, color: kTextShowColor)),
                           )
                         ],
                       ),
@@ -241,7 +240,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                         children: [
                           Text('รูปถ่าย',
                               style: TextStyle(
-                                  fontSize: 15, color: kTextShowColor)),
+                                  fontSize: 18.53, color: kTextShowColor)),
                         ],
                       ),
                       SizedBox(
@@ -298,14 +297,14 @@ class _RecordSuccessState extends State<RecordSuccess> {
                             children: [
                               Text('รายละเอียดเพิ่มเติม',
                                   style: TextStyle(
-                                      fontSize: 15, color: kTextShowColor)),
+                                      fontSize: 18.53, color: kTextShowColor)),
                             ],
                           ),
                           Row(
                             children: [
                               Text(widget.regisuserdata!['remark'],
                                   style: TextStyle(
-                                      fontSize: 15, color: kTextShowColor)),
+                                      fontSize: 18.53, color: kTextShowColor)),
                             ],
                           ),
                         ],
@@ -319,7 +318,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
               ),
               GestureDetector(
                 onTap: () {
-                  _sendMessageToLine();
+                  //_sendMessageToLine();
                 },
                 child: Card(
                   color: kBtnMiniColor,
@@ -345,7 +344,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                           'เเชร์ไปยัง Line Group',
                           style: TextStyle(
                               color: kConkgroundColor,
-                              fontSize: 16.39,
+                              fontSize: 18.39,
                               fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -366,7 +365,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                 child: Center(
                   child: Text(
                     'กลับไปยังหน้าเเรก',
-                    style: TextStyle(fontSize: 15, color: kConkgroundColor),
+                    style: TextStyle(fontSize: 18.53, color: kConkgroundColor),
                   ),
                 ),
               ),

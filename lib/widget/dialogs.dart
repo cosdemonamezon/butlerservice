@@ -9,12 +9,12 @@ abstract class Dialogs {
       await showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('ข้อผิดพลาด', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+          title: Text('ข้อผิดพลาด', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
           content: Text(e.message),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('ตกลง', style: TextStyle(color: Colors.black)),
+              child: Text('ตกลง', style: TextStyle(fontSize: 22,color: Colors.black)),
             ),
           ],
         ),
@@ -25,15 +25,15 @@ abstract class Dialogs {
     return await showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('ออกจากระบบ'),
-            content: const Text('คุณต้องการที่จะออกจากระบบ ?'),
+            title: Text('ออกจากระบบ'),
+            content: Text('คุณต้องการที่จะออกจากระบบ ?', style: TextStyle(fontSize: 22,)),
             actions: [
               TextButton(
-                child: const Text('ยกเลิก', style: TextStyle(color: kRed)),
+                child: Text('ยกเลิก', style: TextStyle(fontSize: 22,color: kRed)),
                 onPressed: () => Navigator.of(context).pop(false),
               ),
               TextButton(
-                child: const Text('ตกลง', style: TextStyle(color: Colors.blue)),
+                child: Text('ตกลง', style: TextStyle(fontSize: 22,color: Colors.blue)),
                 onPressed: () => Navigator.of(context).pop(true),
               ),
             ],
@@ -48,18 +48,18 @@ abstract class Dialogs {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('แจ้งเตือน'),
-          content: const Text('คุณต้องการที่จะออกจากแอพ ?'),
+          title: Text('แจ้งเตือน'),
+          content: Text('คุณต้องการที่จะออกจากแอพ ?', style: TextStyle(fontSize: 22,)),
           actions: [
             TextButton(
-              child: const Text('ยกเลิก', style: TextStyle(color: kRed)),
+              child: Text('ยกเลิก', style: TextStyle(fontSize: 22,color: kRed)),
               onPressed: () {
                 Navigator.of(context).pop();
                 status = false;
               },
             ),
             TextButton(
-              child: const Text('ตกลง', style: TextStyle(color: Colors.blue)),
+              child: Text('ตกลง', style: TextStyle(fontSize: 22,color: Colors.blue)),
               onPressed: () {
                 Navigator.of(context).pop();
                 status = true;

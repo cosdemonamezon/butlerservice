@@ -41,7 +41,6 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
         child: Column(
           children: [
             ///////////
-
             CarouselSlider.builder(
               options: CarouselOptions(
                 aspectRatio: 16 / 9,
@@ -89,7 +88,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
             ),
             //////
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
               child: Column(
                 children: [
                   Card(
@@ -101,7 +100,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                         color: kPointColor,
                         width: 2.0,
                       ),
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: SizedBox(
                       width: double.infinity,
@@ -118,10 +117,10 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('ชื่อ',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor)),
+                                        fontSize: 18.53, color: kSecondTextColor)),
                                 Text('บ้านของฉัน A',
                                     style: TextStyle(
-                                        fontSize: 15.53,
+                                        fontSize: 18.53,
                                         color: kSecondTextColor)),
                               ],
                             ),
@@ -130,10 +129,10 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('ชื่อเจ้าของบ้าน',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor)),
+                                        fontSize: 18.53, color: kSecondTextColor)),
                                 Text('นาย สมพร ร่ำรวย',
                                     style: TextStyle(
-                                        fontSize: 15.53,
+                                        fontSize: 18.53,
                                         color: kSecondTextColor)),
                               ],
                             ),
@@ -142,10 +141,10 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('หมายเลขสถานที่',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor)),
+                                        fontSize: 18.53, color: kSecondTextColor)),
                                 Text('BP11245644886699',
                                     style: TextStyle(
-                                        fontSize: 15.53,
+                                        fontSize: 18.53,
                                         color: kSecondTextColor)),
                               ],
                             ),
@@ -154,7 +153,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('สถานที่',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor))
+                                        fontSize: 18.53, color: kSecondTextColor))
                               ],
                             ),
                             SizedBox(
@@ -185,7 +184,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('รายละเอียดที่ต้องการตรวจ',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor))
+                                        fontSize: 18.53, color: kSecondTextColor))
                               ],
                             ),
                             SizedBox(
@@ -196,7 +195,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('ถังขยะหน้าบ้าน',
                                     style: TextStyle(
-                                        fontSize: 15.53,
+                                        fontSize: 18.53,
                                         color: kSecondTextColor))
                               ],
                             ),
@@ -205,7 +204,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('ตู้ไปรษณีย์',
                                     style: TextStyle(
-                                        fontSize: 15.53,
+                                        fontSize: 18.53,
                                         color: kSecondTextColor))
                               ],
                             ),
@@ -214,7 +213,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('ไฟหน้าบ้าน',
                                     style: TextStyle(
-                                        fontSize: 15.53,
+                                        fontSize: 18.53,
                                         color: kSecondTextColor))
                               ],
                             ),
@@ -223,7 +222,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('ประตูบ้าน',
                                     style: TextStyle(
-                                        fontSize: 15.53,
+                                        fontSize: 18.53,
                                         color: kSecondTextColor))
                               ],
                             ),
@@ -235,7 +234,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('ความถี่ในการตรวจ',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor))
+                                        fontSize: 18.53, color: kSecondTextColor))
                               ],
                             ),
                             SizedBox(
@@ -246,7 +245,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('เวลา 09.00 น. ทุกวัน',
                                     style: TextStyle(
-                                        fontSize: 15.53,
+                                        fontSize: 18.53,
                                         color: kSecondTextColor))
                               ],
                             ),
@@ -255,7 +254,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('เวลา 18.00 น. ทุกวัน',
                                     style: TextStyle(
-                                        fontSize: 15.53,
+                                        fontSize: 18.53,
                                         color: kSecondTextColor))
                               ],
                             ),
@@ -267,7 +266,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('กลุ่มรปภ.ที่ดูเเล',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor))
+                                        fontSize: 18.53, color: kSecondTextColor))
                               ],
                             ),
                             SizedBox(
@@ -286,9 +285,12 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                                 ),
                                 Text('กลุ่ม มั่นคงปลอดภัย A',
                                     style: TextStyle(
-                                        fontSize: 15.53,
+                                        fontSize: 18.53,
                                         color: kSecondTextColor))
                               ],
+                            ),
+                            SizedBox(
+                              height: size.height * 0.01,
                             ),
                           ],
                         ),
@@ -326,10 +328,10 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                           color: kPointColor,
                           width: 2.0,
                         ),
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(15),
                       ),
                       child: Container(
-                        height: size.height * 0.22,
+                        height: size.height * 0.20,
                         width: double.infinity,
                         child: Padding(
                           padding: EdgeInsets.symmetric(
@@ -337,13 +339,13 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                           child: Column(
                             children: [
                               SizedBox(
-                                height: size.height * 0.03,
+                                height: size.height * 0.02,
                               ),
                               Row(
                                 children: [
                                   Text('วันที่ 07/09/66 เวลา 09.00 น.',
                                       style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: 18.53,
                                           color: kSecondTextColor)),
                                 ],
                               ),
@@ -354,19 +356,19 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                                 children: [
                                   SizedBox(
                                     height: size.height * 0.08,
-                                    width: size.width * 0.75,
+                                    width: size.width * 0.82,
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
                                         CircleAvatar(
-                                          radius: 45,
+                                          radius: 40,
                                           backgroundImage: AssetImage(
                                               'assets/images/rppEll.png'),
                                         ),
                                         Text('ผู้ตรวจ นาย สมหมาย ขยันยิ่ง',
                                             style: TextStyle(
-                                                fontSize: 15,
+                                                fontSize: 18.53,
                                                 color: kSecondTextColor)),
                                       ],
                                     ),
@@ -382,14 +384,14 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                                 children: [
                                   Text('สถานะ :',
                                       style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: 18.53,
                                           color: kSecondTextColor)),
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: size.width * 0.02),
                                     child: Text('ปกติ',
                                         style: TextStyle(
-                                            fontSize: 15,
+                                            fontSize: 18.53,
                                             color: kSecondTextColor)),
                                   ),
                                   Image.asset(
@@ -414,10 +416,10 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                         color: kPointColor,
                         width: 2.0,
                       ),
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: Container(
-                      height: size.height * 0.25,
+                      height: size.height * 0.20,
                       width: double.infinity,
                       child: Padding(
                         padding:
@@ -431,7 +433,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('วันที่ 07/09/66 เวลา 09.00 น.',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor)),
+                                        fontSize: 18.53, color: kSecondTextColor)),
                               ],
                             ),
                             SizedBox(
@@ -441,18 +443,18 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 SizedBox(
                                   height: size.height * 0.08,
-                                  width: size.width * 0.75,
+                                  width: size.width * 0.82,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       CircleAvatar(
-                                        radius: 45,
+                                        radius: 40,
                                         backgroundImage: AssetImage(
                                             'assets/images/rppEll.png'),
                                       ),
                                       Text('ผู้ตรวจ นาย สมหมาย ขยันยิ่ง',
                                           style: TextStyle(
-                                              fontSize: 15,
+                                              fontSize: 18.53,
                                               color: kSecondTextColor)),
                                     ],
                                   ),
@@ -468,13 +470,13 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('สถานะ :',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor)),
+                                        fontSize: 18.53, color: kSecondTextColor)),
                                 Padding(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: size.width * 0.02),
                                   child: Text('ปกติ',
                                       style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: 18.53,
                                           color: kSecondTextColor)),
                                 ),
                                 Image.asset(
@@ -498,10 +500,10 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                         color: kPointColor,
                         width: 2.0,
                       ),
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     child: Container(
-                      height: size.height * 0.25,
+                      height: size.height * 0.20,
                       width: double.infinity,
                       child: Padding(
                         padding:
@@ -515,7 +517,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('วันที่ 07/09/66 เวลา 09.00 น.',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor)),
+                                        fontSize: 18.53, color: kSecondTextColor)),
                               ],
                             ),
                             SizedBox(
@@ -525,18 +527,18 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 SizedBox(
                                   height: size.height * 0.08,
-                                  width: size.width * 0.75,
+                                  width: size.width * 0.82,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       CircleAvatar(
-                                        radius: 45,
+                                        radius: 40,
                                         backgroundImage: AssetImage(
                                             'assets/images/rppEll.png'),
                                       ),
                                       Text('ผู้ตรวจ นาย สมหมาย ขยันยิ่ง',
                                           style: TextStyle(
-                                              fontSize: 15,
+                                              fontSize: 18.53,
                                               color: kSecondTextColor)),
                                     ],
                                   ),
@@ -552,13 +554,13 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               children: [
                                 Text('สถานะ :',
                                     style: TextStyle(
-                                        fontSize: 15, color: kSecondTextColor)),
+                                        fontSize: 18.53, color: kSecondTextColor)),
                                 Padding(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: size.width * 0.02),
                                   child: Text('ปกติ',
                                       style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: 18.53,
                                           color: kSecondTextColor)),
                                 ),
                                 Image.asset(

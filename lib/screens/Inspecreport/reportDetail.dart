@@ -89,6 +89,30 @@ class _ReportDetailState extends State<ReportDetail> {
             width: size.width,
             color: kConkgroundColor,
           ),
+          Positioned(
+            bottom: size.height * 0.02,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+              child: Center(
+                child: ButtonBigOnClick(
+                  size: size,
+                  press: () {
+                    showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoQuestion(
+                              title: 'บันทึกสำเร็จ',
+                              content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
+                              press: () {
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                              },
+                            ));
+                  },
+                  buttonName: 'บันทึก',
+                  backgroundColor: kBtnMiniColor,
+                ),
+              ),
+            ),
+          ),
           Container(
             height: size.height * 0.80,
             width: double.infinity,
@@ -356,7 +380,7 @@ class _ReportDetailState extends State<ReportDetail> {
                       GestureDetector(
                         onTap: () => openDialogImage(1),
                         child: Container(
-                          height: size.height * 0.13,
+                          height: size.height * 0.12,
                           width: size.width * 0.20,
                           decoration: BoxDecoration(
                             //color: kBackgroundColor,
@@ -367,9 +391,16 @@ class _ReportDetailState extends State<ReportDetail> {
                             borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(8),
                               bottomLeft: Radius.circular(8),
+                              topLeft: Radius.circular(8),
+                              topRight: Radius.circular(8),
                             ),
                           ),
-                          child: DottedBorder(child: Icon(Icons.add)),
+                          child: Center(
+                              child: DottedBorder(
+                                  child: Icon(
+                            Icons.add,
+                            size: 30,
+                          ))),
                         ),
                       ),
                     ],
@@ -396,7 +427,7 @@ class _ReportDetailState extends State<ReportDetail> {
                               leading: Image.asset(members[index]['image']),
                               title: Text(
                                 members[index]['name'],
-                                style: TextStyle(color: kConkgroundColor),
+                                style: TextStyle(color: kConkgroundColor, fontSize: 18.53),
                               ),
                               trailing: Image.asset('assets/icons/icon-park-solid_check-one.png'),
                             )),
@@ -414,7 +445,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     ],
                   ),
                   SizedBox(
-                    height: size.height * 0.01,
+                    height: size.height * 0.02,
                   ),
                   AppTextForm(
                     controller: time,
@@ -436,45 +467,24 @@ class _ReportDetailState extends State<ReportDetail> {
                       ButtonMiniOnClick(
                         size: size,
                         press: () {},
-                        buttonName: 'ปกติ',
-                        backgroundColor: kBtnMiniColor,
+                        buttonName: 'ไม่ปกติ',
+                        backgroundColor: kBackgroundColor,
+                      ),
+                      SizedBox(
+                        width: size.width * 0.04,
                       ),
                       ButtonMiniOnClick(
                         size: size,
                         press: () {},
-                        buttonName: 'ไม่ปกติ',
-                        backgroundColor: kBackgroundColor,
+                        buttonName: 'ปกติ',
+                        backgroundColor: kBtnMiniColor,
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: size.height * 0.05,
+                    height: size.height * 0.08,
                   ),
                 ],
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: size.height * 0.02,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
-              child: Center(
-                child: ButtonBigOnClick(
-                  size: size,
-                  press: () {
-                    showCupertinoDialog(
-                        context: context,
-                        builder: (context) => CupertinoQuestion(
-                              title: 'บันทึกสำเร็จ',
-                              content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
-                              press: () {
-                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
-                              },
-                            ));
-                  },
-                  buttonName: 'บันทึก',
-                  backgroundColor: kBtnMiniColor,
-                ),
               ),
             ),
           ),

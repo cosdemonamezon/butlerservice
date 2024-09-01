@@ -96,7 +96,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                       style: TextStyle(
                                           color: kBackgroundColor,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 15.53),
+                                          fontSize: 18.53),
                                     )
                                   ],
                                 ),
@@ -111,7 +111,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                   style: TextStyle(
                                       color: kSecondTextColor,
                                       height: 2,
-                                      fontSize: 15),
+                                      fontSize: 18.53),
                                 ),
                               ],
                             ),
@@ -121,7 +121,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                     style: TextStyle(
                                         color: kSecondTextColor,
                                         height: 2,
-                                        fontSize: 15)),
+                                        fontSize: 18.53)),
                               ],
                             ),
                             Row(
@@ -130,7 +130,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                     style: TextStyle(
                                         color: kSecondTextColor,
                                         height: 2,
-                                        fontSize: 15)),
+                                        fontSize: 18.53)),
                               ],
                             ),
                             Row(
@@ -139,7 +139,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                     style: TextStyle(
                                         color: kSecondTextColor,
                                         height: 2,
-                                        fontSize: 15)),
+                                        fontSize: 18.53)),
                               ],
                             ),
                             Row(
@@ -149,7 +149,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                     style: TextStyle(
                                         color: kSecondTextColor,
                                         height: 2,
-                                        fontSize: 15)),
+                                        fontSize: 18.53)),
                               ],
                             )
                           ],
@@ -207,7 +207,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                       style: TextStyle(
                                           color: kBackgroundColor,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 15.53),
+                                          fontSize: 18.53),
                                     )
                                   ],
                                 ),
@@ -221,7 +221,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                     style: TextStyle(
                                         color: kSecondTextColor,
                                         height: 2,
-                                        fontSize: 15)),
+                                        fontSize: 18.53)),
                               ],
                             ),
                             Row(
@@ -230,7 +230,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                     style: TextStyle(
                                         color: kSecondTextColor,
                                         height: 2,
-                                        fontSize: 15)),
+                                        fontSize: 18.53)),
                               ],
                             ),
                             Row(
@@ -239,7 +239,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                     style: TextStyle(
                                         color: kSecondTextColor,
                                         height: 2,
-                                        fontSize: 15)),
+                                        fontSize: 18.53)),
                               ],
                             ),
                             Row(
@@ -248,7 +248,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                     style: TextStyle(
                                         color: kSecondTextColor,
                                         height: 2,
-                                        fontSize: 15)),
+                                        fontSize: 18.53)),
                               ],
                             ),
                             Row(
@@ -258,7 +258,7 @@ class _SetupWorkgroupsState extends State<SetupWorkgroups> {
                                     style: TextStyle(
                                         color: kSecondTextColor,
                                         height: 2,
-                                        fontSize: 15)),
+                                        fontSize: 18.53)),
                               ],
                             )
                           ],
