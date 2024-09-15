@@ -16,6 +16,8 @@ const kTransparent = Colors.transparent;
 const kGrey = Colors.grey;
 const kWhite = Colors.white;
 
+bool isPhone(BuildContext context) => MediaQuery.of(context).size.shortestSide < 550;
+
 const List<String> banners = [
   'assets/images/banner.png',
   'assets/images/banner.png',
@@ -58,9 +60,10 @@ const List<Map<String, dynamic>> patrol = [
 ];
 
 const List<Map<String, dynamic>> officer = [
-  {'id': 1, 'image': 'assets/icons/Vector_1.ico', 'text': 'เเจ้งผู้มาเยี่ยม \n เจ้าบ้าน'},
-  {'id': 2, 'image': 'assets/icons/mdi_file-report.ico', 'text': 'ประวัติ \n การตรวจ'},
-  {'id': 3, 'image': 'assets/icons/akar-icons_stop-fill.ico', 'text': 'เเจ้งหยุดงาน'},
+  {'id': 1, 'image': 'assets/icons/mdi_file-report.ico', 'text': 'รายการตรวจ \n ประจำวัน'},
+  {'id': 2, 'image': 'assets/icons/Vector_1.ico', 'text': 'เเจ้งผู้มาเยี่ยม \n เจ้าบ้าน'},
+  {'id': 3, 'image': 'assets/icons/mdi_file-report.ico', 'text': 'ประวัติ \n การตรวจ'},
+  {'id': 4, 'image': 'assets/icons/akar-icons_stop-fill.ico', 'text': 'เเจ้งหยุดงาน'},
 ];
 
 const List<Map<String, dynamic>> iconImage = [

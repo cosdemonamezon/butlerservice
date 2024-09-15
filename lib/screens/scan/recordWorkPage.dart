@@ -11,6 +11,7 @@ import 'package:butlerservice/widget/ButtonOnClick.dart';
 import 'package:butlerservice/widget/GooglemapPage.dart';
 import 'package:butlerservice/widget/cupertinoAlertDialog.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:easy_radio/easy_radio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -39,6 +40,12 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
   List<XFile> image = [];
   Map<String, dynamic> workuser = {};
   DateTime _selectedTime = DateTime.now();
+  bool enable = true;
+  bool enable1 = false;
+  bool isChecked1 = false;
+  bool isChecked2 = false;
+  bool isChecked3 = false;
+  bool isChecked4 = false;
 
   Completer<GoogleMapController> mapcontroller = Completer();
 
@@ -328,7 +335,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     Container(
                       decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                       width: size.width * 0.9,
-                      height: size.height * 0.08,
+                      height: size.height * 0.06,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Center(
@@ -359,6 +366,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                       icon: Icon(
                                         Icons.calendar_month,
                                         color: Colors.black,
+                                        size: isPhone(context) ? 25 : 40,
                                       )),
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(fontSize: 18.53, color: Color(0xff9E9E9E)))),
@@ -383,7 +391,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     Container(
                       decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                       width: size.width * 0.9,
-                      height: size.height * 0.08,
+                      height: size.height * 0.06,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Center(
@@ -417,6 +425,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                       icon: Icon(
                                         Icons.access_time,
                                         color: Colors.black,
+                                        size: isPhone(context) ? 25 : 40,
                                       )),
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(fontSize: 18.53, color: Color(0xff9E9E9E)))),
@@ -438,44 +447,220 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                     SizedBox(
                       height: size.height * 0.01,
                     ),
-                    // Container(
-                    //   width: double.infinity,
-                    //   decoration: BoxDecoration(
-                    //     color: kConkgroundColor,
-                    //     borderRadius: BorderRadius.all(Radius.circular(10)),
-                    //   ),
-                    //   child: widget.listlocation!.job_lists != null &&
-                    //           widget.listlocation!.job_lists!.isNotEmpty
-                    //       ? Column(
-                    //           mainAxisSize: MainAxisSize.min,
-                    //           children: List.generate(
-                    //               widget.listlocation!.job_lists!.length,
-                    //               (index) => Padding(
-                    //                     padding: EdgeInsets.symmetric(
-                    //                         vertical: size.height * 0.01,
-                    //                         horizontal: size.width * 0.02),
-                    //                     child: Row(
-                    //                       mainAxisAlignment:
-                    //                           MainAxisAlignment.spaceBetween,
-                    //                       children: [
-                    //                         Text(
-                    //                           widget
-                    //                                   .listlocation!
-                    //                                   .job_lists![index]
-                    //                                   .work_desc ??
-                    //                               '',
-                    //                           style: TextStyle(
-                    //                               color: kTextColor,
-                    //                               fontSize: 16.53),
-                    //                         ),
-                    //                         Image.asset(
-                    //                             'assets/icons/icon-park-solid_check-one.png'),
-                    //                       ],
-                    //                     ),
-                    //                   )),
-                    //         )
-                    //       : SizedBox.shrink(),
-                    // ),
+                    Card(
+                      margin: EdgeInsets.zero,
+                      elevation: 0,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: kPointColor,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                  child: Text(
+                                    'ถังขยะหน้าบ้าน',
+                                    style: TextStyle(fontSize: 18.53, color: kSecondTextColor),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        isChecked1 = !isChecked1;
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: isChecked1 ? Colors.green : Colors.transparent,
+                                        border: Border.all(
+                                          color: isChecked1 ? Colors.green : Colors.grey,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                      width: 30.0,
+                                      height: 30.0,
+                                      child: isChecked1
+                                          ? Icon(
+                                              Icons.check,
+                                              color: Colors.white,
+                                              size: 20.0,
+                                            )
+                                          : null,
+                                    ),
+                                  ),
+                                ),
+                                // Padding(
+                                //   padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                //   child: Image.asset('assets/icons/icon-park-solid_check-one.png'),
+                                // ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: size.height * 0.005,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                  child: Text(
+                                    'ตู้ไปรษณีย์',
+                                    style: TextStyle(fontSize: 18.53, color: kSecondTextColor),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        isChecked2 = !isChecked2;
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: isChecked2 ? Colors.green : Colors.transparent,
+                                        border: Border.all(
+                                          color: isChecked2 ? Colors.green : Colors.grey,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                      width: 30.0,
+                                      height: 30.0,
+                                      child: isChecked2
+                                          ? Icon(
+                                              Icons.check,
+                                              color: Colors.white,
+                                              size: 20.0,
+                                            )
+                                          : null,
+                                    ),
+                                  ),
+                                ),
+                                // Padding(
+                                //   padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                //   child: Image.asset('assets/icons/icon-park-solid_check-one.png'),
+                                // ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: size.height * 0.005,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                  child: Text(
+                                    'ไฟหน้าบ้าน',
+                                    style: TextStyle(fontSize: 18.53, color: kSecondTextColor),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        isChecked3 = !isChecked3;
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: isChecked3 ? Colors.green : Colors.transparent,
+                                        border: Border.all(
+                                          color: isChecked3 ? Colors.green : Colors.grey,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                      width: 30.0,
+                                      height: 30.0,
+                                      child: isChecked3
+                                          ? Icon(
+                                              Icons.check,
+                                              color: Colors.white,
+                                              size: 20.0,
+                                            )
+                                          : null,
+                                    ),
+                                  ),
+                                ),
+                                // Padding(
+                                //   padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                //   child: Image.asset('assets/icons/icon-park-solid_check-one.png'),
+                                // ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: size.height * 0.005,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                  child: Text(
+                                    'ประตูบ้าน',
+                                    style: TextStyle(fontSize: 18.53, color: kSecondTextColor),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        isChecked4 = !isChecked4;
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: isChecked4 ? Colors.green : Colors.transparent,
+                                        border: Border.all(
+                                          color: isChecked4 ? Colors.green : Colors.grey,
+                                          width: 2.0,
+                                        ),
+                                      ),
+                                      width: 30.0,
+                                      height: 30.0,
+                                      child: isChecked4
+                                          ? Icon(
+                                              Icons.check,
+                                              color: Colors.white,
+                                              size: 20.0,
+                                            )
+                                          : null,
+                                    ),
+                                  ),
+                                ),
+                                // Padding(
+                                //   padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                                //   child: Image.asset('assets/icons/icon-park-solid_check-one.png'),
+                                // ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       height: size.height * 0.01,
                     ),
@@ -524,7 +709,7 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                                                   ),
                                                   Positioned(
                                                       top: 10,
-                                                      left: 60,
+                                                      right: 20,
                                                       child: InkWell(
                                                         onTap: () {
                                                           setState(() {
@@ -583,10 +768,14 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                         ButtonMiniOnClick(
                           size: size,
                           press: () {
+                            setState(() {
+                              enable = false;
+                              enable1 = true;
+                            });
                             //Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWorkPage()));
                           },
                           buttonName: 'ไม่ปกติ',
-                          backgroundColor: kGrey,
+                          backgroundColor: enable1 ? Colors.green : kGrey,
                         ),
                         SizedBox(
                           width: size.width * 0.06,
@@ -594,10 +783,14 @@ class _RecordWorkPageState extends State<RecordWorkPage> {
                         ButtonMiniOnClick(
                           size: size,
                           press: () {
+                            setState(() {
+                              enable = true;
+                              enable1 = false;
+                            });
                             //Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWorkPage()));
                           },
                           buttonName: 'ปกติ',
-                          backgroundColor: kBtnMiniColor,
+                          backgroundColor: enable ? Colors.green : kGrey,
                         ),
                       ],
                     ),

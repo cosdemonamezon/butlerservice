@@ -7,14 +7,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class NotifyVisitors extends StatefulWidget {
-  const NotifyVisitors({super.key});
+class AppealPage extends StatefulWidget {
+  const AppealPage({super.key});
 
   @override
-  State<NotifyVisitors> createState() => _NotifyVisitorsState();
+  State<AppealPage> createState() => _AppealPageState();
 }
 
-class _NotifyVisitorsState extends State<NotifyVisitors> {
+class _AppealPageState extends State<AppealPage> {
   final GlobalKey<FormState> notivisitorFormKey = GlobalKey<FormState>();
   final TextEditingController address = TextEditingController();
   final TextEditingController name = TextEditingController();
@@ -31,15 +31,14 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          'เเจ้งผู้มาเยี่ยมเจ้าบ้าน',
+          'เเจ้งเรื่องร้องเรียน',
           style: TextStyle(color: kSecondTextColor),
         ),
         leading: InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Image.asset('assets/icons/chevron_left.png',
-                scale: 1.3, color: kGrey)),
+            child: Image.asset('assets/icons/chevron_left.png', scale: 1.3, color: kGrey)),
       ),
       body: Stack(
         children: [
@@ -56,8 +55,7 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                 child: ButtonBigOnClick(
                   size: size,
                   press: () async {
-                    final img =
-                        await picker.pickImage(source: ImageSource.camera);
+                    final img = await picker.pickImage(source: ImageSource.camera);
                     setState(() {
                       image = img;
                     });
@@ -69,11 +67,7 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                                 title: 'บันทึกรูปสำเร็จ',
                                 content: 'กดตกลง เพื่อบันทึกข้อมูล',
                                 press: () {
-                                  Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => FirstPage()),
-                                      (route) => false);
+                                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
                                 },
                               ));
                     } else {
@@ -113,17 +107,14 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                 physics: ClampingScrollPhysics(),
                 children: [
                   SizedBox(
-                    height: size.height * 0.03,
+                    height: size.height * 0.06,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         'บ้านเลขที่',
-                        style: TextStyle(
-                            color: kSecondTextColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kSecondTextColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -132,7 +123,7 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                   ),
                   AppTextForm(
                     controller: address,
-                    hintText: '556/55',
+                    hintText: '',
                     validator: (val) {
                       if (val == null || val.isEmpty) {
                         return 'กรุณากรอกบ้านเลขที่';
@@ -147,11 +138,8 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'ชื่อ - สกุล เจ้าบ้าน ',
-                        style: TextStyle(
-                            color: kSecondTextColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        'ชื่อ - สกุล',
+                        style: TextStyle(color: kSecondTextColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -175,11 +163,8 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'ชื่อ - สกุล ผู้มาเยี่ยมเจ้าบ้าน',
-                        style: TextStyle(
-                            color: kSecondTextColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        'เบอร์โทรศัพท์',
+                        style: TextStyle(color: kSecondTextColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -203,11 +188,8 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'ความสัมพันธ์',
-                        style: TextStyle(
-                            color: kSecondTextColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        'ที่อยู่',
+                        style: TextStyle(color: kSecondTextColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -217,6 +199,7 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
                   AppTextForm(
                     controller: relationship,
                     hintText: '',
+                    maxline: 3,
                     validator: (val) {
                       if (val == null || val.isEmpty) {
                         return 'กรุณากรอกความสัมพันธ์';
@@ -231,7 +214,6 @@ class _NotifyVisitorsState extends State<NotifyVisitors> {
               ),
             ),
           ),
-          
         ],
       ),
     );

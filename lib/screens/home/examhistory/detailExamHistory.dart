@@ -60,8 +60,9 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                 return homebanners.isNotEmpty
                     ? Center(
                         child: Image.asset(
+                          height: size.height * 0.33,
                         '${homebanners[index]}',
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ))
                     : SizedBox.shrink();
               },
@@ -157,7 +158,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                               ],
                             ),
                             SizedBox(
-                              height: size.height * 0.15,
+                              height: isPhone(context) ? size.height * 0.15 : size.height * 0.25,
                               width: double.infinity,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),

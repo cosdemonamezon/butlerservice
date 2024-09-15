@@ -56,48 +56,50 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       // appBar: AppBar(title: const Text('Butler Security Service', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: kBlack))),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/icons/icon_app.jpg', height: 150),
-              SizedBox(height: size.height * 0.01),
-              const Text('เข้าสู่ระบบ',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-              SizedBox(height: size.height * 0.03),
-              AppTextForm(
-                controller: usernameController,
-                labelText: 'ผู้ใช้งาน',
-                labelStyle: TextStyle(
-                    color: kBlack, fontSize: 25, fontWeight: FontWeight.bold),
-                validator: (val) => val == '' || val == null || val.isEmpty
-                    ? 'กรุณากรอกชื่อผู้ใช้งาน'
-                    : null,
-              ),
-              SizedBox(height: size.height * 0.05),
-              AppTextForm(
-                controller: passwordController,
-                isPassword: true,
-                labelText: 'รหัสผ่าน',
-                labelStyle: TextStyle(
-                    color: kBlack, fontSize: 25, fontWeight: FontWeight.bold),
-                validator: (val) => val == '' || val == null || val.isEmpty
-                    ? 'กรุณากรอกรหัสผ่าน'
-                    : null,
-              ),
-              SizedBox(height: size.height * 0.03),
-              ButtonOnClick(
-                size: size,
-                buttonName: 'ล็อคอิน',
-                press: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => FirstPage()));
-                },
-              ),
-            ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Form(
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/icons/logo3.png', height: 200, fit: BoxFit.fill,),
+                SizedBox(height: size.height * 0.04),
+                const Text('เข้าสู่ระบบ',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                SizedBox(height: size.height * 0.03),
+                AppTextForm(
+                  controller: usernameController,
+                  labelText: 'ผู้ใช้งาน',
+                  labelStyle: TextStyle(
+                      color: kBlack, fontSize: 25, fontWeight: FontWeight.bold),
+                  validator: (val) => val == '' || val == null || val.isEmpty
+                      ? 'กรุณากรอกชื่อผู้ใช้งาน'
+                      : null,
+                ),
+                SizedBox(height: size.height * 0.05),
+                AppTextForm(
+                  controller: passwordController,
+                  isPassword: true,
+                  labelText: 'รหัสผ่าน',
+                  labelStyle: TextStyle(
+                      color: kBlack, fontSize: 25, fontWeight: FontWeight.bold),
+                  validator: (val) => val == '' || val == null || val.isEmpty
+                      ? 'กรุณากรอกรหัสผ่าน'
+                      : null,
+                ),
+                SizedBox(height: size.height * 0.03),
+                ButtonOnClick(
+                  size: size,
+                  buttonName: 'ล็อคอิน',
+                  press: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => FirstPage()));
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

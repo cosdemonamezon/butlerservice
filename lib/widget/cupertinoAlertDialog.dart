@@ -21,11 +21,11 @@ class CupertinoAlert extends StatelessWidget {
     return CupertinoAlertDialog(
       title: Text(
         title ?? '',
-        //style: TextStyle(fontFamily: fontFamily),
+        style: TextStyle(fontSize: 20),
       ),
       content: Text(
         content ?? '',
-        //style: TextStyle(fontFamily: fontFamily),
+        style: TextStyle(fontSize: 18),
       ),
       actions: <CupertinoDialogAction>[
         CupertinoDialogAction(

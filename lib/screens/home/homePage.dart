@@ -5,18 +5,23 @@ import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/controllers/appController.dart';
 import 'package:butlerservice/model/user.dart';
 import 'package:butlerservice/screens/Inspecreport/inspecReport.dart';
+import 'package:butlerservice/screens/Inspecreport/inspectionlist.dart';
+import 'package:butlerservice/screens/home/appealPage.dart';
 import 'package:butlerservice/screens/home/examhistory/examHistory.dart';
 import 'package:butlerservice/screens/home/notify/notifyVisitors.dart';
+import 'package:butlerservice/screens/home/widgets/AlertDialogReport.dart';
 import 'package:butlerservice/screens/home/widgets/ShowContainerWidget.dart';
 import 'package:butlerservice/screens/manageplaces/managePlaces.dart';
 import 'package:butlerservice/screens/place/placeRegister.dart';
 import 'package:butlerservice/screens/workgroup/setupWorkgroups.dart';
 import 'package:butlerservice/screens/workstop/workstopCalendarPage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,15 +36,21 @@ class _HomePageState extends State<HomePage> {
   User? user;
   ImagePicker picker = ImagePicker();
   List<XFile> image = [];
+  String checkUser = '';
 
   @override
   void initState() {
     super.initState();
-    // initialize();
+    initialize();
   }
 
   initialize() async {
-    user = context.read<AppController>().user;
+    //user = context.read<AppController>().user;
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final _checkUser = prefs.getString('user');
+    setState(() {
+      checkUser = _checkUser!;
+    });
   }
 
   Future<void> openDialogImage(int imageSelect) async {
@@ -122,16 +133,16 @@ class _HomePageState extends State<HomePage> {
                                       width: 64,
                                       height: 64,
                                       child: image.isNotEmpty
-                                      ?CircleAvatar(
-                                        radius: 32,
-                                        backgroundColor: kTransparent,
-                                        backgroundImage: FileImage(File(image[0].path)),                                        
-                                      )
-                                      :CircleAvatar(
-                                        radius: 32,
-                                        backgroundColor: kTransparent,
-                                        backgroundImage: AssetImage('assets/images/rppEll.png'),                                        
-                                      ),
+                                          ? CircleAvatar(
+                                              radius: 32,
+                                              backgroundColor: kTransparent,
+                                              backgroundImage: FileImage(File(image[0].path)),
+                                            )
+                                          : CircleAvatar(
+                                              radius: 32,
+                                              backgroundColor: kTransparent,
+                                              backgroundImage: AssetImage('assets/images/rppEll.png'),
+                                            ),
                                     ),
                                     Positioned(
                                       height: 25,
@@ -166,7 +177,21 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        IconButton(onPressed: () {}, icon: Image.asset('assets/icons/Notification.ico', scale: 2.5))
+                        Stack(
+                          children: [
+                            IconButton(
+                                onPressed: () async {
+                                  showDialog(context: context, builder: (context) => AlertDialogReport());
+                                },
+                                icon: Image.asset('assets/icons/Notification.ico', scale: 2.5)),
+                            Positioned(
+                                right: 5,
+                                child: CircleAvatar(
+                                  radius: 11,
+                                  child: Center(child: Text('1')),
+                                ))
+                          ],
+                        )
                       ],
                     ),
                     SizedBox(
@@ -191,8 +216,9 @@ class _HomePageState extends State<HomePage> {
                         return banners.isNotEmpty
                             ? Center(
                                 child: Image.asset(
+                                height: size.height * 0.33,
                                 '${banners[index]}',
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fill,
                               ))
                             : SizedBox.shrink();
                       },
@@ -213,130 +239,144 @@ class _HomePageState extends State<HomePage> {
                       }).toList(),
                     ),
                     //////
-                    Row(
-                      children: [
-                        Text(
-                          'สำหรับลูกค้า',
-                          style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                    checkUser == 'admin' || checkUser == 'customer'
+                        ? Row(
+                            children: [
+                              Text(
+                                'สำหรับลูกค้า',
+                                style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          )
+                        : SizedBox(),
                     SizedBox(
                       height: size.height * 0.009,
                     ),
-                    Container(
-                      height: size.height * 0.12,
-                      child: ListView.builder(
-                          primary: false,
-                          shrinkWrap: false,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: customer.length,
-                          itemBuilder: (_, index) {
-                            return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
-                              child: ShowContainerWidget(
-                                size: size,
-                                image: customer[index]['image'],
-                                text: customer[index]['text'],
-                                press: () {
-                                  if (customer[index]['id'] == 1) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceRegister()));
-                                  } else if (customer[index]['id'] == 2) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => ManagePlaces()));
-                                  } else if (customer[index]['id'] == 3) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
-                                  } else {
-                                    //Navigator.push(context, MaterialPageRoute(builder: (context) => MapTest()));
-                                  }
-                                },
-                              ),
-                            );
-                          }),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.009,
-                    ),
-                    //////
-                    Row(
-                      children: [
-                        Text(
-                          'สำหรับสายตรวจ',
-                          style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: size.height * 0.009,
-                    ),
-                    Container(
-                      height: size.height * 0.12,
-                      child: ListView.builder(
-                          primary: false,
-                          shrinkWrap: false,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: patrol.length,
-                          itemBuilder: (_, index) {
-                            return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
-                              child: ShowContainerWidget(
-                                size: size,
-                                image: patrol[index]['image'],
-                                text: patrol[index]['text'],
-                                press: () {
-                                  if (patrol[index]['id'] == 1) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => InspecReport()));
-                                  } else if (patrol[index]['id'] == 2) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => SetupWorkgroups()));
-                                  } else if (patrol[index]['id'] == 3) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
-                                  } else {}
-                                },
-                              ),
-                            );
-                          }),
-                    ),
+                    checkUser == 'admin' || checkUser == 'customer'
+                        ? Container(
+                            height: size.height * 0.12,
+                            child: ListView.builder(
+                                primary: false,
+                                shrinkWrap: false,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: customer.length,
+                                itemBuilder: (_, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                                    child: ShowContainerWidget(
+                                      size: size,
+                                      image: customer[index]['image'],
+                                      text: customer[index]['text'],
+                                      press: () {
+                                        if (customer[index]['id'] == 1) {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceRegister()));
+                                        } else if (customer[index]['id'] == 2) {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => ManagePlaces()));
+                                        } else if (customer[index]['id'] == 3) {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
+                                        } else {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => AppealPage()));
+                                        }
+                                      },
+                                    ),
+                                  );
+                                }),
+                          )
+                        : SizedBox(),
                     SizedBox(
                       height: size.height * 0.009,
                     ),
                     //////
-                    Row(
-                      children: [
-                        Text(
-                          'สำหรับเจ้าหน้าที่',
-                          style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                    checkUser == 'admin' || checkUser == 'patrol'
+                        ? Row(
+                            children: [
+                              Text(
+                                'สำหรับสายตรวจ',
+                                style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          )
+                        : SizedBox(),
                     SizedBox(
                       height: size.height * 0.009,
                     ),
-                    Container(
-                      height: size.height * 0.12,
-                      child: ListView.builder(
-                          primary: false,
-                          shrinkWrap: false,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: officer.length,
-                          itemBuilder: (_, index) {
-                            return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
-                              child: ShowContainerWidget(
-                                size: size,
-                                image: officer[index]['image'],
-                                text: officer[index]['text'],
-                                press: () {
-                                  if (officer[index]['id'] == 1) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => NotifyVisitors()));
-                                  } else if (officer[index]['id'] == 2) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
-                                  } else if (officer[index]['id'] == 3) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => WorkstopCalendarPage()));
-                                  } else {}
-                                },
-                              ),
-                            );
-                          }),
+                    checkUser == 'admin' || checkUser == 'patrol'
+                        ? Container(
+                            height: size.height * 0.12,
+                            child: ListView.builder(
+                                primary: false,
+                                shrinkWrap: false,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: patrol.length,
+                                itemBuilder: (_, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                                    child: ShowContainerWidget(
+                                      size: size,
+                                      image: patrol[index]['image'],
+                                      text: patrol[index]['text'],
+                                      press: () {
+                                        if (patrol[index]['id'] == 1) {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => InspecReport()));
+                                        } else if (patrol[index]['id'] == 2) {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => SetupWorkgroups()));
+                                        } else if (patrol[index]['id'] == 3) {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
+                                        } else {}
+                                      },
+                                    ),
+                                  );
+                                }),
+                          )
+                        : SizedBox(),
+                    SizedBox(
+                      height: size.height * 0.009,
                     ),
+                    //////
+                    checkUser == 'admin' || checkUser == 'officer'
+                        ? Row(
+                            children: [
+                              Text(
+                                'สำหรับเจ้าหน้าที่',
+                                style: TextStyle(color: kBackgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          )
+                        : SizedBox(),
+                    SizedBox(
+                      height: size.height * 0.009,
+                    ),
+                    checkUser == 'admin' || checkUser == 'officer'
+                        ? Container(
+                            height: size.height * 0.12,
+                            child: ListView.builder(
+                                primary: false,
+                                shrinkWrap: false,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: officer.length,
+                                itemBuilder: (_, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                                    child: ShowContainerWidget(
+                                      size: size,
+                                      image: officer[index]['image'],
+                                      text: officer[index]['text'],
+                                      press: () {
+                                        if (officer[index]['id'] == 1) {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => InspectionList()));
+                                        } else if (officer[index]['id'] == 2) {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => NotifyVisitors()));
+                                        } else if (officer[index]['id'] == 3) {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => Examhistory()));
+                                        } else if (officer[index]['id'] == 4) {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => WorkstopCalendarPage()));
+                                        } else {}
+                                      },
+                                    ),
+                                  );
+                                }),
+                          )
+                        : SizedBox(),
                     SizedBox(
                       height: size.height * 0.08,
                     ),

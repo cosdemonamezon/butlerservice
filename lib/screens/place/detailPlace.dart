@@ -413,7 +413,7 @@ class _DetailPlaceState extends State<DetailPlace> {
                                                   ),
                                                   Positioned(
                                                       top: 10,
-                                                      left: 60,
+                                                      right: 10,
                                                       child: InkWell(
                                                         onTap: () {
                                                           setState(() {

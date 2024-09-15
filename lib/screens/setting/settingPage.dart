@@ -1,6 +1,7 @@
 import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/controllers/appController.dart';
 import 'package:butlerservice/screens/auth/loginPage.dart';
+import 'package:butlerservice/screens/auth/loginPage1.dart';
 import 'package:butlerservice/screens/setting/widgets/ContainerSetting.dart';
 import 'package:butlerservice/utils/screen_utils.dart';
 import 'package:butlerservice/widget/dialogs.dart';
@@ -110,7 +111,7 @@ class _SettingPageState extends State<SettingPage> {
                       final isLogout = await Dialogs.logout(context);
                       if (mounted && isLogout) {
                         context.read<AppController>().logout();
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage1()), (route) => false);
                       }
                     }),
               ],

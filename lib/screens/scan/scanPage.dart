@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:barcode_scan2/barcode_scan2.dart';
+import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/model/location.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/screens/scan/recordWork.dart';
@@ -39,8 +40,20 @@ class _ScanPageState extends State<ScanPage> {
         //   location = _getlocation;
         // });
 
-        if (!mounted) return;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWork()));
+        if (barcode == '12345') {
+          if (!mounted) return;
+          Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWork()));
+        } else {
+          showCupertinoDialog(
+              context: context,
+              builder: (context) => CupertinoQuestion(
+                    title: 'แจ้งเตือน',
+                    content: 'QR Code ไม่ถูกต้อง',
+                    press: () {
+                      Navigator.pop(context, true);
+                    },
+                  ));
+        }
         // Navigator.push(
         //     context,
         //     MaterialPageRoute(
@@ -49,8 +62,15 @@ class _ScanPageState extends State<ScanPage> {
         //             )));
         //inspect(location);
       } else {
-        if (!mounted) return;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => RecordWork()));
+        showCupertinoDialog(
+            context: context,
+            builder: (context) => CupertinoQuestion(
+                  title: 'แจ้งเตือน',
+                  content: 'QR Code ไม่ถูกต้อง',
+                  press: () {
+                    Navigator.pop(context, true);
+                  },
+                ));
         // Navigator.pushAndRemoveUntil(
         //     context,
         //     MaterialPageRoute(builder: (context) => FirstPage()),
@@ -92,9 +112,46 @@ class _ScanPageState extends State<ScanPage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('scan'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height * 0.15,
+            ),
+            Center(
+              child: GestureDetector(
+                onTap: () {scan();},
+                child: Card(
+                  color: Colors.amber,
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    // side: BorderSide(
+                    //   color: Colors.grey,
+                    // ),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Container(
+                    width: size.width * 0.30,
+                    height: size.height * 0.05,
+                    child: Center(
+                        child: Text(
+                      'SCAN',
+                      style: TextStyle(color: kConkgroundColor, fontSize: 16.39, fontWeight: FontWeight.bold),
+                    )),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.25,
+            ),
+          ],
+        ),
       ),
     );
   }

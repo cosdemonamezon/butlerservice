@@ -162,7 +162,7 @@ class _RegisPlaceSuccessState extends State<RegisPlaceSuccess> {
                         height: size.height * 0.01,
                       ),
                       SizedBox(
-                        height: size.height * 0.16,
+                        height: isPhone(context) ? size.height * 0.16 : size.height * 0.26,
                         width: double.infinity,
                         child: Card(
                           elevation: 10,

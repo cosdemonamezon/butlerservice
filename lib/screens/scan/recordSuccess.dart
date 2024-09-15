@@ -135,7 +135,7 @@ class _RecordSuccessState extends State<RecordSuccess> {
                         height: size.height * 0.01,
                       ),
                       SizedBox(
-                        height: size.height * 0.17,
+                        height: isPhone(context) ? size.height * 0.17 :size.height * 0.27,
                         width: double.infinity,
                         child: Card(
                           elevation: 10,

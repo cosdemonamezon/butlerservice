@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:butlerservice/constants.dart';
 import 'package:butlerservice/controllers/appController.dart';
 import 'package:butlerservice/screens/auth/loginPage.dart';
+import 'package:butlerservice/screens/auth/loginPage1.dart';
 import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
@@ -82,10 +83,10 @@ class _StatusLoginState extends State<StatusLogin> {
       if (token != null && token != '') {
         return FirstPage();
       } else {
-        return const LoginPage();
+        return const LoginPage1();
       }
     } else {
-      return const LoginPage();
+      return const LoginPage1();
     }
   }
 

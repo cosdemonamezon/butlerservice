@@ -32,17 +32,19 @@ class ContainerSetting extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: press,
-        child: ListTile(
-          dense: false,
-          leading: Image.asset(leadingIcon, scale: 3),
-          title: Text(
-            title,
-            style: TextStyle(
-              fontSize: 20.53,
-              color: kSecondTextColor,
+        child: Center(
+          child: ListTile(
+            dense: false,
+            leading: Image.asset(leadingIcon, scale: 3),
+            title: Text(
+              title,
+              style: TextStyle(
+                fontSize: 20.53,
+                color: kSecondTextColor,
+              ),
             ),
+            trailing: Image.asset(trailingIcon),
           ),
-          trailing: Image.asset(trailingIcon),
         ),
       ),
     );

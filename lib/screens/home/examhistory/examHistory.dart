@@ -77,7 +77,7 @@ class _ExamhistoryState extends State<Examhistory> {
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
                           width: size.width * 0.38,
-                          height: size.height * 0.39,
+                          height: isPhone(context) ? size.height *  0.39: size.height *  0.29,
                           child: Row(
                             children: [
                               Expanded(
