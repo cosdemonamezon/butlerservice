@@ -109,7 +109,7 @@ class _StatusLoginState extends State<StatusLogin> {
                   child: CircularProgressIndicator(
                       color: kBackgroundColor, strokeWidth: 5)));
         } else {
-          return const LoginPage();
+          return const LoginPage1();
         }
       },
     );
