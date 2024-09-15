@@ -58,16 +58,20 @@ class _AddMemberGroupState extends State<AddMemberGroup> {
               child: Center(
                 child: ButtonBigOnClick(
                   size: size,
-                  press: () {
-                    showCupertinoDialog(
-                        context: context,
-                        builder: (context) => CupertinoQuestion(
-                              title: 'บันทึกสำเร็จ',
-                              content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
-                              press: () {
-                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
-                              },
-                            ));
+                  press: () async{
+                    final ok = await showCupertinoDialog(
+                          context: context,
+                          builder: (context) => CupertinoQuestion(
+                                title: 'กล่องข้อความ',
+                                content: 'เพิ่มกลุ่มงานสำเร็จ',
+                                press: () {
+                                  //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                                  Navigator.pop(context, true);
+                                },
+                              ));
+                    if (ok == true) {
+                      Navigator.pop(context, true);
+                    }
                   },
                   buttonName: 'บันทึก',
                   backgroundColor: kBtnMiniColor,

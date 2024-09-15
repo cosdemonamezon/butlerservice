@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:butlerservice/constants.dart';
+import 'package:butlerservice/screens/home/firstPage.dart';
 import 'package:butlerservice/screens/workgroup/addMemberGroup.dart';
 import 'package:butlerservice/widget/AppTextForm.dart';
 import 'package:butlerservice/widget/ButtonOnClick.dart';
 import 'package:butlerservice/widget/GooglemapPage.dart';
+import 'package:butlerservice/widget/cupertinoAlertDialog.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -53,7 +56,17 @@ class _WorkgroupState extends State<Workgroup> {
               child: Center(
                 child: ButtonBigOnClick(
                   size: size,
-                  press: () {},
+                  press: () {
+                    showCupertinoDialog(
+                        context: context,
+                        builder: (context) => CupertinoQuestion(
+                              title: 'บันทึกสำเร็จ',
+                              content: 'กดตกลง เพื่อกลับไปหน้าหลัก',
+                              press: () {
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => FirstPage()), (route) => false);
+                              },
+                            ));
+                  },
                   buttonName: 'บันทึก',
                   backgroundColor: kBtnMiniColor,
                 ),
@@ -88,17 +101,17 @@ class _WorkgroupState extends State<Workgroup> {
                           CircleAvatar(
                             radius: 60,
                             backgroundColor: Colors.transparent,
-                            backgroundImage:
-                                AssetImage('assets/images/Ellipse 18.png'),
+                            backgroundImage: AssetImage('assets/images/Ellipse 18.png'),
                           ),
                         ],
                       ),
                       Positioned(
                           top: 90,
-                          left: 220,
+                          left: isPhone(context) ? 220 : 392,
                           child: Icon(
                             Icons.camera_alt,
                             color: Colors.orange,
+                            size: isPhone(context) ? 20 : 30,
                           ))
                     ],
                   ),
@@ -110,10 +123,7 @@ class _WorkgroupState extends State<Workgroup> {
                     children: [
                       Text(
                         'ชื่อกลุ่ม',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -138,10 +148,7 @@ class _WorkgroupState extends State<Workgroup> {
                     children: [
                       Text(
                         'สถานที่',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -180,10 +187,7 @@ class _WorkgroupState extends State<Workgroup> {
                     children: [
                       Text(
                         'รายละเอียดสถานที่',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -208,10 +212,7 @@ class _WorkgroupState extends State<Workgroup> {
                     children: [
                       Text(
                         'วันต้องการตรวจ',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -236,32 +237,34 @@ class _WorkgroupState extends State<Workgroup> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: size.height * 0.02,
-                                  horizontal: size.width * 0.03),
+                              padding: EdgeInsets.symmetric(vertical: size.height * 0.02, horizontal: size.width * 0.03),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     '• จันทร์',
-                                    style: TextStyle(color: kSecondTextColor, fontSize: 18.53,),
+                                    style: TextStyle(
+                                      color: kSecondTextColor,
+                                      fontSize: 18.53,
+                                    ),
                                   ),
                                   Text('• พุธ',
-                                      style:
-                                          TextStyle(color: kSecondTextColor, fontSize: 18.53,)),
+                                      style: TextStyle(
+                                        color: kSecondTextColor,
+                                        fontSize: 18.53,
+                                      )),
                                   Text('• ศุกร์',
-                                      style:
-                                          TextStyle(color: kSecondTextColor, fontSize: 18.53,)),
+                                      style: TextStyle(
+                                        color: kSecondTextColor,
+                                        fontSize: 18.53,
+                                      )),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: size.height * 0.01,
-                                  horizontal: size.width * 0.03),
-                              child: Image.asset(
-                                  'assets/icons/solar_calendar_bold.png'),
+                              padding: EdgeInsets.symmetric(vertical: size.height * 0.01, horizontal: size.width * 0.03),
+                              child: Image.asset('assets/icons/solar_calendar_bold.png'),
                             ),
                           ],
                         ),
@@ -276,10 +279,7 @@ class _WorkgroupState extends State<Workgroup> {
                     children: [
                       Text(
                         'เวลาที่ต้องการตรวจ',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -304,10 +304,7 @@ class _WorkgroupState extends State<Workgroup> {
                     children: [
                       Text(
                         'สมาชิกภายในกลุ่ม',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -321,10 +318,12 @@ class _WorkgroupState extends State<Workgroup> {
                               leading: Image.asset(members[index]['image']),
                               title: Text(
                                 members[index]['name'],
-                                style: TextStyle(color: kConkgroundColor, fontSize: 18.53,),
+                                style: TextStyle(
+                                  color: kConkgroundColor,
+                                  fontSize: 18.53,
+                                ),
                               ),
-                              trailing:
-                                  Image.asset('assets/icons/icon_set.png'),
+                              trailing: Image.asset('assets/icons/icon_set.png'),
                             )),
                   ),
                   SizedBox(
@@ -333,9 +332,9 @@ class _WorkgroupState extends State<Workgroup> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset('assets/icons/long_rac.png'),
+                      Image.asset('assets/icons/long_rac.png', width: size.width * 0.34, fit: BoxFit.fill,),
                       Image.asset('assets/icons/flat_color_icons_plus.png'),
-                      Image.asset('assets/icons/long_rac.png'),
+                      Image.asset('assets/icons/long_rac.png', width: size.width * 0.34, fit: BoxFit.fill,),
                     ],
                   ),
                   SizedBox(
@@ -343,15 +342,15 @@ class _WorkgroupState extends State<Workgroup> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddMemberGroup()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => AddMemberGroup()));
                     },
                     child: Center(
                       child: Text(
                         'เพิ่มสมาชิก',
-                        style: TextStyle(color: kTextAddColor, fontSize: 20.53,),
+                        style: TextStyle(
+                          color: kTextAddColor,
+                          fontSize: 20.53,
+                        ),
                       ),
                     ),
                   ),
@@ -363,10 +362,7 @@ class _WorkgroupState extends State<Workgroup> {
                     children: [
                       Text(
                         'บันทึกรายละเอียดเพิ่มเติม',
-                        style: TextStyle(
-                            color: kConkgroundColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: kConkgroundColor, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -391,7 +387,6 @@ class _WorkgroupState extends State<Workgroup> {
               ),
             ),
           ),
-          
         ],
       ),
     );

@@ -131,7 +131,7 @@ class _LoginPage1State extends State<LoginPage1> {
                       }
                     },
                     child: ButtonWidget(
-                      title: 'เข้าู่ระบบ',
+                      title: 'เข้าสู่ระบบ',
                       hasBorder: false,
                     ),
                   ),

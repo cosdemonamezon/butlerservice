@@ -31,10 +31,10 @@ class TextFieldWidget extends StatelessWidget {
       cursorColor: Global.mediumBlue,
       style: TextStyle(
         color: Global.mediumBlue,
-        fontSize: 14.0,
+        fontSize: 20.0,
       ),
       decoration: InputDecoration(
-        labelStyle: TextStyle(color: Global.mediumBlue),
+        labelStyle: TextStyle(color: Global.mediumBlue, fontSize: 20),
         focusColor: Global.mediumBlue,
         filled: true,
         enabledBorder: UnderlineInputBorder(

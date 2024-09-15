@@ -60,7 +60,7 @@ class _ManagePlacesState extends State<ManagePlaces> {
                 physics: ClampingScrollPhysics(),
                 children: [
                   SizedBox(
-                    height: size.height * 0.01,
+                    height: size.height * 0.04,
                   ),
                   Card(
                     margin: EdgeInsets.zero,
@@ -77,7 +77,7 @@ class _ManagePlacesState extends State<ManagePlaces> {
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         width: size.width * 0.38,
-                        height: size.height * 0.39,
+                        height: isPhone(context) ?size.height * 0.39 :size.height * 0.29,
                         child: Row(
                           children: [
                             Expanded(
@@ -135,7 +135,7 @@ class _ManagePlacesState extends State<ManagePlaces> {
                                         ],
                                       ),
                                       SizedBox(
-                                        height: size.height * 0.10,
+                                        height: size.height * 0.12,
                                         width: double.infinity,
                                         //color: Colors.blue,
                                         child: Transform.scale(

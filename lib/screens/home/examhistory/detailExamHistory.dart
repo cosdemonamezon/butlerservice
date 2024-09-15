@@ -332,7 +332,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Container(
-                        height: size.height * 0.20,
+                        height: isPhone(context) ? size.height * 0.20 : size.height * 0.18,
                         width: double.infinity,
                         child: Padding(
                           padding: EdgeInsets.symmetric(
@@ -375,7 +375,7 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                                     ),
                                   ),
                                   Image.asset(
-                                      'assets/icons/carbon_view-filled.png')
+                                      'assets/icons/carbon_view-filled.png', height: size.height * 0.04, fit: BoxFit.fill,)
                                 ],
                               ),
                               SizedBox(
@@ -408,83 +408,91 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                   SizedBox(
                     height: size.height * 0.01,
                   ),
-                  Card(
-                    margin: EdgeInsets.zero,
-                    elevation: 0,
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: kPointColor,
-                        width: 2.0,
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => InspectorHistory()));
+                    },
+                    child: Card(
+                      margin: EdgeInsets.zero,
+                      elevation: 0,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: kPointColor,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Container(
-                      height: size.height * 0.20,
-                      width: double.infinity,
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: size.height * 0.03,
-                            ),
-                            Row(
-                              children: [
-                                Text('วันที่ 07/09/66 เวลา 09.00 น.',
-                                    style: TextStyle(
-                                        fontSize: 18.53, color: kSecondTextColor)),
-                              ],
-                            ),
-                            SizedBox(
-                              height: size.height * 0.01,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  height: size.height * 0.08,
-                                  width: size.width * 0.82,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 40,
-                                        backgroundImage: AssetImage(
-                                            'assets/images/rppEll.png'),
-                                      ),
-                                      Text('ผู้ตรวจ นาย สมหมาย ขยันยิ่ง',
-                                          style: TextStyle(
-                                              fontSize: 18.53,
-                                              color: kSecondTextColor)),
-                                    ],
-                                  ),
-                                ),
-                                Image.asset(
-                                    'assets/icons/carbon_view-filled.png')
-                              ],
-                            ),
-                            SizedBox(
-                              height: size.height * 0.01,
-                            ),
-                            Row(
-                              children: [
-                                Text('สถานะ :',
-                                    style: TextStyle(
-                                        fontSize: 18.53, color: kSecondTextColor)),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: size.width * 0.02),
-                                  child: Text('ปกติ',
+                      child: Container(
+                        height: isPhone(context) ? size.height * 0.20 : size.height * 0.18,
+                        width: double.infinity,
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: size.height * 0.03,
+                              ),
+                              Row(
+                                children: [
+                                  Text('วันที่ 07/09/66 เวลา 09.00 น.',
                                       style: TextStyle(
-                                          fontSize: 18.53,
-                                          color: kSecondTextColor)),
-                                ),
-                                Image.asset(
-                                    'assets/icons/icon-park-solid_check-one.png')
-                              ],
-                            ),
-                          ],
+                                          fontSize: 18.53, color: kSecondTextColor)),
+                                ],
+                              ),
+                              SizedBox(
+                                height: size.height * 0.01,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    height: size.height * 0.08,
+                                    width: size.width * 0.82,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 40,
+                                          backgroundImage: AssetImage(
+                                              'assets/images/rppEll.png'),
+                                        ),
+                                        Text('ผู้ตรวจ นาย สมหมาย ขยันยิ่ง',
+                                            style: TextStyle(
+                                                fontSize: 18.53,
+                                                color: kSecondTextColor)),
+                                      ],
+                                    ),
+                                  ),
+                                  Image.asset(
+                                      'assets/icons/carbon_view-filled.png', height: size.height * 0.04, fit: BoxFit.fill,)
+                                ],
+                              ),
+                              SizedBox(
+                                height: size.height * 0.01,
+                              ),
+                              Row(
+                                children: [
+                                  Text('สถานะ :',
+                                      style: TextStyle(
+                                          fontSize: 18.53, color: kSecondTextColor)),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: size.width * 0.02),
+                                    child: Text('ปกติ',
+                                        style: TextStyle(
+                                            fontSize: 18.53,
+                                            color: kSecondTextColor)),
+                                  ),
+                                  Image.asset(
+                                      'assets/icons/icon-park-solid_check-one.png')
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -492,83 +500,91 @@ class _DetailExamHistoryState extends State<DetailExamHistory> {
                   SizedBox(
                     height: size.height * 0.01,
                   ),
-                  Card(
-                    margin: EdgeInsets.zero,
-                    elevation: 0,
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: kPointColor,
-                        width: 2.0,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => InspectorHistory()));
+                    },
+                    child: Card(
+                      margin: EdgeInsets.zero,
+                      elevation: 0,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: kPointColor,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Container(
-                      height: size.height * 0.20,
-                      width: double.infinity,
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: size.height * 0.03,
-                            ),
-                            Row(
-                              children: [
-                                Text('วันที่ 07/09/66 เวลา 09.00 น.',
-                                    style: TextStyle(
-                                        fontSize: 18.53, color: kSecondTextColor)),
-                              ],
-                            ),
-                            SizedBox(
-                              height: size.height * 0.01,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  height: size.height * 0.08,
-                                  width: size.width * 0.82,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 40,
-                                        backgroundImage: AssetImage(
-                                            'assets/images/rppEll.png'),
-                                      ),
-                                      Text('ผู้ตรวจ นาย สมหมาย ขยันยิ่ง',
-                                          style: TextStyle(
-                                              fontSize: 18.53,
-                                              color: kSecondTextColor)),
-                                    ],
-                                  ),
-                                ),
-                                Image.asset(
-                                    'assets/icons/carbon_view-filled.png')
-                              ],
-                            ),
-                            SizedBox(
-                              height: size.height * 0.01,
-                            ),
-                            Row(
-                              children: [
-                                Text('สถานะ :',
-                                    style: TextStyle(
-                                        fontSize: 18.53, color: kSecondTextColor)),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: size.width * 0.02),
-                                  child: Text('ปกติ',
+                      child: Container(
+                        height: isPhone(context) ? size.height * 0.20 : size.height * 0.18,
+                        width: double.infinity,
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: size.height * 0.03,
+                              ),
+                              Row(
+                                children: [
+                                  Text('วันที่ 07/09/66 เวลา 09.00 น.',
                                       style: TextStyle(
-                                          fontSize: 18.53,
-                                          color: kSecondTextColor)),
-                                ),
-                                Image.asset(
-                                    'assets/icons/icon-park-solid_check-one.png')
-                              ],
-                            ),
-                          ],
+                                          fontSize: 18.53, color: kSecondTextColor)),
+                                ],
+                              ),
+                              SizedBox(
+                                height: size.height * 0.01,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    height: size.height * 0.08,
+                                    width: size.width * 0.82,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 40,
+                                          backgroundImage: AssetImage(
+                                              'assets/images/rppEll.png'),
+                                        ),
+                                        Text('ผู้ตรวจ นาย สมหมาย ขยันยิ่ง',
+                                            style: TextStyle(
+                                                fontSize: 18.53,
+                                                color: kSecondTextColor)),
+                                      ],
+                                    ),
+                                  ),
+                                  Image.asset(
+                                      'assets/icons/carbon_view-filled.png', height: size.height * 0.04, fit: BoxFit.fill,)
+                                ],
+                              ),
+                              SizedBox(
+                                height: size.height * 0.01,
+                              ),
+                              Row(
+                                children: [
+                                  Text('สถานะ :',
+                                      style: TextStyle(
+                                          fontSize: 18.53, color: kSecondTextColor)),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: size.width * 0.02),
+                                    child: Text('ปกติ',
+                                        style: TextStyle(
+                                            fontSize: 18.53,
+                                            color: kSecondTextColor)),
+                                  ),
+                                  Image.asset(
+                                      'assets/icons/icon-park-solid_check-one.png')
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

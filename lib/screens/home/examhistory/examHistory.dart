@@ -58,6 +58,9 @@ class _ExamhistoryState extends State<Examhistory> {
                 scrollDirection: Axis.vertical,
                 physics: ClampingScrollPhysics(),
                 children: [
+                  SizedBox(
+                    height: size.height * 0.03,
+                  ),
                   Card(
                     margin: EdgeInsets.zero,
                     elevation: 0,

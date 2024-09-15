@@ -23,9 +23,9 @@ class InspectionList extends StatefulWidget {
 class _InspectionListState extends State<InspectionList> {
   Completer<GoogleMapController> mapcontroller = Completer();
   Completer<GoogleMapController> mapcontroller1 = Completer();
+  Completer<GoogleMapController> mapcontroller2 = Completer();
   String barcode = "";
   Location? location;
-  
 
   @override
   void initState() {
@@ -122,6 +122,7 @@ class _InspectionListState extends State<InspectionList> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -152,6 +153,8 @@ class _InspectionListState extends State<InspectionList> {
                 bottomLeft: Radius.circular(50),
               ),
             ),
+          ),
+          Container(
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: size.width * 0.02,
@@ -183,7 +186,7 @@ class _InspectionListState extends State<InspectionList> {
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
                           width: size.width * 0.38,
-                          height: isPhone(context) ? size.height * 0.39 : size.height * 0.29,
+                          height: isPhone(context) ? size.height * 0.39 : size.height * 0.33,
                           child: Row(
                             children: [
                               Expanded(
@@ -206,25 +209,50 @@ class _InspectionListState extends State<InspectionList> {
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              'บ้านของฉัน',
+                                              'สถานที่ตรวจที่หนึ่ง',
                                               style: TextStyle(fontSize: 17.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
                                             ),
                                             SizedBox(
                                               width: size.width * 0.02,
                                             ),
-                                            GestureDetector(onTap: () {scan();}, child: Icon(Icons.qr_code_scanner, size: 40,))
+                                            GestureDetector(
+                                                onTap: () {
+                                                  scan();
+                                                },
+                                                child: Icon(
+                                                  Icons.qr_code_scanner,
+                                                  size: 40,
+                                                ))
                                           ],
                                         ),
-                                        Text(
-                                          'หมายเลขสถานที่',
-                                          style: TextStyle(fontSize: 17.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'หมายเลขสถานที่',
+                                              style: TextStyle(fontSize: 17.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              'จ. - ศ.',
+                                              style: TextStyle(fontSize: 15.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
                                         ),
-                                        Text(
-                                          'BP11245644886699',
-                                          style: TextStyle(
-                                            fontSize: 17.53,
-                                            color: kSecondTextColor,
-                                          ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'BP11245644886699',
+                                              style: TextStyle(
+                                                fontSize: 17.53,
+                                                color: kSecondTextColor,
+                                              ),
+                                            ),
+                                            Text(
+                                              '9.00 - 11.00',
+                                              style: TextStyle(fontSize: 14.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
                                         ),
                                         SizedBox(
                                           height: size.height * 0.01,
@@ -276,11 +304,23 @@ class _InspectionListState extends State<InspectionList> {
                                           ),
                                         ),
                                         Text(
-                                          'รายละเอียดเพิ่มเติม',
+                                          'รายละเอียดการตรวจ',
                                           style: TextStyle(fontSize: 16.53, fontWeight: FontWeight.bold, color: kSecondTextColor),
                                         ),
                                         Text(
-                                          '313 อาคาร ซี.พี.ทาวเวอร์ ชั้น 24 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500',
+                                          'ถังขยะหน้าบ้าน',
+                                          style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
+                                        ),
+                                        Text(
+                                          'ตู้ไปรษณีย',
+                                          style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
+                                        ),
+                                        Text(
+                                          'ไฟหน้าบ้าน',
+                                          style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
+                                        ),
+                                        Text(
+                                          'ประตูบ้าน',
                                           style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
                                         ),
                                       ],
@@ -293,7 +333,7 @@ class _InspectionListState extends State<InspectionList> {
                     ),
                   ),
                   SizedBox(
-                    height: size.height * 0.02,
+                    height: size.height * 0.01,
                   ),
                   Card(
                     margin: EdgeInsets.zero,
@@ -314,7 +354,7 @@ class _InspectionListState extends State<InspectionList> {
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
                           width: size.width * 0.38,
-                          height: isPhone(context) ? size.height * 0.39 : size.height * 0.29,
+                          height: isPhone(context) ? size.height * 0.39 : size.height * 0.33,
                           child: Row(
                             children: [
                               Expanded(
@@ -337,25 +377,50 @@ class _InspectionListState extends State<InspectionList> {
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              'บ้านของฉันหลังที่สอง',
+                                              'สถานที่ตรวจที่สอง',
                                               style: TextStyle(fontSize: 17.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
                                             ),
                                             SizedBox(
                                               width: size.width * 0.02,
                                             ),
-                                            GestureDetector(onTap: () {scan();}, child: Icon(Icons.qr_code_scanner, size: 40,))
+                                            GestureDetector(
+                                                onTap: () {
+                                                  scan();
+                                                },
+                                                child: Icon(
+                                                  Icons.qr_code_scanner,
+                                                  size: 40,
+                                                ))
                                           ],
                                         ),
-                                        Text(
-                                          'หมายเลขสถานที่',
-                                          style: TextStyle(fontSize: 17.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'หมายเลขสถานที่',
+                                              style: TextStyle(fontSize: 17.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              'จ. - ศ.',
+                                              style: TextStyle(fontSize: 15.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
                                         ),
-                                        Text(
-                                          'BP11245644886699',
-                                          style: TextStyle(
-                                            fontSize: 17.53,
-                                            color: kSecondTextColor,
-                                          ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'BP11245644886699',
+                                              style: TextStyle(
+                                                fontSize: 17.53,
+                                                color: kSecondTextColor,
+                                              ),
+                                            ),
+                                            Text(
+                                              '13.00 - 18.00',
+                                              style: TextStyle(fontSize: 14.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
                                         ),
                                         SizedBox(
                                           height: size.height * 0.01,
@@ -411,7 +476,19 @@ class _InspectionListState extends State<InspectionList> {
                                           style: TextStyle(fontSize: 16.53, fontWeight: FontWeight.bold, color: kSecondTextColor),
                                         ),
                                         Text(
-                                          '313 อาคาร ซี.พี.ทาวเวอร์ ชั้น 24 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500',
+                                          'ถังขยะหน้าบ้าน',
+                                          style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
+                                        ),
+                                        Text(
+                                          'ตู้ไปรษณีย',
+                                          style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
+                                        ),
+                                        Text(
+                                          'ไฟหน้าบ้าน',
+                                          style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
+                                        ),
+                                        Text(
+                                          'ประตูบ้าน',
                                           style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
                                         ),
                                       ],
@@ -422,6 +499,177 @@ class _InspectionListState extends State<InspectionList> {
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: size.height * 0.01,
+                  ),
+                  Card(
+                    margin: EdgeInsets.zero,
+                    elevation: 0,
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: kPointColor,
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => DetailExamHistory()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: size.width * 0.38,
+                          height: isPhone(context) ? size.height * 0.39 : size.height * 0.33,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                  flex: 4,
+                                  child: Image.asset(
+                                    'assets/images/mehome.png',
+                                    fit: BoxFit.fill,
+                                    scale: 1,
+                                    height: size.height * 0.38,
+                                  )),
+                              Expanded(
+                                  flex: 5,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'สถานที่ตรวจที่สาม',
+                                              style: TextStyle(fontSize: 17.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: size.width * 0.02,
+                                            ),
+                                            GestureDetector(
+                                                onTap: () {
+                                                  scan();
+                                                },
+                                                child: Icon(
+                                                  Icons.qr_code_scanner,
+                                                  size: 40,
+                                                ))
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'หมายเลขสถานที่',
+                                              style: TextStyle(fontSize: 17.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              'จ. - ศ.',
+                                              style: TextStyle(fontSize: 15.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'BP11245644886699',
+                                              style: TextStyle(
+                                                fontSize: 17.53,
+                                                color: kSecondTextColor,
+                                              ),
+                                            ),
+                                            Text(
+                                              '20.00 - 23.00',
+                                              style: TextStyle(fontSize: 14.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: size.height * 0.01,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'สถานที่',
+                                              style: TextStyle(fontSize: 16.53, color: kSecondTextColor, fontWeight: FontWeight.bold),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                                              child: Text(
+                                                'ตั้งค่า',
+                                                style: TextStyle(color: kBackgroundColor, fontSize: 16.53),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: size.height * 0.12,
+                                          width: double.infinity,
+                                          child: Transform.scale(
+                                            scale: 0.9,
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(20),
+                                              child: GoogleMap(
+                                                onTap: (argument) {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) => GooglemapPage(
+                                                                latitude: 13.7650836,
+                                                                longitude: 100.5379664,
+                                                              )));
+                                                },
+                                                zoomControlsEnabled: false,
+                                                mapType: MapType.normal,
+                                                initialCameraPosition: CameraPosition(
+                                                  target: LatLng(13.7650836, 100.5379664),
+                                                  zoom: 16,
+                                                ),
+                                                onMapCreated: (GoogleMapController controller) {
+                                                  mapcontroller2.complete(controller);
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          'รายละเอียดเพิ่มเติม',
+                                          style: TextStyle(fontSize: 16.53, fontWeight: FontWeight.bold, color: kSecondTextColor),
+                                        ),
+                                        Text(
+                                          'ถังขยะหน้าบ้าน',
+                                          style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
+                                        ),
+                                        Text(
+                                          'ตู้ไปรษณีย',
+                                          style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
+                                        ),
+                                        Text(
+                                          'ไฟหน้าบ้าน',
+                                          style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
+                                        ),
+                                        Text(
+                                          'ประตูบ้าน',
+                                          style: TextStyle(fontSize: 16.53, color: kSecondTextColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: size.height * 0.20,
                   ),
                 ],
               ),
