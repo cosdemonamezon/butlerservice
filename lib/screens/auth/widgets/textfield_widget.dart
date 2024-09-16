@@ -7,7 +7,7 @@ class TextFieldWidget extends StatelessWidget {
   final String hintText;
   final IconData prefixIconData;
   final IconData? suffixIconData;
-  final bool? obscureText;
+  final bool obscureText;
   final Function(String) onChanged;
   final TextEditingController? controller;
 
@@ -15,7 +15,7 @@ class TextFieldWidget extends StatelessWidget {
     required this.hintText,
     required this.prefixIconData,
     this.suffixIconData,
-    this.obscureText,
+    required this.obscureText,
     required this.onChanged,
     this.controller
   });
@@ -27,7 +27,7 @@ class TextFieldWidget extends StatelessWidget {
     return TextFormField(
       onChanged: onChanged,
       controller: controller,
-      //obscureText: obscureText,
+      obscureText: obscureText,
       cursorColor: Global.mediumBlue,
       style: TextStyle(
         color: Global.mediumBlue,

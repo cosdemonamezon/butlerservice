@@ -221,7 +221,7 @@ class _ReportDetailState extends State<ReportDetail> {
                     height: size.height * 0.01,
                   ),
                   AppTextForm(
-                    controller: securityGroup,
+                    controller: groupId,
                     hintText: '',
                     validator: (val) {
                       if (val == null || val.isEmpty) {
@@ -358,7 +358,7 @@ class _ReportDetailState extends State<ReportDetail> {
                                                 ),
                                                 Positioned(
                                                     top: 15,
-                                                    left: 60,
+                                                    right: 10,
                                                     child: InkWell(
                                                       onTap: () {
                                                         setState(() {

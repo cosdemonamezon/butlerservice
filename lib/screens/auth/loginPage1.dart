@@ -90,7 +90,7 @@ class _LoginPage1State extends State<LoginPage1> {
                       TextFieldWidget(
                         hintText: 'รหัสผ่าน',
                         controller: pass,
-                        //obscureText: model.isVisible ? false : true,
+                        obscureText: true,
                         prefixIconData: Icons.lock_outline,
                         //suffixIconData: model.isVisible ? Icons.visibility : Icons.visibility_off,
                         onChanged: (p0) {},
